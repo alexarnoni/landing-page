@@ -48,3 +48,19 @@ Siga estes passos quando o portfólio for movido para o subdomínio dedicado:
      /portfolio/*  https://portfolio.alexarnoni.com/:splat  301
      ```
    - Faça o deploy para que a regra passe a valer.
+
+## Responsividade
+
+Use a lista abaixo como guia de QA sempre que fizer alterações de layout:
+
+- [ ] Verificar a apresentação em **360px, 390px, 414px, 768px, 1024px e 1280px** (modo responsivo do navegador ou dispositivos reais).
+- [ ] Exercitar a navegação do menu mobile apenas com **Tab / Shift + Tab**, confirmando foco visível e leitura correta pelo leitor de tela.
+- [ ] Conferir contraste de texto e ícones no modo escuro/claro, garantindo nível **AA** mínimo.
+- [ ] Validar áreas de toque com pelo menos **44px** de altura e feedback de foco/hover.
+- [ ] Confirmar que cards, imagens e mídias mantêm **largura fluida** sem gerar layout shift.
+
+### Lighthouse
+
+1. Suba o servidor local (`python -m http.server 8000`) e abra a página no Chrome.
+2. Abra o DevTools (`Ctrl+Shift+I` ou `Cmd+Option+I`), vá à aba **Lighthouse** e gere um relatório para Mobile e Desktop.
+3. As metas mínimas são **Performance, Accessibility, Best Practices e SEO ≥ 90**. Revise as recomendações antes de publicar.
