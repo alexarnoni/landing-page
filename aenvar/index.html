@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alexarnoni.com — em breve</title>
-  <meta name="description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
-  <meta property="og:title" content="alexarnoni.com — em breve">
-  <meta property="og:description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
+  <title>Crônicas de Aenvar</title>
+  <meta name="description" content="Crônicas de Aenvar apresenta mundos, personagens e capítulos de uma saga de fantasia épica.">
+  <meta property="og:title" content="Crônicas de Aenvar">
+  <meta property="og:description" content="Crônicas de Aenvar apresenta mundos, personagens e capítulos de uma saga de fantasia épica.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-placeholder.png">
-  <link rel="stylesheet" href="styles.css">
+  <meta property="og:url" content="https://alexarnoni.com/aenvar/">
+  <meta property="og:image" content="https://alexarnoni.com/assets/og-aenvar.png">
+  <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="aenvar-page">
   <header class="site-header">
     <div class="nav-container">
       <a class="brand" href="/">alexarnoni.com</a>
@@ -30,17 +30,42 @@
       </nav>
     </div>
   </header>
-  <div class="scene">
-    <div class="grid"></div>
-    <div class="content">
-      <h1 class="headline">algo novo está chegando...</h1>
-      <div class="scanner-wrap">
-        <div class="scanner">
-          <div class="scanner-sweep"></div>
-        </div>
+
+  <main class="aenvar-main">
+    <section class="aenvar-hero">
+      <div class="aenvar-hero-content">
+        <p class="aenvar-tag">fantasia épica</p>
+        <h1>Crônicas de Aenvar</h1>
+        <p class="aenvar-subtitle">Uma saga de reinos ancestrais, magia antiga e escolhas que moldam o destino.</p>
+        <a class="aenvar-cta" href="#">Ler capítulos</a>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="aenvar-features" aria-labelledby="aenvar-features-title">
+      <div class="aenvar-section-header">
+        <h2 id="aenvar-features-title">Explore cada canto de Aenvar</h2>
+        <p>Conheça a cultura de seus povos, acompanhe heróis imperfeitos e mergulhe em crônicas vivas.</p>
+      </div>
+      <div class="aenvar-feature-grid">
+        <article class="aenvar-feature-card">
+          <div class="aenvar-icon" aria-hidden="true">🌍</div>
+          <h3>Mundo &amp; Lore</h3>
+          <p>Descubra mapas, lendas e eventos que fundamentam as forças místicas do continente.</p>
+        </article>
+        <article class="aenvar-feature-card">
+          <div class="aenvar-icon" aria-hidden="true">🧝</div>
+          <h3>Personagens</h3>
+          <p>Acompanhe biografias detalhadas e relações complexas entre clãs, guildas e reinos rivais.</p>
+        </article>
+        <article class="aenvar-feature-card">
+          <div class="aenvar-icon" aria-hidden="true">📜</div>
+          <h3>Capítulos</h3>
+          <p>Leia crônicas atualizadas com notas do autor e links entre linhas temporais.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-copy">© 2025 Alexandre Arnoni Nieri de Freitas</p>
@@ -60,6 +85,7 @@
       </nav>
     </div>
   </footer>
-  <script src="script.js"></script>
+
+  <script src="../script.js"></script>
 </body>
 </html>
