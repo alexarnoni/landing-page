@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alexarnoni.com — em breve</title>
-  <meta name="description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
-  <meta property="og:title" content="alexarnoni.com — em breve">
-  <meta property="og:description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
+  <title>EV+ Bot — Monitor de Valor</title>
+  <meta name="description" content="EV+ Bot reúne feeds múltiplos, alertas e dashboards para acompanhar valor esperado em tempo real.">
+  <meta property="og:title" content="EV+ Bot — Monitor de Valor">
+  <meta property="og:description" content="EV+ Bot reúne feeds múltiplos, alertas e dashboards para acompanhar valor esperado em tempo real.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-placeholder.png">
-  <link rel="stylesheet" href="styles.css">
+  <meta property="og:url" content="https://alexarnoni.com/bot/">
+  <meta property="og:image" content="https://alexarnoni.com/assets/og-bot.png">
+  <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="bot-page">
   <header class="site-header">
     <div class="nav-container">
       <a class="brand" href="/">alexarnoni.com</a>
@@ -30,17 +30,46 @@
       </nav>
     </div>
   </header>
-  <div class="scene">
-    <div class="grid"></div>
-    <div class="content">
-      <h1 class="headline">algo novo está chegando...</h1>
-      <div class="scanner-wrap">
-        <div class="scanner">
-          <div class="scanner-sweep"></div>
-        </div>
+
+  <main class="bot-main">
+    <section class="bot-hero">
+      <div class="bot-hero-content">
+        <p class="bot-tag">monitoramento contínuo</p>
+        <h1>EV+ Bot — Monitor de Valor</h1>
+        <p class="bot-subtitle">Integre dados de mercado, acompanhe flutuações em tempo real e decida com confiança.</p>
+        <a class="bot-cta" href="#">Ver documentação</a>
       </div>
-    </div>
-  </div>
+      <div class="bot-hero-visual" aria-hidden="true">
+        <div class="bot-glow"></div>
+        <div class="bot-grid"></div>
+      </div>
+    </section>
+
+    <section class="bot-features" aria-labelledby="bot-features-title">
+      <div class="bot-section-header">
+        <h2 id="bot-features-title">O cockpit de insights que você precisa</h2>
+        <p>Conecte fontes, receba alertas precisos e visualize cenários com a clareza de um painel dedicado.</p>
+      </div>
+      <div class="bot-feature-grid">
+        <article class="bot-feature-card">
+          <div class="bot-icon" aria-hidden="true">📡</div>
+          <h3>Feeds múltiplos</h3>
+          <p>Centralize dados de exchanges, APIs proprietárias e planilhas em um fluxo contínuo.</p>
+        </article>
+        <article class="bot-feature-card">
+          <div class="bot-icon" aria-hidden="true">⚡</div>
+          <h3>Alertas</h3>
+          <p>Configure gatilhos por valor esperado e receba notificações no canal que preferir.</p>
+        </article>
+        <article class="bot-feature-card">
+          <div class="bot-icon" aria-hidden="true">📊</div>
+          <h3>Dashboard</h3>
+          <p>Visualize métricas-chave com cards responsivos, gráficos e trilhas de decisões.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-copy">© 2025 Alexandre Arnoni Nieri de Freitas</p>
@@ -60,6 +89,7 @@
       </nav>
     </div>
   </footer>
-  <script src="script.js"></script>
+
+  <script src="../script.js"></script>
 </body>
 </html>

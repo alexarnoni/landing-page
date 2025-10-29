@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alexarnoni.com — em breve</title>
-  <meta name="description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
-  <meta property="og:title" content="alexarnoni.com — em breve">
-  <meta property="og:description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
+  <title>Luro — Seu Organizador Financeiro</title>
+  <meta name="description" content="Luro centraliza registros de gastos, metas mensais e gráficos claros para manter suas finanças alinhadas.">
+  <meta property="og:title" content="Luro — Seu Organizador Financeiro">
+  <meta property="og:description" content="Luro centraliza registros de gastos, metas mensais e gráficos claros para manter suas finanças alinhadas.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-placeholder.png">
-  <link rel="stylesheet" href="styles.css">
+  <meta property="og:url" content="https://alexarnoni.com/finance/">
+  <meta property="og:image" content="https://alexarnoni.com/assets/og-finance.png">
+  <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="finance-page">
   <header class="site-header">
     <div class="nav-container">
       <a class="brand" href="/">alexarnoni.com</a>
@@ -30,17 +30,42 @@
       </nav>
     </div>
   </header>
-  <div class="scene">
-    <div class="grid"></div>
-    <div class="content">
-      <h1 class="headline">algo novo está chegando...</h1>
-      <div class="scanner-wrap">
-        <div class="scanner">
-          <div class="scanner-sweep"></div>
-        </div>
+
+  <main class="finance-main">
+    <section class="finance-hero">
+      <div class="finance-hero-content">
+        <p class="finance-tag">gestão inteligente</p>
+        <h1>Luro — Seu Organizador Financeiro</h1>
+        <p class="finance-subtitle">Centralize despesas, metas e insights visuais para manter suas finanças sob controle.</p>
+        <a class="finance-cta" href="#">Abrir app</a>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="finance-features" aria-labelledby="finance-features-title">
+      <div class="finance-section-header">
+        <h2 id="finance-features-title">Tudo que você precisa para clarear as contas</h2>
+        <p>Planos de ação com foco no que importa: acompanhar gastos, cumprir metas e entender seus números.</p>
+      </div>
+      <div class="finance-feature-grid">
+        <article class="finance-feature-card">
+          <div class="finance-icon" aria-hidden="true">🧾</div>
+          <h3>Registro de Gastos</h3>
+          <p>Capture transações em segundos com categorias flexíveis e histórico pesquisável.</p>
+        </article>
+        <article class="finance-feature-card">
+          <div class="finance-icon" aria-hidden="true">🎯</div>
+          <h3>Metas Mensais</h3>
+          <p>Defina limites inteligentes e receba alertas quando estiver perto de estourar o orçamento.</p>
+        </article>
+        <article class="finance-feature-card">
+          <div class="finance-icon" aria-hidden="true">📈</div>
+          <h3>Gráficos</h3>
+          <p>Visualize evolução com dashboards claros para identificar tendências e oportunidades.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-copy">© 2025 Alexandre Arnoni Nieri de Freitas</p>
@@ -60,6 +85,7 @@
       </nav>
     </div>
   </footer>
-  <script src="script.js"></script>
+
+  <script src="../script.js"></script>
 </body>
 </html>
