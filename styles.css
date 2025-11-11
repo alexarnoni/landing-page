@@ -97,6 +97,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   background:rgba(3,4,10,0.86);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(159,223,251,0.12);
+  color:#9fdffb;
 }
 
 .nav-container{
@@ -122,32 +123,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .brand:hover,
 .brand:focus-visible{color:var(--accent);}
 
-.nav-toggle{
-  display:none;
-  width:2.75rem;
-  height:2.75rem;
-  border-radius:0.9rem;
-  border:1px solid rgba(159,223,251,0.32);
-  background:rgba(3,4,10,0.6);
-  color:inherit;
-  align-items:center;
-  justify-content:center;
-  transition:border-color 0.2s ease,background 0.2s ease;
-}
-
-.nav-toggle:hover,
-.nav-toggle:focus-visible{border-color:rgba(0,229,255,0.6);background:rgba(0,229,255,0.1);}
-
-.nav-toggle-line{
-  display:block;
-  width:1.5rem;
-  height:2px;
-  background:currentColor;
-  border-radius:999px;
-  transition:transform 0.2s ease,opacity 0.2s ease;
-}
-
-.nav-toggle-line + .nav-toggle-line{margin-top:0.3rem;}
+.nav-toggle{display:none;color:inherit;}
 
 .site-nav{
   display:flex;
@@ -170,6 +146,51 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   padding-inline:0.25rem;
   min-height:2.75rem;
   transition:color 0.2s ease,text-shadow 0.2s ease;
+}
+
+/* === NAV TOGGLE: Pill Glass Style === */
+.nav-pill{
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid rgba(159,223,251,.32);
+  background:rgba(3, 4, 10, .6);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter:blur(8px);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+
+.nav-pill:hover,
+.nav-pill:focus-visible{
+  border-color:rgba(0, 229, 255, .6);
+  box-shadow:0 0 12px rgba(0, 229, 255, .2);
+}
+
+.nav-pill .line{
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:4px;
+  transition:transform .2s,opacity .2s;
+}
+
+.nav-pill .line + .line{margin-top:4px;}
+
+.nav-toggle.nav-pill{z-index:50;}
+
+/* transforma o ícone em "X" quando aberto */
+.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(1){
+  transform:translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(2){
+  opacity:0;
+}
+
+.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(3){
+  transform:translateY(-6px) rotate(-45deg);
 }
 
 /* Link ativo (via aria-current) */
@@ -594,9 +615,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   .site-nav[data-menu-hidden]{display:none;}
   .nav-list{flex-direction:column;width:100%;gap:var(--space-sm);}
   .nav-list a{width:100%;padding-block:0.4rem;}
-  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1){transform:translateY(0.6rem) rotate(45deg);}
-  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2){opacity:0;}
-  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3){transform:translateY(-0.6rem) rotate(-45deg);}
   .page-main{padding:clamp(3.8rem,14vw,5rem) 0 clamp(3rem,12vw,4rem);}
   .bot-hero{grid-template-columns:1fr;}
   .bot-hero-visual{min-height:10rem;}
