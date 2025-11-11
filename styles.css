@@ -168,29 +168,36 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   box-shadow:0 0 12px rgba(0, 229, 255, .2);
 }
 
-.nav-pill .line{
-  width:20px;
-  height:2px;
-  background:currentColor;
-  border-radius:4px;
-  transition:transform .2s,opacity .2s;
-}
-
-.nav-pill .line + .line{margin-top:4px;}
-
 .nav-toggle.nav-pill{z-index:50;}
 
-/* transforma o ícone em "X" quando aberto */
-.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(1){
-  transform:translateY(6px) rotate(45deg);
+.nav-pill{position:relative;color:var(--accent);}
+.nav-pill .icon{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:24px;
+  height:24px;
+  opacity:1;
+  transition:opacity .18s ease,transform .18s ease;
+  filter:drop-shadow(0 0 6px rgba(0,229,255,.35));
 }
 
-.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(2){
-  opacity:0;
+.nav-pill .icon path{
+  stroke:currentColor;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  fill:none;
 }
 
-.nav-toggle[aria-expanded="true"].nav-pill .line:nth-child(3){
-  transform:translateY(-6px) rotate(-45deg);
+.nav-pill .icon-close{opacity:0;transform:scale(.9);}
+
+.nav-toggle[aria-expanded="true"].nav-pill .icon-menu{opacity:0;transform:scale(1.1);}
+
+.nav-toggle[aria-expanded="true"].nav-pill .icon-close{opacity:1;transform:scale(1);}
+
+@media (prefers-reduced-motion:reduce){
+  .nav-pill .icon{transition:none;}
 }
 
 /* Link ativo (via aria-current) */
