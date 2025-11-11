@@ -3,12 +3,18 @@
   let initialized = false;
   function init() {
     if (initialized) return;
-    initialized = true;
 
     const grid = document.querySelector('.grid');
     const scanner = document.querySelector('.scanner');
     const navToggle = document.querySelector('[data-nav-toggle]');
     const navMenu = document.querySelector('[data-nav-menu]');
+
+    if(!navToggle || !navMenu){
+      return;
+    }
+
+    initialized = true;
+
     const MOBILE_BREAKPOINT = 768;
 
     // leve parallax com o mouse para a grade
