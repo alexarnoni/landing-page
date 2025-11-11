@@ -153,3 +153,51 @@
 
   document.addEventListener('partials:ready', init);
 })();
+
+// === Intelligent Nav Toggle: Show hamburger only when items overflow ===
+function checkNavOverflow() {
+  const navContainer = document.querySelector('.nav-container');
+  const siteNav = document.querySelector('.site-nav');
+  const brand = document.querySelector('.brand');
+  const navToggle = document.querySelector('.nav-toggle');
+  
+  if (!navContainer || !siteNav || !brand || !navToggle) return;
+  
+  // Get available space (container width - brand width - toggle width - gaps)
+  const containerWidth = navContainer.offsetWidth;
+  const brandWidth = brand.offsetWidth;
+  const toggleWidth = 44; // nav-pill width
+  const gaps = 48; // gap spacing (var(--space-md) * 2)
+  const availableSpace = containerWidth - brandWidth - toggleWidth - gaps;
+  
+  // Get total width of navigation items
+  const navWidth = siteNav.scrollWidth;
+  
+  // Add/remove overflow class
+  if (navWidth > availableSpace) {
+    document.documentElement.classList.add('nav-overflow');
+  } else {
+    document.documentElement.classList.remove('nav-overflow');
+  }
+}
+
+// Debounce function for performance
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  checkNavOverflow();
+  
+  // Check on window resize (debounced)
+  window.addEventListener('resize', debounce(checkNavOverflow, 150));
+});
