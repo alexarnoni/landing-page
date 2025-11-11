@@ -177,17 +177,20 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   margin:auto;
   width:24px;
   height:24px;
+  display:block; /* force SVG display */
   opacity:1;
   transition:opacity .18s ease,transform .18s ease;
   filter:drop-shadow(0 0 6px rgba(0,229,255,.4));
+  pointer-events:none; /* prevent SVG click blocking */
 }
 
 .nav-pill .icon path{
   stroke:currentColor;
-  stroke-width:2.6; /* mais visível no Safari */
+  stroke-width:2.6;
   stroke-linecap:round;
   stroke-linejoin:round;
   fill:none;
+  vector-effect:non-scaling-stroke; /* maintain stroke width on all scales */
 }
 
 .nav-pill .icon-close{opacity:0;transform:scale(.9);}
@@ -605,6 +608,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 @media (max-width:768px){
   .nav-toggle{display:inline-flex;}
+  .nav-pill{display:inline-flex !important;} /* force display */
+  .nav-pill .icon{display:block !important;} /* force SVG visibility */
   .site-nav{
     position:absolute;
     top:calc(100% + 0.75rem);
