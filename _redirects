@@ -1,6 +1,2 @@
-# Redirect rules for sub-application routes.
-# Uncomment a rule to enable redirection once the standalone deployments are ready.
-# Each rule preserves the path suffix using :splat so deep links continue to work.
+# Quando o subdomínio estiver ativo, descomente:
 # /finance/*  https://finance.alexarnoni.com/:splat  301
-# /bot/*      https://bot.alexarnoni.com/:splat      301
-# /aenvar/*   https://aenvar.alexarnoni.com/:splat   301
