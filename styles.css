@@ -35,6 +35,23 @@ body{
   text-rendering:optimizeLegibility;
 }
 
+/* Acessibilidade — Skip link */
+.sr-skip{
+  position:absolute;
+  left:-9999px;
+  top:auto;
+  background:#000;
+  color:var(--accent);
+  padding:.5rem .75rem;
+  border-radius:.5rem;
+  text-decoration:none;
+  z-index:1000;
+}
+.sr-skip:focus{
+  left:1rem;
+  top:1rem;
+}
+
 @media (max-width:480px){
   body{line-height:1.7;}
 }
@@ -153,6 +170,13 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   padding-inline:0.25rem;
   min-height:2.75rem;
   transition:color 0.2s ease,text-shadow 0.2s ease;
+}
+
+/* Link ativo (via aria-current) */
+.nav-list a[aria-current="page"]{
+  color:var(--accent);
+  text-shadow:0 0 12px rgba(0,229,255,0.28);
+  border-bottom:1px solid rgba(0,229,255,0.35);
 }
 
 .nav-list a:hover,
