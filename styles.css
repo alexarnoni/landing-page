@@ -861,3 +861,94 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
 }
+
+/* === Hub Page (index) — retro-futurista ================================= */
+.hub-page {
+  --bg: #040810;
+  --bg2: #070d18;
+  --text: #c8dde8;
+  --text-dim: #5a7a8a;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  cursor: none;
+  padding-top: 0; /* hero lida com o espaço do header */
+}
+
+/* Neutraliza globals do :root que conflitam */
+.hub-page h1,
+.hub-page h2,
+.hub-page h3 {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.hub-page p {
+  font-size: inherit;
+  margin: 0;
+}
+
+.hub-page a:hover {
+  color: inherit;
+}
+
+/* Header no hub — tema cyan */
+.hub-page .site-header {
+  background: linear-gradient(to bottom, #040810 0%, transparent 100%);
+  border-bottom-color: rgba(0,255,229,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.hub-page .brand {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ffe5;
+  letter-spacing: 3px;
+}
+
+.hub-page .nav-list a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: #5a7a8a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 1;
+  min-height: unset;
+}
+
+.hub-page .nav-list a:hover,
+.hub-page .nav-list a[aria-current="page"] {
+  color: #00ffe5;
+  border-bottom: none;
+}
+
+/* Footer no hub — tema cyan */
+.hub-page .site-footer {
+  background: transparent;
+  border-top-color: rgba(0,255,229,0.1);
+}
+
+.hub-page .footer-copy,
+.hub-page .site-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #5a7a8a;
+  letter-spacing: 2px;
+  font-style: normal;
+}
+
+.hub-page .footer-link {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #5a7a8a;
+  letter-spacing: 2px;
+  border: none;
+  min-height: unset;
+}
+
+.hub-page .footer-link:hover {
+  color: #00ffe5;
+  border-color: transparent;
+  background: transparent;
+}

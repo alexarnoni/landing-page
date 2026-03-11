@@ -644,7 +644,7 @@
   }
 </style>
 </head>
-<body>
+<body class="hub-page">
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -743,7 +743,7 @@
   <div class="projects-grid">
 
     <!-- FEATURED -->
-    <a href="https://luro.alexarnoni.com" class="project-card featured reveal" target="_blank">
+    <a href="/finance/" class="project-card featured reveal">
       <div>
         <div class="project-tag">⬡ Projeto principal</div>
         <h3>Luro Finance</h3>
@@ -769,7 +769,7 @@ SALDO      ██░░░░░░░░░░  R$ 1.760
     </a>
 
     <!-- EV BOT -->
-    <div class="project-card reveal">
+    <a href="/bot/" class="project-card reveal">
       <div class="project-tag">⬡ Em desenvolvimento</div>
       <h3>EV+ Bot</h3>
       <p>Sistema de análise de apostas esportivas baseado em valor esperado positivo. Scraping, cálculo de EV e alertas automáticos.</p>
@@ -779,10 +779,10 @@ SALDO      ██░░░░░░░░░░  R$ 1.760
         <span class="tech-badge">Telegram API</span>
       </div>
       <span class="project-link">Ver detalhes</span>
-    </div>
+    </a>
 
     <!-- CRONICAS -->
-    <div class="project-card reveal">
+    <a href="/aenvar/" class="project-card reveal">
       <div class="project-tag">⬡ Projeto criativo</div>
       <h3>Crônicas de Aenvar</h3>
       <p>Projeto de worldbuilding e escrita criativa — universo original com lore, personagens e narrativas em construção.</p>
@@ -791,7 +791,7 @@ SALDO      ██░░░░░░░░░░  R$ 1.760
         <span class="tech-badge">Escrita</span>
       </div>
       <span class="project-link">Explorar universo</span>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -853,19 +853,19 @@ SALDO      ██░░░░░░░░░░  R$ 1.760
       <a href="https://linkedin.com/in/alexarnoni" class="contact-link" target="_blank">
         ⬡ LinkedIn
       </a>
-      <a href="mailto:alexandre.anf@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#0b6a676e736a656f796e256a656d4b6c666a626725686466" class="contact-link">
         ⬡ Email
       </a>
     </div>
 
-    <a href="mailto:alexandre.anf@gmail.com" class="btn-primary">Mandar mensagem</a>
+    <a href="/cdn-cgi/l/email-protection#eb8a878e938a858f998ec58a858dab8c868a8287c5888486" class="btn-primary">Mandar mensagem</a>
   </div>
 </section>
 </main>
 
 <div data-include="footer"></div>
 
-<script src="/include-partials.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/include-partials.js"></script>
 <script src="/main.js"></script>
 <script>
   // Cursor
@@ -895,14 +895,4 @@ SALDO      ██░░░░░░░░░░  R$ 1.760
       if (e.isIntersecting) {
         e.target.classList.add('visible');
         const children = e.target.querySelectorAll('.stack-item, .tech-badge, .timeline-item');
-        children.forEach((child, i) => {
-          child.style.transitionDelay = `${i * 0.05}s`;
-        });
-      }
-    });
-  }, { threshold: 0.15 });
-
-  reveals.forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+        children.forEach(
