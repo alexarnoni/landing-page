@@ -1,47 +1,908 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alexarnoni.com</title>
-  <meta name="description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
-  <meta property="og:title" content="alexarnoni.com">
-  <meta property="og:description" content="alexarnoni.com está em construção: descubra projetos de finanças, automação e storytelling em breve.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-placeholder.png">
-  <link rel="preload" href="/styles.css" as="style">
-  <style>
-    .sr-skip{position:absolute;left:-9999px;top:auto}
-    .sr-skip:focus{left:1rem;top:1rem}
-  </style>
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandre Arnoni — Dev & Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00ffe5;
+    --cyan-dim: #00ffe540;
+    --cyan-ghost: #00ffe510;
+    --bg: #040810;
+    --bg2: #070d18;
+    --text: #c8dde8;
+    --text-dim: #5a7a8a;
+    --red: #ff3c6e;
+    --gold: #ffd166;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--cyan-dim);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+  }
+  body:has(a:hover) .cursor,
+  body:has(button:hover) .cursor { width: 20px; height: 20px; background: var(--red); }
+  body:has(a:hover) .cursor-ring,
+  body:has(button:hover) .cursor-ring { width: 52px; height: 52px; border-color: var(--red); }
+
+  /* SCANLINES */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.4;
+  }
+
+  /* SITE HEADER (partial) */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--cyan-ghost);
+    background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+    backdrop-filter: blur(10px);
+  }
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+  }
+  .brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: var(--cyan);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .site-nav ul { list-style: none; display: flex; gap: 40px; }
+  .site-nav a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .site-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .site-nav a:hover { color: var(--cyan); }
+  .site-nav a:hover::after { transform: scaleX(1); }
+  .nav-toggle { display: none; }
+  .sr-skip { position: absolute; left: -9999px; top: auto; }
+  .sr-skip:focus { left: 1rem; top: 1rem; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--cyan-ghost) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cyan-ghost) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 100%, black 0%, transparent 70%);
+    animation: gridpulse 4s ease-in-out infinite;
+  }
+
+  @keyframes gridpulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .hero-glow {
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 300px;
+    background: radial-gradient(ellipse, var(--cyan-dim) 0%, transparent 70%);
+    animation: glowpulse 3s ease-in-out infinite;
+  }
+
+  @keyframes glowpulse {
+    0%, 100% { opacity: 0.5; transform: translateX(-50%) scaleX(1); }
+    50% { opacity: 1; transform: translateX(-50%) scaleX(1.1); }
+  }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeup 0.8s 0.2s forwards;
+  }
+  .hero-tag::before { content: '> '; color: var(--red); }
+
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(56px, 9vw, 120px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeup 0.8s 0.4s forwards;
+  }
+
+  h1 .name-first { color: var(--text); display: block; }
+  h1 .name-last {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--cyan);
+    display: block;
+    text-shadow: 0 0 40px var(--cyan-dim);
+  }
+
+  .hero-desc {
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+    max-width: 560px;
+    line-height: 1.5;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeup 0.8s 0.6s forwards;
+    border-left: 2px solid var(--cyan-dim);
+    padding-left: 20px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeup 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cyan);
+    border: none;
+    padding: 14px 32px;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+  }
+  .btn-primary:hover { background: var(--red); }
+
+  .btn-secondary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    background: transparent;
+    border: 1px solid var(--cyan-dim);
+    padding: 14px 32px;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--cyan); background: var(--cyan-ghost); }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px; bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeup 0.8s 1s forwards;
+  }
+
+  .stat {
+    text-align: right;
+    border-right: 2px solid var(--cyan-dim);
+    padding-right: 16px;
+  }
+  .stat-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 28px;
+    color: var(--cyan);
+    display: block;
+  }
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION COMMONS */
+  section {
+    padding: 100px 60px;
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--cyan-dim), transparent);
+  }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+  .about-text p strong { color: var(--cyan); font-weight: 600; }
+
+  .about-stack h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .stack-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    padding: 10px 14px;
+    border: 1px solid var(--cyan-ghost);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .stack-item:hover { border-color: var(--cyan-dim); background: var(--cyan-ghost); }
+  .stack-item::before { content: '▸'; color: var(--cyan); font-size: 10px; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 40px;
+    border: 1px solid var(--cyan-ghost);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--cyan), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .project-card:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-4px);
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .project-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .project-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .project-card p {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .tech-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    background: var(--cyan-ghost);
+    border: 1px solid var(--cyan-dim);
+    padding: 4px 10px;
+    letter-spacing: 1px;
+  }
+
+  .project-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+  .project-card:hover .project-link { gap: 16px; }
+  .project-link::after { content: '→'; }
+
+  .project-visual {
+    background: var(--bg);
+    border: 1px solid var(--cyan-ghost);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-visual-inner {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan-dim);
+    line-height: 1.8;
+    padding: 20px;
+    white-space: pre;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--bg2); }
+
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--cyan), var(--cyan-ghost), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--cyan-ghost);
+  }
+  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -46px; top: 4px;
+    width: 12px; height: 12px;
+    background: var(--cyan);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 12px var(--cyan);
+  }
+
+  .timeline-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .timeline-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .timeline-company {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 16px;
+  }
+
+  .timeline-desc {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-inner p {
+    font-size: 18px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .contact-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid var(--cyan-ghost);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .contact-link:hover { color: var(--cyan); border-color: var(--cyan-dim); background: var(--cyan-ghost); }
+
+  /* SITE FOOTER (partial) */
+  .site-footer {
+    border-top: 1px solid var(--cyan-ghost);
+    padding: 32px 60px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-copy, .site-tagline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--cyan); }
+  .footer-icon { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    nav ul { gap: 20px; }
+    #hero, section { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .hero-stats { display: none; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <a href="#main" class="sr-skip">Pular para o conteúdo</a>
-  <div data-include="header"></div>
 
-  <noscript>
-    <p style="padding:1rem;border:1px solid #444;border-radius:.5rem;margin:1rem">
-      Ative JavaScript para ver o menu e o rodapé.
-    </p>
-  </noscript>
-  <main id="main" class="page-main">
-    <div class="scene">
-      <div class="grid"></div>
-      <div class="content">
-        <h1 class="headline">Entre algoritmos e lendas, cada projeto é um universo em expansão.</h1>
-        <div class="scanner-wrap">
-          <div class="scanner">
-            <div class="scanner-sweep"></div>
-          </div>
-        </div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+<noscript>
+  <p style="padding:1rem;border:1px solid #444;border-radius:.5rem;margin:1rem">
+    Ative JavaScript para ver o menu e o rodapé.
+  </p>
+</noscript>
+
+<!-- HERO -->
+<main id="main">
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-tag">Desenvolvedor Full Stack & Builder</div>
+
+  <h1>
+    <span class="name-first">ALEXANDRE</span>
+    <span class="name-last">ARNONI</span>
+  </h1>
+
+  <p class="hero-desc">
+    Entre algoritmos e lendas, cada projeto é um universo em expansão.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">Ver Projetos</a>
+    <a href="#contact" class="btn-secondary">Falar comigo</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">3+</span>
+      <span class="stat-label">Projetos ativos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">Full</span>
+      <span class="stat-label">Stack</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">SP</span>
+      <span class="stat-label">Brasil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2>Sobre mim</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        Sou analista de dados e desenvolvedor — trabalho na Prefeitura de Praia Grande com <strong>Power BI e dados públicos</strong>, e nas horas vagas construo produtos do zero com Python e FastAPI.
+      </p>
+      <p>
+        Tenho formação em Comércio Exterior, Técnico em Informática e estou finalizando <strong>Ciência de Dados</strong>. Uma trajetória que mistura visão de negócio, dados e código — e que aparece em cada projeto que faço.
+      </p>
+      <p>
+        Atualmente construindo o <strong>Luro</strong>, um app de finanças pessoais, e o <strong>EV+ Bot</strong>, um sistema de análise de apostas com valor esperado positivo.
+      </p>
+    </div>
+
+    <div class="about-stack reveal">
+      <h3>// Stack principal</h3>
+      <div class="stack-grid">
+        <div class="stack-item">Python</div>
+        <div class="stack-item">FastAPI</div>
+        <div class="stack-item">Power BI</div>
+        <div class="stack-item">PostgreSQL</div>
+        <div class="stack-item">JavaScript</div>
+        <div class="stack-item">Docker</div>
+        <div class="stack-item">Cloudflare</div>
+        <div class="stack-item">Git</div>
       </div>
     </div>
-  </main>
-  <div data-include="footer"></div>
+  </div>
+</section>
 
-  <script src="/include-partials.js"></script>
-  <script src="/main.js"></script>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2>Projetos</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <a href="https://luro.alexarnoni.com" class="project-card featured reveal" target="_blank">
+      <div>
+        <div class="project-tag">⬡ Projeto principal</div>
+        <h3>Luro Finance</h3>
+        <p>App de finanças pessoais construído do zero — do banco de dados ao frontend. Categorização automática de gastos, dashboards e controle de orçamento com foco em UX limpa.</p>
+        <div class="project-tech">
+          <span class="tech-badge">FastAPI</span>
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">PostgreSQL</span>
+          <span class="tech-badge">Cloudflare</span>
+          <span class="tech-badge">JS</span>
+        </div>
+        <span class="project-link">Acessar projeto</span>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+RECEITA    ████████████  R$ 8.400
+FIXOS      ████░░░░░░░░  R$ 2.100
+VARIÁVEIS  ██░░░░░░░░░░  R$ 1.340
+INVESTIDO  ████████░░░░  R$ 3.200
+SALDO      ██░░░░░░░░░░  R$ 1.760
+        </div>
+      </div>
+    </a>
+
+    <!-- EV BOT -->
+    <div class="project-card reveal">
+      <div class="project-tag">⬡ Em desenvolvimento</div>
+      <h3>EV+ Bot</h3>
+      <p>Sistema de análise de apostas esportivas baseado em valor esperado positivo. Scraping, cálculo de EV e alertas automáticos.</p>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Scraping</span>
+        <span class="tech-badge">Telegram API</span>
+      </div>
+      <span class="project-link">Ver detalhes</span>
+    </div>
+
+    <!-- CRONICAS -->
+    <div class="project-card reveal">
+      <div class="project-tag">⬡ Projeto criativo</div>
+      <h3>Crônicas de Aenvar</h3>
+      <p>Projeto de worldbuilding e escrita criativa — universo original com lore, personagens e narrativas em construção.</p>
+      <div class="project-tech">
+        <span class="tech-badge">Worldbuilding</span>
+        <span class="tech-badge">Escrita</span>
+      </div>
+      <span class="project-link">Explorar universo</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2>Experiência</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">jan 2025 — presente</div>
+      <div class="timeline-role">Analista de Dados</div>
+      <div class="timeline-company">// Prefeitura de Praia Grande</div>
+      <p class="timeline-desc">Desenvolvimento de dashboards e relatórios no Power BI para suporte a decisões estratégicas. Atuação na CIDE — Central Integrada de Dados e Estatística, estruturando indicadores municipais e apoiando políticas públicas baseadas em evidências.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">mar 2022 — dez 2024</div>
+      <div class="timeline-role">Chefe de Seção de Compensação Previdenciária</div>
+      <div class="timeline-company">// Prefeitura de Praia Grande</div>
+      <p class="timeline-desc">Liderança de processos de revisão, controle e conciliação de dados entre regimes previdenciários (RPPS x INSS). Elaboração de relatórios gerenciais e comunicação com instituições federais para garantir conformidade.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">dez 2014 — fev 2022</div>
+      <div class="timeline-role">Agente Administrativo</div>
+      <div class="timeline-company">// FPGPREV (antigo IPMPG) — Praia Grande</div>
+      <p class="timeline-desc">Gestão de arquivos e grandes volumes de dados, atendimento ao público e análise de processos administrativos com foco em qualidade e agilidade.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Formação</div>
+      <div class="timeline-role">Ciência de Dados · Comércio Exterior · Técnico em Informática</div>
+      <div class="timeline-company">// Uninter (em andamento) · FATEC Praia Grande · ETEC Praia Grande</div>
+      <p class="timeline-desc">Trajetória que combina base técnica em informática, visão de negócios e especialização em dados — aplicada diretamente nos projetos que construo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal" style="justify-content:center; text-align:center;">
+    <span class="section-num">04</span>
+    <h2>Contato</h2>
+  </div>
+
+  <div class="contact-inner reveal">
+    <p>Aberto para oportunidades de trabalho, freelances ou só uma conversa boa sobre tecnologia e projetos.</p>
+
+    <div class="contact-links">
+      <a href="https://github.com/alexarnoni" class="contact-link" target="_blank">
+        ⬡ GitHub
+      </a>
+      <a href="https://linkedin.com/in/alexarnoni" class="contact-link" target="_blank">
+        ⬡ LinkedIn
+      </a>
+      <a href="mailto:alexandre.anf@gmail.com" class="contact-link">
+        ⬡ Email
+      </a>
+    </div>
+
+    <a href="mailto:alexandre.anf@gmail.com" class="btn-primary">Mandar mensagem</a>
+  </div>
+</section>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js"></script>
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        const children = e.target.querySelectorAll('.stack-item, .tech-badge, .timeline-item');
+        children.forEach((child, i) => {
+          child.style.transitionDelay = `${i * 0.05}s`;
+        });
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
