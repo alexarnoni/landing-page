@@ -950,13 +950,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 .hub-page .brand {
   font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
   color: #00ffe5;
   letter-spacing: 3px;
 }
 
 .hub-page .nav-list a {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 13px;
+  font-size: clamp(0.8rem, 1.4vw, 0.875rem);
   color: var(--text-dim);
   letter-spacing: 2px;
   text-transform: uppercase;
