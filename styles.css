@@ -871,7 +871,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   --bg:         #040810;
   --bg2:        #070d18;
   --text:       #c8dde8;
-  --text-dim:   #5a7a8a;
+  --text-dim:   #9ab8c8;
   --red:        #ff3c6e;
   background: var(--bg);
   color: var(--text);
@@ -1115,9 +1115,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* About */
 .hub-page #about { background: var(--bg2); }
 .hub-page .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.hub-page .about-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; font-size: 16px; }
+.hub-page .about-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; font-size: 17px; }
 .hub-page .about-text p strong { color: var(--cyan); font-weight: 600; }
-.hub-page .about-stack h3 { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+.hub-page .about-stack h3 { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
 .hub-page .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .hub-page .stack-item {
   font-family: 'Share Tech Mono', monospace;
@@ -1154,12 +1154,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   grid-column: span 2;
   display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
 }
-.hub-page .project-tag { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+.hub-page .project-tag { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
 .hub-page .project-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
-.hub-page .project-card p { font-size: 15px; color: var(--text-dim); line-height: 1.7; margin-bottom: 24px; }
+.hub-page .project-card p { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin-bottom: 24px; }
 .hub-page .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.hub-page .tech-badge { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--cyan); background: var(--cyan-ghost); border: 1px solid var(--cyan-dim); padding: 4px 10px; letter-spacing: 1px; }
-.hub-page .project-link { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--cyan); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+.hub-page .tech-badge { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); background: var(--cyan-ghost); border: 1px solid var(--cyan-dim); padding: 4px 10px; letter-spacing: 1px; }
+.hub-page .project-link { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: gap 0.2s; }
 .hub-page .project-card:hover .project-link { gap: 16px; }
 .hub-page .project-link::after { content: '→'; }
 .hub-page .project-visual { background: var(--bg); border: 1px solid var(--cyan-ghost); height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -1172,20 +1172,20 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .hub-page .timeline-item { position: relative; margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--cyan-ghost); }
 .hub-page .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
 .hub-page .timeline-dot { position: absolute; left: -46px; top: 4px; width: 12px; height: 12px; background: var(--cyan); border: 2px solid var(--bg); box-shadow: 0 0 12px var(--cyan); }
-.hub-page .timeline-date { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.hub-page .timeline-date { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
 .hub-page .timeline-role { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .hub-page .timeline-company { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); margin-bottom: 16px; }
-.hub-page .timeline-desc { font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 600px; }
+.hub-page .timeline-desc { font-size: 17px; color: var(--text-dim); line-height: 1.7; max-width: 600px; }
 
 /* Contact */
 .hub-page #contact { text-align: center; }
 .hub-page .contact-inner { max-width: 600px; margin: 0 auto; }
-.hub-page .contact-inner p { font-size: 18px; color: var(--text-dim); line-height: 1.7; margin-bottom: 48px; }
+.hub-page .contact-inner p { font-size: 19px; color: var(--text-dim); line-height: 1.7; margin-bottom: 48px; }
 .hub-page .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
 .hub-page .contact-link {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: 14px;
+  color: var(--text);
   text-decoration: none;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1247,7 +1247,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   --bg:         #040810;
   --bg2:        #070d18;
   --text:       #c8dde8;
-  --text-dim:   #5a7a8a;
+  --text-dim:   #9ab8c8;
   --red:        #ff3c6e;
   background: var(--bg);
   color: var(--text);
