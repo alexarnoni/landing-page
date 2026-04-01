@@ -31,7 +31,7 @@ aenvar/                 — Crônicas de Aenvar
 |---|---|
 | Luro Finance | `/finance/` (interno) |
 | EV+ Analyzer | `/bot/` (interno) |
-| Scout Brasileirão | `https://scout.alexarnoni.com` (externo) |
+| Olheiro | `https://scout.alexarnoni.com` (externo) |
 | Crônicas de Aenvar | `/aenvar/` (interno) |
 | Portfólio | `https://alexarnoni.github.io/` (externo) |
 
