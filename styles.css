@@ -12,7 +12,7 @@
   --accent-red:#7b3f3f;
   --muted:#6b5a45;
   --text-primary:#e8dcc8;
-  --text-dim:#6b5a45;
+  --text-dim:#8a7560;
   --border-default:#2a2218;
   --grid-opacity:0.04;
   --font:'EB Garamond',Georgia,'Times New Roman',serif;
@@ -43,7 +43,7 @@ body{
   min-height:100%;
   margin:0;
   font-family:var(--font);
-  font-size:clamp(1.125rem,2.2vw,1.25rem);
+  font-size:clamp(1.125rem,1.4vw,1.375rem);
   background:var(--bg);
   color:var(--text-primary);
   line-height:1.8;
@@ -73,7 +73,7 @@ body{
 }
 
 @media (min-width:1024px){
-  body{line-height:1.75;}
+  body{line-height:1.65;}
 }
 
 img,
@@ -89,15 +89,15 @@ a:hover{color:var(--accent);}
 
 ul{margin:0;padding:0;}
 
-p{margin:0 0 var(--space-sm);font-size:clamp(1.125rem,2.2vw,1.25rem);}
+p{margin:0 0 var(--space-md);font-size:clamp(1.125rem,1.4vw,1.375rem);}
 
 h1,h2,h3{font-family:var(--font-heading);font-weight:700;line-height:1.2;margin:0 0 var(--space-sm);}
 
-h1{font-size:clamp(1.75rem,3.2vw,2.5rem);letter-spacing:3px;text-transform:uppercase;}
+h1{font-size:clamp(1.75rem,3.2vw,3rem);letter-spacing:0.06em;text-transform:uppercase;}
 
-h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:2px;text-transform:uppercase;}
+h2{font-size:clamp(1.5rem,2.8vw,2.5rem);letter-spacing:0.05em;text-transform:uppercase;}
 
-h3{font-size:clamp(1.2rem,2.4vw,1.5rem);letter-spacing:1px;}
+h3{font-size:clamp(1.2rem,2vw,1.75rem);letter-spacing:0.03em;}
 
 blockquote{
   font-family:var(--font);
