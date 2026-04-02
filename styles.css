@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap');
 
 :root{
   font-size:16px;
   --bg:#0f0d09;
   --bg-secondary:#1a1610;
-  --bg-input:#241e14;
   --accent:#c9a84c;
   --accent-red:#7b3f3f;
   --muted:#6b5a45;
@@ -17,7 +13,6 @@
   --grid-opacity:0.04;
   --font:'EB Garamond',Georgia,'Times New Roman',serif;
   --font-heading:'Cinzel Decorative',Georgia,serif;
-  --font-mono:'EB Garamond',Georgia,serif;
   --max-width:70rem;
   --space-xs:0.5rem;
   --space-sm:0.75rem;
@@ -25,8 +20,6 @@
   --space-lg:2.5rem;
   --space-xl:4rem;
   --header-height:4.25rem;
-  --chamfer-lg:4px;
-  --chamfer-sm:3px;
 }
 
 @media (max-width:768px){
@@ -449,7 +442,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .finance-page{
   --bg:#0d1117;
   --bg-panel:#161b22;
-  --bg-input:#21262d;
   --border-default:#30363d;
   --text-primary:#f0f6fc;
   --text-dim:#8b949e;
@@ -459,7 +451,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   --color-negative-bg:rgba(218,54,51,0.12);
   --color-action:#1f6feb;
   --font:'Inter',sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
   --card-background:#161b22;
   --card-border:#30363d;
   --card-accent:var(--color-action);
@@ -480,7 +471,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   --color-negative:#ff4444;
   --color-negative-bg:rgba(255,68,68,0.08);
   --color-neutral:#666666;
-  --font-mono:'IBM Plex Mono',monospace;
   --card-background:#111111;
   --card-border:#1a1a1a;
   --card-accent:#ff4444;
@@ -1335,3 +1325,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .bot-page .site-tagline { font-family: 'IBM Plex Mono', monospace; color: #666666; font-style: normal; letter-spacing: 0.1em; }
 .bot-page .footer-link { font-family: 'IBM Plex Mono', monospace; color: #666666; letter-spacing: 0.1em; border-color: transparent; }
 .bot-page .footer-link:hover { color: #ffffff; background: #111111; border-color: #1a1a1a; }
+
+/* === Aenvar Page — header/footer overrides ================================ */
+.aenvar-page .site-header { background: rgba(15,13,9,0.95); border-bottom-color: rgba(201,168,76,0.15); }
+.aenvar-page .site-footer { background: rgba(15,13,9,0.95); border-top-color: rgba(201,168,76,0.12); }
