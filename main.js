@@ -160,10 +160,16 @@ function debounce(func, wait) {
   };
 }
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize on DOM ready and after partials are injected
+let navOverflowInitialized = false;
+
+function initNavOverflow() {
   checkNavOverflow();
-  
-  // Check on window resize (debounced)
-  window.addEventListener('resize', debounce(checkNavOverflow, 150));
-});
+  if (!navOverflowInitialized) {
+    navOverflowInitialized = true;
+    window.addEventListener('resize', debounce(checkNavOverflow, 150));
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initNavOverflow);
+document.addEventListener('partials:ready', initNavOverflow);
