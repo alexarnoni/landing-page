@@ -1040,10 +1040,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 }
 .hub-page .hero-desc {
   font-size: 18px;
-  font-weight: 300;
-  color: var(--text-dim);
+  font-weight: 400;
+  color: #c8dde8;
   max-width: 520px;
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 48px;
   opacity: 0;
   animation: hub-fadeup 0.8s 0.6s both;
@@ -1097,7 +1097,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 }
 .hub-page .stat { text-align: right; border-right: 2px solid var(--cyan-dim); padding-right: 16px; }
 .hub-page .stat-num { font-family: 'Share Tech Mono', monospace; font-size: 28px; color: var(--cyan); display: block; }
-.hub-page .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+.hub-page .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #8ab0c0; letter-spacing: 2px; text-transform: uppercase; }
 
 @keyframes hub-fadeup {
   from { opacity: 0; transform: translateY(24px); }
@@ -1114,7 +1114,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* About */
 .hub-page #about { background: var(--bg2); }
 .hub-page .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.hub-page .about-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; font-size: 17px; }
+.hub-page .about-text p { color: #b8cfd8; line-height: 1.85; margin-bottom: 20px; font-size: 17px; }
 .hub-page .about-text p strong { color: var(--cyan); font-weight: 600; }
 .hub-page .about-stack h3 { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
 .hub-page .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -1155,7 +1155,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 }
 .hub-page .project-tag { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
 .hub-page .project-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
-.hub-page .project-card p { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin-bottom: 24px; }
+.hub-page .project-card p { font-size: 16px; color: #b8ccd8; line-height: 1.75; margin-bottom: 24px; }
 .hub-page .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .hub-page .tech-badge { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); background: var(--cyan-ghost); border: 1px solid var(--cyan-dim); padding: 4px 10px; letter-spacing: 1px; }
 .hub-page .project-link { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: gap 0.2s; }
@@ -1174,12 +1174,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .hub-page .timeline-date { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
 .hub-page .timeline-role { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .hub-page .timeline-company { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--cyan); margin-bottom: 16px; }
-.hub-page .timeline-desc { font-size: 17px; color: var(--text-dim); line-height: 1.7; max-width: 600px; }
+.hub-page .timeline-desc { font-size: 17px; color: #b8ccd8; line-height: 1.75; max-width: 600px; }
 
 /* Contact */
 .hub-page #contact { text-align: center; }
 .hub-page .contact-inner { max-width: 600px; margin: 0 auto; }
-.hub-page .contact-inner p { font-size: clamp(16px, 2.5vw, 19px); color: var(--text-dim); line-height: 1.7; margin-bottom: 48px; }
+.hub-page .contact-inner p { font-size: clamp(16px, 2.5vw, 19px); color: #b8ccd8; line-height: 1.75; margin-bottom: 48px; }
 .hub-page .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
 .hub-page .contact-link {
   font-family: 'Share Tech Mono', monospace;
