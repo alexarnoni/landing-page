@@ -113,8 +113,6 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
   }
 
   document.addEventListener('partials:ready', init);

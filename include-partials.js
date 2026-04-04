@@ -3,7 +3,7 @@
     const host = document.querySelector(`[data-include="${id}"]`);
     if (!host) return;
     try {
-      const res = await fetch(url, { cache: 'no-cache' });
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
       host.outerHTML = await res.text();
     } catch (e) {

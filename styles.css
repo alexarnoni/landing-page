@@ -164,8 +164,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   left:0;
   right:0;
   padding:1.25rem 1.5rem 1.5rem;
-  background:rgba(15,13,9,0.97);
-  border:1px solid rgba(201,168,76,0.2);
+  background:rgba(10,10,10,0.97);
+  border:1px solid rgba(255,255,255,0.1);
   border-radius:3px;
   box-shadow:0 18px 26px rgba(0,0,0,0.5);
   flex-direction:column;
@@ -955,7 +955,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   font-family: 'Share Tech Mono', monospace;
   font-size: 13px !important;
   color: #7a9fb0 !important;
-  letter-spacing: 2.5px !important;
+  letter-spacing: 1px !important;
   text-transform: uppercase;
   opacity: 1;
   min-height: unset;
@@ -1359,7 +1359,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   font-family: 'Share Tech Mono', monospace;
   font-size: 13px;
   color: #7a9fb0;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 1;
   min-height: unset;
@@ -1391,7 +1391,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* === Bot Page — header/footer overrides ================================= */
 .bot-page .site-header { background: rgba(10,10,10,0.95); border-bottom-color: rgba(255,68,68,0.15); }
 .bot-page .brand { font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: #ff4444; letter-spacing: 0.1em; }
-.bot-page .nav-list a { font-family: 'IBM Plex Mono', monospace; color: #666666; font-size: 0.75rem; letter-spacing: 0.1em; }
+.bot-page .nav-list a { font-family: 'IBM Plex Mono', monospace; color: #666666; font-size: 0.75rem; letter-spacing: 0.04em; }
 .bot-page .nav-list a:hover,
 .bot-page .nav-list a[aria-current="page"] { color: #ffffff; border-bottom: none; }
 .bot-page .nav-overflow .site-nav { background: rgba(10,10,10,0.97); border-color: #1a1a1a; box-shadow: 0 18px 26px rgba(0,0,0,0.8); }
@@ -1404,6 +1404,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* === Aenvar Page — header/footer overrides ================================ */
 .aenvar-page .site-header { background: rgba(15,13,9,0.95); border-bottom-color: rgba(201,168,76,0.15); }
 .aenvar-page .site-footer { background: rgba(15,13,9,0.95); border-top-color: rgba(201,168,76,0.12); }
+.aenvar-page .nav-overflow .site-nav { background: rgba(15,13,9,0.97); border-color: rgba(201,168,76,0.2); }
 .aenvar-page .nav-list a { font-family: var(--font); font-size: 0.85rem; letter-spacing: 0.06em; }
 .aenvar-page .nav-list a:hover,
 .aenvar-page .nav-list a[aria-current="page"] { color: var(--accent); border-bottom: none; }
@@ -1425,7 +1426,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   font-size: 0.8rem;
   font-weight: 600;
   color: #8a9aaa;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 1;
   min-height: unset;
@@ -1477,7 +1478,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   color: #9aaabb;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 1;
   min-height: unset;
