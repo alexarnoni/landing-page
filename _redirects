@@ -1,2 +1,8 @@
-# Quando o subdomínio estiver ativo, descomente:
-# /finance/*  https://finance.alexarnoni.com/:splat  301
+# Atalhos de redes sociais
+/github     https://github.com/alexarnoni          301
+/linkedin   https://www.linkedin.com/in/alexandrearnoni/  301
+/medium     https://medium.com/@alexarnoni         301
+
+# Aliases de projetos
+/luro       /finance/    301
+/scout      /olheiro/    301

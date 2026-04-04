@@ -11,6 +11,9 @@
 <meta property="og:url" content="https://alexarnoni.com/">
 <meta property="og:image" content="https://alexarnoni.com/assets/og-home.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap">
 <link rel="preload" href="/styles.css" as="style">
 <link rel="stylesheet" href="/styles.css">
 <style>
@@ -128,7 +131,7 @@
 ASTEROID   (2023 DZ2)    2.63 LD   BAIXO
 ASTEROID   (2026 FM6)   66.08 LD   BAIXO
 CME        DONKI        462 km/s   ATIVO
-GST        Kp: 6.67     03/04      ATIVO</div>
+GST        Kp: 6.67     <span id="hero-date"></span>      ATIVO</div>
       </div>
     </a>
 
@@ -248,6 +251,13 @@ GST        Kp: 6.67     03/04      ATIVO</div>
 <script src="/include-partials.js"></script>
 <script src="/main.js"></script>
 <script>
+  // ── DATE ──
+  const heroDate = document.getElementById('hero-date');
+  if (heroDate) {
+    const now = new Date();
+    heroDate.textContent = String(now.getDate()).padStart(2,'0') + '/' + String(now.getMonth()+1).padStart(2,'0');
+  }
+
   // ── CURSOR ──
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursorRing');

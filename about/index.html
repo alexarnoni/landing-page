@@ -11,7 +11,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexarnoni.com/about/">
   <meta property="og:image" content="https://alexarnoni.com/assets/og-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap">
   <link rel="preload" href="/styles.css" as="style">
+  <link rel="stylesheet" href="/styles.css">
   <style>
     .sr-skip{position:absolute;left:-9999px;top:auto}
     .sr-skip:focus{left:1rem;top:1rem}
@@ -132,6 +136,24 @@
       background: linear-gradient(to right, rgba(0,255,229,0.3), transparent);
     }
 
+    /* Section title reutilizável */
+    .about-section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 700;
+      color: #c8dde8;
+      margin: 0 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(0,255,229,0.3), transparent);
+      display: block;
+    }
     .about-timeline {
       position: relative;
       padding-left: 2rem;
@@ -325,9 +347,9 @@
 
     <!-- Formação -->
     <section aria-labelledby="about-edu-title">
-      <h2 class="about-timeline-section" id="about-edu-title" style="font-family:'Rajdhani',sans-serif;font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:#c8dde8;margin:0 0 1.5rem;display:flex;align-items:center;gap:1rem;">
+      <h2 class="about-section-title" id="about-edu-title">
         Formação
-        <span style="flex:1;height:1px;background:linear-gradient(to right,rgba(0,255,229,0.3),transparent);display:block;"></span>
+        <span class="about-section-line"></span>
       </h2>
       <div class="about-edu-grid">
         <div class="about-edu-card">
