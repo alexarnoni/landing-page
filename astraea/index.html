@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astraea — Monitoramento de Objetos Próximos à Terra</title>
+  <meta name="description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
+  <meta property="og:title" content="Astraea — Monitoramento de Objetos Próximos à Terra">
+  <meta property="og:description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alexarnoni.com/astraea/">
+  <meta property="og:image" content="https://alexarnoni.com/assets/og-astraea.png">
+  <link rel="preload" href="/styles.css" as="style">
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    .sr-skip{position:absolute;left:-9999px;top:auto}
+    .sr-skip:focus{left:1rem;top:1rem}
+
+    /* ── Astraea page tokens ── */
+    .astraea-page {
+      background: #0a0f1a;
+      color: #e8f0fe;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── Hero ── */
+    .astraea-hero {
+      padding: 5rem 1.5rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .astraea-hero { grid-template-columns: 1fr; }
+      .astraea-hero-visual { display: none; }
+    }
+
+    .astraea-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .75rem;
+      color: #4a9eff;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin: 0 0 .75rem;
+    }
+
+    .astraea-hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #e8f0fe;
+      margin: 0 0 1rem;
+      line-height: 1.1;
+    }
+
+    .astraea-subtitle {
+      color: #8899aa;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0 0 2rem;
+      max-width: 520px;
+    }
+
+    .astraea-ctas {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .astraea-cta-primary,
+    .astraea-cta-secondary {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .8rem;
+      padding: .65rem 1.4rem;
+      border-radius: .4rem;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: .04em;
+      transition: opacity .2s;
+    }
+    .astraea-cta-primary {
+      background: #4a9eff;
+      color: #0a0f1a;
+    }
+    .astraea-cta-secondary {
+      background: transparent;
+      color: #4a9eff;
+      border: 1px solid #4a9eff;
+    }
+    .astraea-cta-primary:hover,
+    .astraea-cta-secondary:hover { opacity: .8; }
+
+    /* ── Hero visual: asteroid data grid ── */
+    .astraea-hero-visual {
+      background: #0d1520;
+      border: 1px solid #1a2535;
+      border-radius: .75rem;
+      padding: 1rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      overflow: hidden;
+    }
+
+    .astraea-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #4a9eff;
+      border-bottom: 1px solid #1a2535;
+      padding-bottom: .6rem;
+      margin-bottom: .75rem;
+      font-size: .68rem;
+      letter-spacing: .08em;
+    }
+
+    .astraea-visual-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00ff88;
+      display: inline-block;
+      margin-right: .4rem;
+      animation: astraea-pulse 2s infinite;
+    }
+
+    @keyframes astraea-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    .astraea-data-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: .5rem;
+      align-items: center;
+      padding: .4rem 0;
+      border-bottom: 1px solid #1a2535;
+      color: #8899aa;
+    }
+    .astraea-data-row:last-child { border-bottom: none; }
+
+    .astraea-data-name { color: #e8f0fe; }
+
+    .astraea-data-dist,
+    .astraea-data-vel { color: #8899aa; font-size: .65rem; }
+
+    .astraea-badge {
+      font-size: .6rem;
+      padding: .15rem .45rem;
+      border-radius: .25rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    .astraea-badge-low  { background: rgba(0,255,136,.15); color: #00ff88; }
+    .astraea-badge-mid  { background: rgba(245,158,11,.15); color: #f59e0b; }
+    .astraea-badge-high { background: rgba(255,68,68,.15);  color: #ff4444; }
+
+    /* ── Stats bar ── */
+    .astraea-stats {
+      background: #0d1520;
+      border-top: 1px solid #1a2535;
+      border-bottom: 1px solid #1a2535;
+    }
+    .astraea-stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .astraea-stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .astraea-stat {
+      text-align: center;
+      padding: .75rem;
+    }
+    .astraea-stat-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #4a9eff;
+      display: block;
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+    .astraea-stat-label {
+      font-size: .75rem;
+      color: #8899aa;
+      letter-spacing: .04em;
+    }
+
+    /* ── Features ── */
+    .astraea-features {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .astraea-section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .astraea-section-header h2 {
+      font-size: 1.6rem;
+      color: #e8f0fe;
+      margin: 0 0 .5rem;
+    }
+    .astraea-section-header p {
+      color: #8899aa;
+      font-size: .95rem;
+    }
+
+    .astraea-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .astraea-feature-grid { grid-template-columns: 1fr; }
+    }
+
+    .astraea-feature-card {
+      background: #0d1520;
+      border: 1px solid #1a2535;
+      border-radius: .75rem;
+      padding: 1.5rem;
+      transition: border-color .2s;
+    }
+    .astraea-feature-card:hover { border-color: #4a9eff; }
+
+    .astraea-feature-icon {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      color: #4a9eff;
+      letter-spacing: .1em;
+      margin-bottom: .75rem;
+      display: block;
+    }
+
+    .astraea-feature-card h3 {
+      font-size: 1rem;
+      color: #e8f0fe;
+      margin: 0 0 .6rem;
+    }
+
+    .astraea-feature-card p {
+      font-size: .875rem;
+      color: #8899aa;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Tech stack ── */
+    .astraea-stack {
+      border-top: 1px solid #1a2535;
+      padding: 2.5rem 1.5rem;
+    }
+    .astraea-stack-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .astraea-stack-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      color: #8899aa;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .astraea-stack-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+    }
+    .astraea-stack-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .75rem;
+      background: #0d1520;
+      border: 1px solid #1a2535;
+      color: #8899aa;
+      padding: .35rem .8rem;
+      border-radius: .3rem;
+      letter-spacing: .04em;
+    }
+  </style>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="astraea-page">
+  <a href="#main" class="sr-skip">Pular para o conteúdo</a>
+  <div data-include="header"></div>
+
+  <noscript>
+    <p style="padding:1rem;border:1px solid #444;border-radius:.5rem;margin:1rem">
+      Ative JavaScript para ver o menu e o rodapé.
+    </p>
+  </noscript>
+
+  <main id="main" class="astraea-main page-main">
+
+    <!-- Hero -->
+    <section class="astraea-hero">
+      <div class="astraea-hero-content">
+        <p class="astraea-tag">// monitoramento em tempo real</p>
+        <h1>Astraea</h1>
+        <p class="astraea-subtitle">Pipeline end-to-end de monitoramento de objetos próximos à Terra e eventos solares — ingestão via NASA APIs, transformação com dbt Core, classificação de risco com Random Forest e API pública REST.</p>
+        <div class="astraea-ctas">
+          <a class="astraea-cta-primary" href="https://astraea.alexarnoni.com" target="_blank" rel="noopener">Acessar Dashboard</a>
+          <a class="astraea-cta-secondary" href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener">Ver API</a>
+        </div>
+      </div>
+
+      <div class="astraea-hero-visual" aria-hidden="true">
+        <div class="astraea-visual-header">
+          <span><span class="astraea-visual-dot"></span>LIVE · NEO FEED</span>
+          <span>2025-04-04 UTC</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2024 YR4</span>
+          <span class="astraea-data-dist">0.0031 AU</span>
+          <span class="astraea-data-vel">18.4 km/s</span>
+          <span class="astraea-badge astraea-badge-high">ALTO</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2023 BU</span>
+          <span class="astraea-data-dist">0.0142 AU</span>
+          <span class="astraea-data-vel">9.1 km/s</span>
+          <span class="astraea-badge astraea-badge-mid">MÉDIO</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2021 QM1</span>
+          <span class="astraea-data-dist">0.0287 AU</span>
+          <span class="astraea-data-vel">6.7 km/s</span>
+          <span class="astraea-badge astraea-badge-low">BAIXO</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2020 NK1</span>
+          <span class="astraea-data-dist">0.0094 AU</span>
+          <span class="astraea-data-vel">22.3 km/s</span>
+          <span class="astraea-badge astraea-badge-high">ALTO</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2019 AQ3</span>
+          <span class="astraea-data-dist">0.0451 AU</span>
+          <span class="astraea-data-vel">4.2 km/s</span>
+          <span class="astraea-badge astraea-badge-low">BAIXO</span>
+        </div>
+        <div class="astraea-data-row">
+          <span class="astraea-data-name">2018 VP1</span>
+          <span class="astraea-data-dist">0.0203 AU</span>
+          <span class="astraea-data-vel">13.8 km/s</span>
+          <span class="astraea-badge astraea-badge-mid">MÉDIO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats bar -->
+    <div class="astraea-stats" role="region" aria-label="Estatísticas do sistema">
+      <div class="astraea-stats-inner">
+        <div class="astraea-stat">
+          <span class="astraea-stat-value">1.420+</span>
+          <span class="astraea-stat-label">Asteroides catalogados</span>
+        </div>
+        <div class="astraea-stat">
+          <span class="astraea-stat-value">312</span>
+          <span class="astraea-stat-label">Potencialmente perigosos</span>
+        </div>
+        <div class="astraea-stat">
+          <span class="astraea-stat-value">87</span>
+          <span class="astraea-stat-label">Alto risco (ML)</span>
+        </div>
+        <div class="astraea-stat">
+          <span class="astraea-stat-value">203</span>
+          <span class="astraea-stat-label">Eventos solares</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="astraea-features" aria-labelledby="astraea-features-title">
+      <div class="astraea-section-header">
+        <h2 id="astraea-features-title">Do dado bruto ao risco classificado</h2>
+        <p>Cada camada do pipeline foi projetada para precisão e rastreabilidade.</p>
+      </div>
+      <div class="astraea-feature-grid">
+        <article class="astraea-feature-card">
+          <span class="astraea-feature-icon">// 01 · PIPELINE</span>
+          <h3>Pipeline de Dados</h3>
+          <p>Ingestão diária via NASA NeoWs + DONKI APIs, transformação em camadas staging/mart com dbt Core, PostgreSQL como storage central.</p>
+        </article>
+        <article class="astraea-feature-card">
+          <span class="astraea-feature-icon">// 02 · ML</span>
+          <h3>ML Risk Scoring</h3>
+          <p>Random Forest treinado em dados históricos de aproximação. Classifica cada asteroide em baixo/médio/alto risco usando 7 features orbitais.</p>
+        </article>
+        <article class="astraea-feature-card">
+          <span class="astraea-feature-icon">// 03 · API</span>
+          <h3>API Pública REST</h3>
+          <p>8 endpoints documentados, rate limiting de 60 req/min por IP, dados em tempo real de 1.400+ objetos. Acesse via <a href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener" style="color:#4a9eff">astraea-api.alexarnoni.com/docs</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <div class="astraea-stack" role="region" aria-label="Tecnologias utilizadas">
+      <div class="astraea-stack-inner">
+        <p class="astraea-stack-label">stack</p>
+        <div class="astraea-stack-badges">
+          <span class="astraea-stack-badge">Python</span>
+          <span class="astraea-stack-badge">FastAPI</span>
+          <span class="astraea-stack-badge">dbt Core</span>
+          <span class="astraea-stack-badge">scikit-learn</span>
+          <span class="astraea-stack-badge">PostgreSQL</span>
+          <span class="astraea-stack-badge">Docker</span>
+          <span class="astraea-stack-badge">Nginx</span>
+          <span class="astraea-stack-badge">Oracle VM</span>
+          <span class="astraea-stack-badge">NASA APIs</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script src="/include-partials.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
