@@ -1229,26 +1229,57 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 .hub-page .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .hub-page .reveal.visible { opacity: 1; transform: none; }
 
+/* Desktop large (>1400px) — conteúdo do hero alinhado ao nav-container */
+@media (min-width: 1400px) {
+  .hub-page #hero { padding-left: calc((100vw - 1400px) / 2 + 48px); padding-right: calc((100vw - 1400px) / 2 + 48px); }
+  .hub-page section { padding-left: calc((100vw - 1400px) / 2 + 48px); padding-right: calc((100vw - 1400px) / 2 + 48px); }
+}
+
+/* Tablet (768–1024px) — botões hero em coluna, featured card em 1 coluna */
+@media (max-width: 1024px) {
+  .hub-page .project-card.featured { grid-template-columns: 1fr; }
+  .hub-page .project-visual { display: none; }
+}
+
+@media (max-width: 900px) {
+  .hub-page .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hub-page .btn-primary,
+  .hub-page .btn-secondary { width: 100%; max-width: 320px; text-align: center; justify-content: center; }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
-  .hub-page #hero { padding: 100px 20px 60px; }
-  .hub-page section { padding: 60px 20px; }
+  .hub-page #hero { padding: 100px 24px 60px; }
+  .hub-page section { padding: 60px 24px; }
   .hub-page .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .hub-page .projects-grid { grid-template-columns: 1fr; }
   .hub-page .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
-  .hub-page .project-visual { display: none; }
   .hub-page .hero-stats { display: none; }
   .hub-page .cursor,
   .hub-page .cursor-ring { display: none; }
+  /* Timeline dot — evita overflow em telas estreitas */
+  .hub-page .timeline { padding-left: 28px; }
+  .hub-page .timeline-dot { left: -38px; }
+  /* Nav container — garante espaço mínimo */
+  .hub-page .nav-container { width: calc(100% - 2rem); }
+  /* Contact links — wrap melhor em mobile */
+  .hub-page .contact-links { gap: 12px; }
 }
 
 @media (max-width: 480px) {
-  .hub-page #hero { padding: 90px 16px 48px; }
+  .hub-page #hero { padding: 88px 16px 48px; }
   .hub-page section { padding: 48px 16px; }
-  .hub-page .hero-ctas { flex-direction: column; }
+  .hub-page .hero-ctas { flex-direction: column; align-items: stretch; }
   .hub-page .btn-primary,
-  .hub-page .btn-secondary { text-align: center; }
-  .hub-page .contact-links { flex-direction: column; align-items: center; }
+  .hub-page .btn-secondary { text-align: center; justify-content: center; max-width: 100%; }
+  .hub-page .contact-links { flex-direction: column; align-items: stretch; }
+  .hub-page .contact-link { justify-content: center; }
+  /* Stack grid — 1 coluna em telas muito pequenas */
+  .hub-page .stack-grid { grid-template-columns: 1fr; }
+  /* Timeline — mais compacto */
+  .hub-page .timeline { padding-left: 20px; }
+  .hub-page .timeline-dot { left: -30px; width: 10px; height: 10px; }
+  .hub-page .timeline-item { margin-bottom: 40px; padding-bottom: 40px; }
 }
 
 /* === About Page — identidade do hub (mesma marca pessoal) =============== */
@@ -1317,9 +1348,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 /* Header — tema cyan */
 .about-page .site-header {
-  background: linear-gradient(to bottom, #040810 0%, transparent 100%);
-  border-bottom-color: rgba(0,255,229,0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(4, 8, 16, 0.96);
+  border-bottom: 1px solid rgba(0, 255, 229, 0.12);
+  backdrop-filter: blur(16px);
 }
 .about-page .brand {
   font-family: 'Share Tech Mono', monospace;
