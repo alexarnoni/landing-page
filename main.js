@@ -126,24 +126,39 @@ function checkNavOverflow() {
   const siteNav = document.querySelector('.site-nav');
   const brand = document.querySelector('.brand');
   const navToggle = document.querySelector('.nav-toggle');
-  
+
   if (!navContainer || !siteNav || !brand || !navToggle) return;
-  
-  // Get available space (container width - brand width - toggle width - gaps)
+
+  // Temporarily remove overflow class to get accurate natural measurements
+  const hadOverflow = document.documentElement.classList.contains('nav-overflow');
+  document.documentElement.classList.remove('nav-overflow');
+
+  // Force reflow so measurements reflect the non-overflow state
+  void navContainer.offsetWidth;
+
   const containerWidth = navContainer.offsetWidth;
   const brandWidth = brand.offsetWidth;
-  const toggleWidth = 44; // nav-pill width
-  const gaps = 48; // gap spacing (var(--space-md) * 2)
-  const availableSpace = containerWidth - brandWidth - toggleWidth - gaps;
-  
-  // Get total width of navigation items
+  const gaps = 48; // gap spacing
+  const availableSpace = containerWidth - brandWidth - gaps;
+
+  // Measure nav items at their natural width (no toggle taking space)
   const navWidth = siteNav.scrollWidth;
-  
-  // Add/remove overflow class
+
   if (navWidth > availableSpace) {
     document.documentElement.classList.add('nav-overflow');
   } else {
-    document.documentElement.classList.remove('nav-overflow');
+    // Keep removed (already done above)
+    if (hadOverflow) {
+      // was overflow before, now it's not — menu should close
+      const toggle = navToggle;
+      if (toggle.getAttribute('aria-expanded') === 'true') {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menu');
+        siteNav.classList.remove('is-open');
+        siteNav.setAttribute('aria-hidden', 'true');
+        siteNav.toggleAttribute('data-menu-hidden', true);
+      }
+    }
   }
 }
 

@@ -1404,6 +1404,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* === Aenvar Page — header/footer overrides ================================ */
 .aenvar-page .site-header { background: rgba(15,13,9,0.95); border-bottom-color: rgba(201,168,76,0.15); }
 .aenvar-page .site-footer { background: rgba(15,13,9,0.95); border-top-color: rgba(201,168,76,0.12); }
+.aenvar-page .nav-list a { font-family: var(--font); font-size: 0.85rem; letter-spacing: 0.06em; }
+.aenvar-page .nav-list a:hover,
+.aenvar-page .nav-list a[aria-current="page"] { color: var(--accent); border-bottom: none; }
 
 /* === Olheiro Page — header/footer overrides ================================ */
 .olheiro-page .site-header {
