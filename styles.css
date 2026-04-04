@@ -1262,9 +1262,49 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   --text-dim:   #9ab8c8;
   --red:        #ff3c6e;
   background: var(--bg);
-  color: var(--text);
+  color: #dde8f0;
   font-family: 'Rajdhani', sans-serif;
   padding-top: var(--header-height);
+}
+
+.about-page .card {
+  background: rgba(7, 13, 24, 0.8);
+  border-color: rgba(0, 255, 229, 0.08);
+}
+.about-page .card h3 {
+  color: #00ffe5;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.about-page .card p,
+.about-page .card a {
+  color: #c8d8e8;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 1;
+}
+.about-page .card a {
+  color: #00ffe5;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 255, 229, 0.3);
+  text-underline-offset: 3px;
+}
+.about-page .card a:hover {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+.about-page h1 {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+.about-page .section-header p {
+  color: #a8c0d0;
+  font-size: 1.1rem;
+  line-height: 1.75;
 }
 
 .about-page h1,
@@ -1335,3 +1375,110 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* === Aenvar Page — header/footer overrides ================================ */
 .aenvar-page .site-header { background: rgba(15,13,9,0.95); border-bottom-color: rgba(201,168,76,0.15); }
 .aenvar-page .site-footer { background: rgba(15,13,9,0.95); border-top-color: rgba(201,168,76,0.12); }
+
+/* === Olheiro Page — header/footer overrides ================================ */
+.olheiro-page .site-header {
+  background: rgba(8, 11, 16, 0.97);
+  border-bottom-color: rgba(234, 88, 12, 0.15);
+}
+.olheiro-page .brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  color: #ea580c;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.olheiro-page .nav-list a {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7585;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 1;
+  min-height: unset;
+}
+.olheiro-page .nav-list a:hover,
+.olheiro-page .nav-list a[aria-current="page"] {
+  color: #ea580c;
+  border-bottom: none;
+}
+.olheiro-page .nav-overflow .site-nav {
+  background: rgba(8, 11, 16, 0.97);
+  border-color: rgba(234, 88, 12, 0.2);
+  box-shadow: 0 18px 26px rgba(0, 0, 0, 0.8);
+}
+.olheiro-page .site-footer {
+  background: rgba(8, 11, 16, 0.97);
+  border-top-color: rgba(234, 88, 12, 0.1);
+}
+.olheiro-page .footer-copy,
+.olheiro-page .site-tagline {
+  font-family: 'Barlow', sans-serif;
+  color: #6b7585;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+.olheiro-page .footer-link {
+  font-family: 'Barlow', sans-serif;
+  color: #6b7585;
+  letter-spacing: 0.04em;
+  border-color: transparent;
+}
+.olheiro-page .footer-link:hover {
+  color: #f5f0ea;
+  background: rgba(234, 88, 12, 0.08);
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+/* === Astraea Page — header/footer overrides ================================ */
+.astraea-page .site-header {
+  background: rgba(10, 15, 26, 0.97);
+  border-bottom-color: rgba(74, 158, 255, 0.15);
+}
+.astraea-page .brand {
+  font-family: 'Share Tech Mono', monospace;
+  color: #4a9eff;
+  letter-spacing: 3px;
+}
+.astraea-page .nav-list a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: #8899aa;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 1;
+  min-height: unset;
+}
+.astraea-page .nav-list a:hover,
+.astraea-page .nav-list a[aria-current="page"] {
+  color: #4a9eff;
+  border-bottom: none;
+}
+.astraea-page .nav-overflow .site-nav {
+  background: rgba(10, 15, 26, 0.97);
+  border-color: rgba(74, 158, 255, 0.15);
+}
+.astraea-page .site-footer {
+  background: rgba(10, 15, 26, 0.97);
+  border-top-color: rgba(74, 158, 255, 0.1);
+}
+.astraea-page .footer-copy,
+.astraea-page .site-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  color: #8899aa;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+.astraea-page .footer-link {
+  font-family: 'Share Tech Mono', monospace;
+  color: #8899aa;
+  letter-spacing: 2px;
+  border: none;
+  min-height: unset;
+}
+.astraea-page .footer-link:hover {
+  color: #4a9eff;
+  border-color: transparent;
+  background: transparent;
+}
