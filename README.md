@@ -1,4 +1,4 @@
-# alexarnoni.com — Landing Page
+# alexarnoni.com — Portfólio pessoal
 
 Site pessoal hospedado no Cloudflare Pages.
 
@@ -7,65 +7,52 @@ Site pessoal hospedado no Cloudflare Pages.
 ```
 index.html              — página principal (hub de projetos)
 styles.css              — estilos globais
-main.js                 — scripts globais (cursor, scroll reveal)
+main.js                 — scripts globais (cursor, scroll reveal, nav overflow)
 include-partials.js     — carrega header e footer via fetch
 404.html                — página de erro
 robots.txt
 sitemap.xml
 _headers                — headers HTTP (CSP, cache)
 _redirects              — redirecionamentos Cloudflare Pages
-
-partials/
-  header.html
-  footer.html
-
+partials/header.html
+        footer.html
 about/index.html        — página sobre
+astraea/index.html      — Astraea — pipeline NASA + ML
+olheiro/index.html      — Olheiro — scouting do Brasileirão
 finance/index.html      — Luro Finance
-bot/index.html          — EV+ Bot
+bot/index.html          — EV+ Sports Analyzer
 aenvar/                 — Crônicas de Aenvar
 ```
 
-## Projetos linkados
+## Projetos
 
-| Projeto | URL |
-|---|---|
-| Luro Finance | `/finance/` (interno) |
-| EV+ Analyzer | `/bot/` (interno) |
-| Olheiro | `https://scout.alexarnoni.com` (externo) |
-| Crônicas de Aenvar | `/aenvar/` (interno) |
-| Portfólio | `https://alexarnoni.github.io/` (externo) |
+| Projeto       | URL interna         | URL externa                        |
+|---------------|---------------------|-------------------------------------|
+| Astraea       | /astraea/           | https://astraea.alexarnoni.com     |
+| Olheiro       | /olheiro/           | https://scout.alexarnoni.com       |
+| Luro Finance  | /finance/           | —                                  |
+| EV+ Analyzer  | /bot/               | —                                  |
+| Crônicas      | /aenvar/            | https://medium.com/@alexarnoni     |
 
 ## Visualizar localmente
 
-```bash
+```
 python -m http.server 8000
 ```
 
-Acesse `http://localhost:8000`
+Acesse http://localhost:8000
 
-## Deploy no Cloudflare Pages
+## Deploy — Cloudflare Pages
 
-1. Conecte o repositório `landing-page` no Cloudflare Pages.
-2. Deixe o campo *Build command* em branco.
-3. Defina *Output directory* como `/`.
-4. Após o deploy, associe o domínio `alexarnoni.com`.
-
-## Rotas internas → Subdomínios
-
-Quando um subdomínio dedicado estiver pronto:
-
-1. Atualize o `href` correspondente no `partials/header.html` e nas páginas internas.
-2. Descomente (ou adicione) a regra de redirecionamento `301` no `_redirects`.
-3. Faça o deploy para publicar.
+1. Conecte o repositório no Cloudflare Pages
+2. Build command: em branco
+3. Output directory: /
+4. Associe o domínio alexarnoni.com
 
 ## Responsividade — checklist de QA
 
-- [ ] Testar em 360px, 390px, 414px, 768px, 1024px e 1280px
-- [ ] Navegação por teclado (Tab / Shift+Tab) com foco visível
-- [ ] Contraste AA no modo escuro/claro
+- [ ] 360px, 390px, 414px, 768px, 1024px, 1280px, 1440px
+- [ ] Nav hamburguer só aparece quando itens não cabem (checkNavOverflow)
+- [ ] Navegação por teclado com foco visível
+- [ ] Contraste AA em todas as páginas
 - [ ] Áreas de toque ≥ 44px
-- [ ] Cards e mídias com largura fluida sem layout shift
-
-### Lighthouse
-
-Rode via DevTools → aba Lighthouse. Metas mínimas: Performance, Accessibility, Best Practices e SEO ≥ 90.

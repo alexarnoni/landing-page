@@ -193,7 +193,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   gap:var(--space-md);
 }
 
-.nav-list{display:flex;align-items:center;gap:var(--space-md);list-style:none;}
+.nav-list{display:flex;align-items:center;gap:var(--space-sm);list-style:none;}
 
 .nav-list a{
   display:inline-flex;
