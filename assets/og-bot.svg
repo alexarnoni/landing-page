@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Grid -->
+  <g stroke="#1a1a1a" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Glow -->
+  <ellipse cx="600" cy="315" rx="400" ry="200" fill="#ff4444" fill-opacity="0.04"/>
+
+  <!-- Accent -->
+  <rect x="80" y="80" width="60" height="3" fill="#ff4444"/>
+
+  <!-- Tag -->
+  <text x="80" y="140" font-family="monospace" font-size="16" fill="#ff4444" letter-spacing="4" opacity="0.9">// MONITORAMENTO CONTÍNUO · 200+ LIGAS</text>
+
+  <!-- Title -->
+  <text x="80" y="260" font-family="monospace" font-size="80" font-weight="700" fill="#ff4444">EV+</text>
+  <text x="80" y="360" font-family="monospace" font-size="48" font-weight="700" fill="#ffffff">Sports Analyzer</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="430" font-family="monospace" font-size="20" fill="#666666">Detecção de valor esperado positivo em tempo real</text>
+
+  <!-- Features -->
+  <text x="80" y="480" font-family="monospace" font-size="16" fill="#444444">Odds API  ·  Scheduler 2min  ·  Alertas Telegram</text>
+
+  <!-- Domain -->
+  <text x="80" y="540" font-family="monospace" font-size="16" fill="#ff4444" opacity="0.4" letter-spacing="2">alexarnoni.com/bot</text>
+</svg>
