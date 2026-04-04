@@ -13,8 +13,62 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/styles.css" as="style">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
     .sr-skip{position:absolute;left:-9999px;top:auto}
     .sr-skip:focus{left:1rem;top:1rem}
+
+    /* ── Orbitron headings ── */
+    .astraea-page h1 { font-family: 'Orbitron', sans-serif; }
+    .astraea-page h2 { font-family: 'Orbitron', sans-serif; }
+
+    /* ── Header / footer overrides (sobrescreve tema aenvar) ── */
+    .astraea-page .site-header {
+      background: rgba(10, 15, 26, 0.95) !important;
+      border-bottom-color: rgba(74, 158, 255, 0.15) !important;
+    }
+    .astraea-page .brand {
+      font-family: 'Share Tech Mono', monospace !important;
+      color: #4a9eff !important;
+      letter-spacing: 3px !important;
+    }
+    .astraea-page .nav-list a {
+      font-family: 'Share Tech Mono', monospace !important;
+      color: #8899aa !important;
+      font-size: 12px !important;
+      letter-spacing: 2px !important;
+      opacity: 1 !important;
+    }
+    .astraea-page .nav-list a:hover,
+    .astraea-page .nav-list a[aria-current="page"] {
+      color: #4a9eff !important;
+      border-bottom: none !important;
+    }
+    .astraea-page .nav-overflow .site-nav {
+      background: rgba(10, 15, 26, 0.97) !important;
+      border-color: rgba(74, 158, 255, 0.15) !important;
+    }
+    .astraea-page .site-footer {
+      background: rgba(10, 15, 26, 0.97) !important;
+      border-top-color: rgba(74, 158, 255, 0.1) !important;
+    }
+    .astraea-page .footer-copy,
+    .astraea-page .site-tagline {
+      font-family: 'Share Tech Mono', monospace !important;
+      color: #8899aa !important;
+      font-style: normal !important;
+      letter-spacing: 2px !important;
+    }
+    .astraea-page .footer-link {
+      font-family: 'Share Tech Mono', monospace !important;
+      color: #8899aa !important;
+      letter-spacing: 2px !important;
+      border: none !important;
+    }
+    .astraea-page .footer-link:hover {
+      color: #4a9eff !important;
+      border-color: transparent !important;
+      background: transparent !important;
+    }
 
     /* ── Astraea page tokens ── */
     .astraea-page {
