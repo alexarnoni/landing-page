@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luro — Seu Organizador Financeiro</title>
-  <meta name="description" content="Luro centraliza registros de gastos, metas mensais e gráficos claros para manter suas finanças alinhadas.">
-  <meta property="og:title" content="Luro — Seu Organizador Financeiro">
-  <meta property="og:description" content="Luro centraliza registros de gastos, metas mensais e gráficos claros para manter suas finanças alinhadas.">
+  <title>Luro — Projeto Arquitetural</title>
+  <meta name="description" content="Luro é um app de finanças pessoais construído do zero com foco em segurança e boas práticas de engenharia. Em produção, congelado intencionalmente.">
+  <meta property="og:title" content="Luro — Projeto Arquitetural">
+  <meta property="og:description" content="App de finanças pessoais com magic link, CSRF duplo, rate limiting persistente, importador CSV/OFX e categorização via LLM.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexarnoni.com/finance/">
   <meta property="og:image" content="https://alexarnoni.com/assets/og-finance.svg">
@@ -34,34 +34,63 @@
   <main id="main" class="finance-main page-main">
     <section class="finance-hero">
       <div class="finance-hero-content">
-        <p class="finance-tag">gestão inteligente</p>
-        <h1>Luro — Seu Organizador Financeiro</h1>
-        <p class="finance-subtitle">Um assistente financeiro pessoal que usa IA para transformar seus dados em insights práticos.</p>
-        <a class="finance-cta" href="#" aria-disabled="true">Em breve</a>
+        <p class="finance-tag">projeto arquitetural · em produção</p>
+        <h1>Luro</h1>
+        <p class="finance-subtitle">App de finanças pessoais construído do zero, com foco em segurança e boas práticas de engenharia. FastAPI, PostgreSQL, autenticação por magic link, importação de extratos e insights via LLM.</p>
+        <div class="finance-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+          <a class="finance-cta" href="https://luro.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar App</a>
+          <a class="finance-cta" href="https://github.com/alexarnoni/Luro" target="_blank" rel="noopener noreferrer" style="background:transparent;border:1px solid var(--accent,#58a6ff);color:var(--accent,#58a6ff);">Ver no GitHub</a>
+        </div>
       </div>
     </section>
 
     <section class="finance-features" aria-labelledby="finance-features-title">
       <div class="finance-section-header section-header">
-        <h2 id="finance-features-title">Tudo que você precisa para clarear as contas</h2>
-        <p>Planos de ação com foco no que importa: acompanhar gastos, cumprir metas e entender seus números.</p>
+        <h2 id="finance-features-title">O que foi construído</h2>
+        <p>Três pilares que guiaram as decisões de arquitetura.</p>
       </div>
       <div class="finance-feature-grid cards">
         <article class="finance-feature-card card">
-          <div class="finance-icon card-icon" aria-hidden="true">🧾</div>
-          <h3>Registro de Gastos</h3>
-          <p>Capture transações em segundos com categorias flexíveis e histórico pesquisável.</p>
+          <div class="finance-icon card-icon" aria-hidden="true">🔒</div>
+          <h3>Segurança</h3>
+          <p>Magic link sem senha, CSRF duplo (cookie + header), rate limiting por IP e email com persistência em banco, sessões revogáveis, audit log completo e CSP com nonce por requisição.</p>
         </article>
         <article class="finance-feature-card card">
-          <div class="finance-icon card-icon" aria-hidden="true">🎯</div>
-          <h3>Metas Mensais</h3>
-          <p>Defina objetivos e receba avisos quando estiver perto de estourar o orçamento.</p>
+          <div class="finance-icon card-icon" aria-hidden="true">📂</div>
+          <h3>Importação inteligente</h3>
+          <p>Importador de CSV e OFX com deduplicação por hash de transação. Categorização automática via LLM (Gemini, OpenAI ou Ollama) com sistema de regras configurável por usuário.</p>
         </article>
         <article class="finance-feature-card card">
-          <div class="finance-icon card-icon" aria-hidden="true">📈</div>
-          <h3>IA & Insights</h3>
-          <p>Descubra padrões, tendências e sugestões automáticas para decisões mais inteligentes.</p>
+          <div class="finance-icon card-icon" aria-hidden="true">📊</div>
+          <h3>Produto completo</h3>
+          <p>Dashboard, gestão de contas, cartão de crédito com parcelamento, metas financeiras e insights mensais gerados via LLM. Frontend em Jinja2 com JS vanilla.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="finance-features" aria-labelledby="finance-stack-title" style="margin-top:0;">
+      <div class="finance-section-header section-header">
+        <h2 id="finance-stack-title">Stack</h2>
+      </div>
+      <div class="finance-feature-grid cards" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;">
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">FastAPI</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">SQLAlchemy 2.0</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">PostgreSQL</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Alembic</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Docker</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Jinja2</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Resend</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Gemini / OpenAI</div>
+        <div class="finance-feature-card card" style="text-align:center;padding:.75rem 1rem;">Cloudflare</div>
+      </div>
+    </section>
+
+    <section class="finance-features" aria-labelledby="finance-status-title" style="margin-top:0;">
+      <div class="finance-section-header section-header">
+        <h2 id="finance-status-title">Status</h2>
+      </div>
+      <div class="finance-feature-card card" style="max-width:640px;">
+        <p>O Luro cumpriu o objetivo: aprender segurança e engenharia de software na prática, construindo algo real do zero. A maior lição foi que o desafio de um SaaS não é a engenharia, e sim a distribuição. O projeto está em produção e congelado intencionalmente.</p>
       </div>
     </section>
   </main>
