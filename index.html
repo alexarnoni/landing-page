@@ -68,7 +68,7 @@ html { scroll-behavior: smooth; }
 .hub-sec-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; color: var(--c-text); font-family: 'Inter', sans-serif; }
 
 /* Projetos */
-.hub-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--c-border); border-radius: 16px; overflow: hidden; }
+.hub-proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--c-border); border-radius: 16px; overflow: hidden; }
 .hub-proj-card { background: var(--c-bg-card); padding: 1.75rem; cursor: pointer; transition: background 0.15s; display: flex; flex-direction: column; text-decoration: none; color: inherit; min-width: 0; }
 .hub-proj-card:hover { background: var(--c-hover); }
 .hub-proj-card:hover .hub-proj-link { opacity: 1; }
@@ -205,7 +205,7 @@ html { scroll-behavior: smooth; }
       <span class="hub-sec-title">Projetos</span>
     </div>
     <div class="hub-proj-grid reveal">
-      <a href="/astraea/" class="hub-proj-card hub-proj-main">
+      <div class="hub-proj-card hub-proj-main">
         <div class="hub-proj-tag hub-proj-tag-main">⬡ Projeto principal</div>
         <div class="hub-proj-name hub-proj-name-main">Astraea</div>
         <div class="hub-proj-desc hub-proj-desc-main">Pipeline end-to-end de monitoramento de asteroides. NASA APIs, dbt Core, Random Forest, API pública REST com 1.400+ objetos catalogados.</div>
@@ -217,8 +217,8 @@ html { scroll-behavior: smooth; }
           </div>
           <a href="https://astraea.alexarnoni.com" class="hub-proj-link hub-proj-link-main" target="_blank" rel="noopener noreferrer">astraea.alexarnoni.com →</a>
         </div>
-      </a>
-      <a href="/olheiro/" class="hub-proj-card">
+      </div>
+      <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Projeto ativo</div>
         <div class="hub-proj-name">Olheiro</div>
         <div class="hub-proj-desc">Scouting e análise do Brasileirão. Rankings por posição, radar charts e modelo Garimpo para talentos subvalorizados.</div>
@@ -230,8 +230,8 @@ html { scroll-behavior: smooth; }
           </div>
           <a href="https://scout.alexarnoni.com" class="hub-proj-link" target="_blank" rel="noopener noreferrer">scout.alexarnoni.com →</a>
         </div>
-      </a>
-      <a href="/bot/" class="hub-proj-card">
+      </div>
+      <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Em desenvolvimento</div>
         <div class="hub-proj-name">EV+ Sports Analyzer</div>
         <div class="hub-proj-desc">Análise de valor esperado em 200+ ligas esportivas. Alertas automáticos via Telegram, scheduler a cada 2 minutos.</div>
@@ -243,8 +243,8 @@ html { scroll-behavior: smooth; }
           </div>
           <a href="/bot/" class="hub-proj-link">alexarnoni.com/bot →</a>
         </div>
-      </a>
-      <a href="/finance/" class="hub-proj-card">
+      </div>
+      <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Arquitetural</div>
         <div class="hub-proj-name">Luro Finance</div>
         <div class="hub-proj-desc">App financeiro completo. Magic link, CSRF duplo, rate limiting persistente, importador CSV/OFX e categorização via LLM.</div>
@@ -256,7 +256,7 @@ html { scroll-behavior: smooth; }
           </div>
           <a href="/finance/" class="hub-proj-link">alexarnoni.com/finance →</a>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
