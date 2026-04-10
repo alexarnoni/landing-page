@@ -1284,14 +1284,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 /* === About Page — identidade do hub (mesma marca pessoal) =============== */
 .about-page {
-  --cyan:       #00ffe5;
-  --cyan-dim:   #00ffe540;
-  --cyan-ghost: #00ffe510;
-  --bg:         #040810;
-  --bg2:        #070d18;
+  --cyan:       #00C8FF;
+  --cyan-dim:   #00C8FF40;
+  --cyan-ghost: #00C8FF10;
+  --bg:         #050c12;
+  --bg2:        #07101a;
   --text:       #c8dde8;
-  --text-dim:   #9ab8c8;
-  --red:        #ff3c6e;
+  --text-dim:   #8ab4c8;
+  --red:        #E64800;
   background: var(--bg);
   color: #dde8f0;
   font-family: 'Rajdhani', sans-serif;
@@ -1300,10 +1300,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 .about-page .card {
   background: rgba(7, 13, 24, 0.8);
-  border-color: rgba(0, 255, 229, 0.08);
+  border-color: rgba(0, 200, 255, 0.08);
 }
 .about-page .card h3 {
-  color: #00ffe5;
+  color: #00C8FF;
   font-family: 'Share Tech Mono', monospace;
   font-size: 1rem;
   letter-spacing: 2px;
@@ -1318,9 +1318,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   opacity: 1;
 }
 .about-page .card a {
-  color: #00ffe5;
+  color: #00C8FF;
   text-decoration: underline;
-  text-decoration-color: rgba(0, 255, 229, 0.3);
+  text-decoration-color: rgba(0, 200, 255, 0.3);
   text-underline-offset: 3px;
 }
 .about-page .card a:hover {
@@ -1349,12 +1349,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 /* Header — tema cyan */
 .about-page .site-header {
   background: rgba(4, 8, 16, 0.96);
-  border-bottom: 1px solid rgba(0, 255, 229, 0.12);
+  border-bottom: 1px solid rgba(0, 200, 255, 0.12);
   backdrop-filter: blur(16px);
 }
 .about-page .brand {
   font-family: 'Share Tech Mono', monospace;
-  color: #00ffe5;
+  color: #00C8FF;
   letter-spacing: 3px;
 }
 .about-page .nav-list a {
@@ -1367,15 +1367,15 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   min-height: unset;
 }
 .about-page .nav-list a:hover,
-.about-page .nav-list a[aria-current="page"] { color: #00ffe5; border-bottom: none; }
-.about-page .nav-overflow .site-nav { background: rgba(4,8,16,0.97); border-color: rgba(0,255,229,0.15); }
+.about-page .nav-list a[aria-current="page"] { color: #00C8FF; border-bottom: none; }
+.about-page .nav-overflow .site-nav { background: rgba(4,8,16,0.97); border-color: rgba(0,200,255,0.15); }
 
 /* Footer — tema cyan */
-.about-page .site-footer { background: transparent; border-top-color: rgba(0,255,229,0.1); }
+.about-page .site-footer { background: transparent; border-top-color: rgba(0,200,255,0.1); }
 .about-page .footer-copy,
 .about-page .site-tagline { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #5a7a8a; letter-spacing: 2px; font-style: normal; }
 .about-page .footer-link { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #5a7a8a; letter-spacing: 2px; border: none; min-height: unset; }
-.about-page .footer-link:hover { color: #00ffe5; border-color: transparent; background: transparent; }
+.about-page .footer-link:hover { color: #00C8FF; border-color: transparent; background: transparent; }
 
 /* === Finance Page — header/footer overrides ============================= */
 .finance-page .site-header { background: rgba(13,17,23,0.95); border-bottom-color: rgba(31,111,235,0.15); }
