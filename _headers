@@ -15,7 +15,7 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /main.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: no-store, no-cache, must-revalidate
 
 /include-partials.js
   Cache-Control: public, max-age=31536000, immutable
