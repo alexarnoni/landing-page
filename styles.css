@@ -1087,6 +1087,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 }
 
 /* === Hub Page — novo design índigo ===================================== */
+.hub-page h1, .hub-page h2, .hub-page h3 {
+  font-family: 'Inter', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .hub-page {
   --c-bg:              #F8F8FA;
   --c-bg-card:         #ffffff;
