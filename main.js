@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', initNavOverflow);
 document.addEventListener('partials:ready', initNavOverflow);
 
 // === Cursor customizado — ativo em todas as páginas ===
-(function initCursor() {
+function initCursor() {
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursorRing');
   if (!cursor || !ring) return;
@@ -211,4 +211,7 @@ document.addEventListener('partials:ready', initNavOverflow);
     requestAnimationFrame(animRing);
   }
   animRing();
-})();
+}
+
+document.addEventListener('DOMContentLoaded', initCursor);
+document.addEventListener('partials:ready', initCursor);
