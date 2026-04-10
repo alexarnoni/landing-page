@@ -1,3 +1,11 @@
+// ano de copyright dinâmico
+function updateCopyrightYear() {
+  const yr = new Date().getFullYear();
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = yr; });
+}
+document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+document.addEventListener('partials:ready', updateCopyrightYear);
+
 // pequeno script para parallax e flicker — mantém vida no teaser
 (() => {
   let initialized = false;

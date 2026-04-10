@@ -914,36 +914,40 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
   letter-spacing: normal;
 }
 
-/* Header — tema cyan */
+/* Header — tema índigo claro */
 .about-page .site-header {
-  background: rgba(4, 8, 16, 0.96);
-  border-bottom: 1px solid rgba(0, 200, 255, 0.12);
+  background: rgba(248,248,250,0.96);
+  border-bottom: 1px solid var(--c-border);
   backdrop-filter: blur(16px);
 }
 .about-page .brand {
-  font-family: 'Share Tech Mono', monospace;
-  color: #00C8FF;
-  letter-spacing: 3px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  color: var(--c-text);
+  text-transform: none;
 }
+.about-page .brand:hover { color: var(--c-accent); }
 .about-page .nav-list a {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #7a9fb0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: var(--c-text-muted);
+  letter-spacing: 0;
+  text-transform: none;
   opacity: 1;
   min-height: unset;
 }
 .about-page .nav-list a:hover,
-.about-page .nav-list a[aria-current="page"] { color: #00C8FF; border-bottom: none; }
-.about-page .nav-overflow .site-nav { background: rgba(4,8,16,0.97); border-color: rgba(0,200,255,0.15); }
+.about-page .nav-list a[aria-current="page"] { color: var(--c-text); border-bottom: none; }
+.about-page .nav-overflow .site-nav { background: rgba(248,248,250,0.97); border-color: var(--c-border); box-shadow: 0 18px 26px rgba(0,0,0,0.08); }
 
-/* Footer — tema cyan */
-.about-page .site-footer { background: transparent; border-top-color: rgba(0,200,255,0.1); }
+/* Footer — tema índigo claro */
+.about-page .site-footer { background: var(--c-bg); border-top-color: var(--c-border); }
 .about-page .footer-copy,
-.about-page .site-tagline { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #5a7a8a; letter-spacing: 2px; font-style: normal; }
-.about-page .footer-link { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #5a7a8a; letter-spacing: 2px; border: none; min-height: unset; }
-.about-page .footer-link:hover { color: #00C8FF; border-color: transparent; background: transparent; }
+.about-page .site-tagline { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); letter-spacing: 0.5px; font-style: normal; }
+.about-page .footer-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); letter-spacing: 0.5px; border: none; min-height: unset; }
+.about-page .footer-link:hover { color: var(--c-accent); border-color: transparent; background: transparent; }
 
 /* === Finance Page — header/footer overrides ============================= */
 .finance-page .site-header { background: rgba(13,17,23,0.95); border-bottom-color: rgba(31,111,235,0.15); }
@@ -1087,6 +1091,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 }
 
 /* === Hub Page — novo design índigo ===================================== */
+.hub-page h1, .hub-page h2, .hub-page h3 {
+  font-family: 'Inter', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .hub-page {
   --c-bg:              #F8F8FA;
   --c-bg-card:         #ffffff;
