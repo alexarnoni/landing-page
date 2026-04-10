@@ -853,14 +853,16 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
 /* === Hub Page (index) — retro-futurista ================================= */
 .hub-page {
-  --cyan:       #00ffe5;
-  --cyan-dim:   #00ffe540;
-  --cyan-ghost: #00ffe510;
-  --bg:         #040810;
-  --bg2:        #070d18;
+  --cyan:       #00C8FF;
+  --cyan-dim:   #00C8FF40;
+  --cyan-ghost: #00C8FF10;
+  --bg:         #050c12;
+  --bg2:        #07101a;
   --text:       #c8dde8;
-  --text-dim:   #9ab8c8;
-  --red:        #ff3c6e;
+  --text-dim:   #8ab4c8;
+  --red:        #E64800;
+  --green:      #00E67F;
+  --green-dim:  #00E67F40;
   background: var(--bg);
   color: var(--text);
   font-family: 'Rajdhani', sans-serif;
