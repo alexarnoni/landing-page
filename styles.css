@@ -850,66 +850,30 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
 }
-/* === About Page — identidade do hub (mesma marca pessoal) =============== */
+/* === About Page — design limpo e moderno ================================= */
 .about-page {
-  --cyan:       #00C8FF;
-  --cyan-dim:   #00C8FF40;
-  --cyan-ghost: #00C8FF10;
-  --bg:         #050c12;
-  --bg2:        #07101a;
-  --text:       #c8dde8;
-  --text-dim:   #8ab4c8;
-  --red:        #E64800;
-  background: var(--bg);
-  color: #dde8f0;
-  font-family: 'Rajdhani', sans-serif;
+  --c-bg:         #F8F8FA;
+  --c-bg-card:    #ffffff;
+  --c-bg-dark:    #2B2B59;
+  --c-text:       #101033;
+  --c-text-mid:   #444466;
+  --c-text-dim:   #666688;
+  --c-text-muted: #888888;
+  --c-accent:     #555584;
+  --c-soft:       #B2B2D9;
+  --c-border:     #e2e2ec;
+  --c-surface:    #f5f5fa;
+  --c-hover:      #fafafc;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
   padding-top: var(--header-height);
-}
-
-.about-page .card {
-  background: rgba(7, 13, 24, 0.8);
-  border-color: rgba(0, 200, 255, 0.08);
-}
-.about-page .card h3 {
-  color: #00C8FF;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.about-page .card p,
-.about-page .card a {
-  color: #c8d8e8;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 1;
-}
-.about-page .card a {
-  color: #00C8FF;
-  text-decoration: underline;
-  text-decoration-color: rgba(0, 200, 255, 0.3);
-  text-underline-offset: 3px;
-}
-.about-page .card a:hover {
-  color: #ffffff;
-  text-decoration-color: rgba(255, 255, 255, 0.5);
-}
-.about-page h1 {
-  color: #ffffff;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-}
-.about-page .section-header p {
-  color: #a8c0d0;
-  font-size: 1.1rem;
-  line-height: 1.75;
 }
 
 .about-page h1,
 .about-page h2,
 .about-page h3 {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', sans-serif;
   text-transform: none;
   letter-spacing: normal;
 }
