@@ -213,5 +213,7 @@ function initCursor() {
   animRing();
 }
 
-document.addEventListener('DOMContentLoaded', initCursor);
 document.addEventListener('partials:ready', initCursor);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initCursor();
+}
