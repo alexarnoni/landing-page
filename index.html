@@ -83,8 +83,8 @@ html { scroll-behavior: smooth; }
 .hub-proj-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--c-border); }
 .hub-proj-footer-main { border-top-color: rgba(255,255,255,0.08); }
 .hub-proj-stack { display: flex; gap: 6px; flex-wrap: wrap; }
-.hub-proj-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--c-text-muted); background: var(--c-surface); padding: 3px 8px; border-radius: 4px; }
-.hub-proj-pill-main { color: #9999bb; background: rgba(255,255,255,0.08); }
+.hub-proj-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--c-text-muted); background: transparent; border: 1px solid var(--c-border); padding: 3px 8px; border-radius: 4px; }
+.hub-proj-pill-main { color: #9999bb; background: transparent; border: 1px solid rgba(255,255,255,0.2); }
 .hub-proj-link { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--c-accent); opacity: 0; transition: opacity 0.15s; white-space: nowrap; margin-left: 8px; text-decoration: none; }
 .hub-proj-link-main { color: var(--c-soft); }
 
@@ -96,6 +96,7 @@ html { scroll-behavior: smooth; }
 .hub-exp-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); width: 180px; padding-top: 3px; }
 .hub-exp-role { font-size: 15px; font-weight: 600; color: var(--c-text); letter-spacing: -0.3px; margin-bottom: 3px; }
 .hub-exp-org { font-size: 12px; color: var(--c-soft); font-family: 'JetBrains Mono', monospace; }
+.hub-exp-desc { font-size: 12px; color: var(--c-text-dim); line-height: 1.65; margin-top: 6px; max-width: 520px; }
 
 /* Stack */
 .hub-stack-group { margin-top: 1.25rem; }
@@ -111,9 +112,6 @@ html { scroll-behavior: smooth; }
 .hub-contact-link:hover { border-color: var(--c-accent); color: var(--c-accent); }
 .hub-contact-icon { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--c-soft); }
 
-/* Footer */
-.hub-footer { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
-.hub-footer span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); }
 
 /* Responsivo */
 @media (max-width: 768px) {
@@ -147,7 +145,9 @@ html { scroll-behavior: smooth; }
       </div>
       <div class="hub-about">
         <div class="hub-about-label">sobre</div>
-        <p class="hub-about-text">Formado em Comércio Exterior, Técnico em Informática, cursando Ciência de Dados. Uma trajetória que mistura visão de negócio, dados e código.</p>
+        <p class="hub-about-text">Analista e Engenheiro de Dados focado em automação e arquiteturas sólidas. Construo pipelines, APIs e dashboards, levando a solução do dado bruto ao deploy. Trabalho com dados públicos de 350 mil pessoas durante o dia e monitoro asteroides com a NASA à noite.</p>
+        <p class="hub-about-text">Sou formado em Comércio Exterior e Técnico em Informática, e agora estou cursando Ciência de Dados. É uma trajetória que mistura visão de negócio, dados e código, algo que aplico em cada projeto que construo.</p>
+        <p class="hub-about-text">Atualmente desenvolvendo o Astraea (pipeline com dados da NASA e modelo de ML para classificação de risco de asteroides), o Olheiro (plataforma de scouting e análise de futebol) e o EV+ Sports Analyzer (análise estatística de odds esportivas).</p>
       </div>
     </div>
 
@@ -272,6 +272,7 @@ html { scroll-behavior: smooth; }
         <td>
           <div class="hub-exp-role">Analista de Dados</div>
           <div class="hub-exp-org">Prefeitura de Praia Grande · CIDE</div>
+          <p class="hub-exp-desc">Desenvolvimento de dashboards e relatórios no Power BI para suporte a decisões estratégicas. Atuação na CIDE — Central Integrada de Dados e Estatísticas, construindo indicadores municipais e apoiando políticas públicas baseadas em evidências.</p>
         </td>
       </tr>
       <tr>
@@ -279,6 +280,7 @@ html { scroll-behavior: smooth; }
         <td>
           <div class="hub-exp-role">Chefe de Seção — Compensação Previdenciária</div>
           <div class="hub-exp-org">Prefeitura de Praia Grande</div>
+          <p class="hub-exp-desc">Análise e instrução de processos de compensação previdenciária (Comprev) entre o RPPS municipal e o RGPS/INSS. Cruzamento e validação de dados de vínculos funcionais, elaboração de relatórios gerenciais e padronização de processos internos.</p>
         </td>
       </tr>
       <tr>
@@ -286,6 +288,7 @@ html { scroll-behavior: smooth; }
         <td>
           <div class="hub-exp-role">Agente Administrativo</div>
           <div class="hub-exp-org">FPGPREV · Praia Grande</div>
+          <p class="hub-exp-desc">Gestão de arquivos e grandes volumes de dados, atendimento ao público e suporte a processos administrativos com foco em qualidade e agilidade.</p>
         </td>
       </tr>
     </table>
@@ -351,10 +354,6 @@ html { scroll-behavior: smooth; }
     </div>
   </section>
 
-  <footer class="hub-footer">
-    <span>alexarnoni.com</span>
-    <span>© 2026 Alexandre Arnoni</span>
-  </footer>
 
 </div>
 
