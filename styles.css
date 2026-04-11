@@ -290,7 +290,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-section {
-  padding: 4rem 0;
+  padding: 5.5rem 0;
   border-bottom: 1px solid var(--c-border);
 }
 
@@ -316,6 +316,7 @@ html.nav-overflow .nav-toggle {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--c-text);
+  letter-spacing: -0.5px;
 }
 
 /* === 6. Reveal Animation ========================================= */
@@ -388,6 +389,7 @@ html.nav-overflow .nav-toggle {
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
 
 .hub-hero-ctas {
@@ -610,14 +612,14 @@ html.nav-overflow .nav-toggle {
   border: 1px solid var(--c-border);
   border-radius: 16px;
   padding: 1.75rem;
-  transition: all 0.2s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   color: inherit;
 }
 
 .hub-proj-card:hover {
   border-color: var(--c-accent);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(85, 85, 132, 0.06);
 }
 
 .hub-proj-main {
@@ -880,6 +882,7 @@ html.nav-overflow .nav-toggle {
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
 
 .proj-ctas {
@@ -1127,6 +1130,7 @@ html.nav-overflow .nav-toggle {
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
 
 .about-contact-links {
@@ -1386,7 +1390,7 @@ html.nav-overflow .nav-toggle {
   }
 
   .hub-section {
-    padding: 2.5rem 0;
+    padding: 3rem 0;
   }
 
   .proj-features {
