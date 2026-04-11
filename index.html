@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="preload" href="/styles.css?v=2" as="style">
-<link rel="stylesheet" href="/styles.css?v=2">
+<link rel="preload" href="/styles.css" as="style">
+<link rel="stylesheet" href="/styles.css">
 <style>
 html { scroll-behavior: smooth; }
 
@@ -209,7 +209,7 @@ html { scroll-behavior: smooth; }
       <span class="hub-sec-title">Projetos</span>
     </div>
     <div class="hub-proj-grid reveal">
-      <div class="hub-proj-card hub-proj-main">
+      <a href="https://astraea.alexarnoni.com" class="hub-proj-card hub-proj-main" target="_blank" rel="noopener noreferrer">
         <div class="hub-proj-tag hub-proj-tag-main">⬡ Projeto principal</div>
         <div class="hub-proj-name hub-proj-name-main">Astraea</div>
         <div class="hub-proj-desc hub-proj-desc-main">Pipeline end-to-end de monitoramento de asteroides. NASA APIs, dbt Core, Random Forest, API pública REST com 1.400+ objetos catalogados.</div>
@@ -219,10 +219,10 @@ html { scroll-behavior: smooth; }
             <span class="hub-proj-pill hub-proj-pill-main">dbt Core</span>
             <span class="hub-proj-pill hub-proj-pill-main">scikit-learn</span>
           </div>
-          <a href="https://astraea.alexarnoni.com" class="hub-proj-link hub-proj-link-main" target="_blank" rel="noopener noreferrer">astraea.alexarnoni.com →</a>
+          <span class="hub-proj-link hub-proj-link-main">astraea.alexarnoni.com →</span>
         </div>
-      </div>
-      <div class="hub-proj-card">
+      </a>
+      <a href="https://scout.alexarnoni.com" class="hub-proj-card" target="_blank" rel="noopener noreferrer">
         <div class="hub-proj-tag">⬡ Projeto ativo</div>
         <div class="hub-proj-name">Olheiro</div>
         <div class="hub-proj-desc">Scouting e análise do Brasileirão. Rankings por posição, radar charts e modelo Garimpo para talentos subvalorizados.</div>
@@ -232,10 +232,10 @@ html { scroll-behavior: smooth; }
             <span class="hub-proj-pill">PostgreSQL</span>
             <span class="hub-proj-pill">Docker</span>
           </div>
-          <a href="https://scout.alexarnoni.com" class="hub-proj-link" target="_blank" rel="noopener noreferrer">scout.alexarnoni.com →</a>
+          <span class="hub-proj-link">scout.alexarnoni.com →</span>
         </div>
-      </div>
-      <div class="hub-proj-card">
+      </a>
+      <a href="/bot/" class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Em desenvolvimento</div>
         <div class="hub-proj-name">EV+ Sports Analyzer</div>
         <div class="hub-proj-desc">Análise de valor esperado em 200+ ligas esportivas. Alertas automáticos via Telegram, scheduler a cada 2 minutos.</div>
@@ -245,10 +245,10 @@ html { scroll-behavior: smooth; }
             <span class="hub-proj-pill">Odds API</span>
             <span class="hub-proj-pill">Telegram</span>
           </div>
-          <a href="/bot/" class="hub-proj-link">alexarnoni.com/bot →</a>
+          <span class="hub-proj-link">alexarnoni.com/bot →</span>
         </div>
-      </div>
-      <div class="hub-proj-card">
+      </a>
+      <a href="/finance/" class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Arquitetural</div>
         <div class="hub-proj-name">Luro Finance</div>
         <div class="hub-proj-desc">App financeiro completo. Magic link, CSRF duplo, rate limiting persistente, importador CSV/OFX e categorização via LLM.</div>
@@ -258,9 +258,9 @@ html { scroll-behavior: smooth; }
             <span class="hub-proj-pill">PostgreSQL</span>
             <span class="hub-proj-pill">LLM</span>
           </div>
-          <a href="/finance/" class="hub-proj-link">alexarnoni.com/finance →</a>
+          <span class="hub-proj-link">alexarnoni.com/finance →</span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
