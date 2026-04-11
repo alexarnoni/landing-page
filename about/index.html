@@ -1,327 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre — Alexandre Arnoni</title>
-  <meta name="description" content="Analista de dados e desenvolvedor. Conheça minha trajetória, stack e projetos.">
-  <meta property="og:title" content="Sobre — Alexandre Arnoni">
-  <meta property="og:description" content="Analista de dados e desenvolvedor. Conheça minha trajetória, stack e projetos.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/about/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-home.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="preload" href="/styles.css" as="style">
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    .sr-skip{position:absolute;left:-9999px;top:auto}
-    .sr-skip:focus{left:1rem;top:1rem}
-
-    /* Shared hub structural styles */
-    .hub-wrap { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
-
-    .hub-section { padding: 4rem 0; border-bottom: 1px solid var(--c-border); }
-    .hub-section:last-of-type { border-bottom: none; }
-
-    .hub-sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 2.5rem; }
-    .hub-sec-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); letter-spacing: 2px; }
-    .hub-sec-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; color: var(--c-text); font-family: 'Inter', sans-serif; }
-
-    .hub-exp-table { width: 100%; border-collapse: collapse; }
-    .hub-exp-table tr { border-bottom: 1px solid var(--c-border); }
-    .hub-exp-table tr:last-child { border-bottom: none; }
-    .hub-exp-table td { padding: 1.25rem 0; vertical-align: top; }
-    .hub-exp-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); width: 180px; padding-top: 3px; }
-    .hub-exp-role { font-size: 15px; font-weight: 600; color: var(--c-text); letter-spacing: -0.3px; margin-bottom: 3px; }
-    .hub-exp-org { font-size: 12px; color: var(--c-soft); font-family: 'JetBrains Mono', monospace; }
-    .hub-exp-desc { font-size: 12px; color: var(--c-text-dim); line-height: 1.65; margin-top: 6px; max-width: 520px; }
-
-    .hub-stack-group { margin-top: 1.25rem; }
-    .hub-stack-group:first-child { margin-top: 0; }
-    .hub-stack-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--c-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .hub-stack-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-    .hub-stack-pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-accent); border: 1px solid var(--c-border); padding: 6px 14px; border-radius: 8px; background: var(--c-bg-card); }
-
-    .hub-footer { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
-    .hub-footer span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c-soft); }
-
-    /* Hero intro */
-    .about-hero {
-      padding: 5rem 0 4rem;
-      border-bottom: 1px solid var(--c-border);
-    }
-
-    .about-hero-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--c-accent);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .about-hero-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--c-accent);
-      flex-shrink: 0;
-    }
-
-    .about-hero-loc { color: var(--c-soft); }
-
-    h1.about-hero-name {
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -3px;
-      color: var(--c-bg-dark);
-      margin-bottom: 1.75rem;
-    }
-
-    .about-hero-desc {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--c-text-mid);
-      max-width: 560px;
-      margin-bottom: 1rem;
-      letter-spacing: -0.1px;
-    }
-
-    .about-hero-desc strong { color: var(--c-text); font-weight: 600; }
-
-    .about-contact-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    .about-contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--c-text);
-      border: 1px solid var(--c-border);
-      padding: 10px 20px;
-      border-radius: 980px;
-      background: var(--c-bg-card);
-      text-decoration: none;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .about-contact-link:hover {
-      border-color: var(--c-accent);
-      color: var(--c-accent);
-    }
-
-    /* Edu cards grid */
-    .about-edu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background: var(--c-border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .about-edu-card {
-      background: var(--c-bg-card);
-      padding: 1.75rem;
-      transition: background 0.15s;
-    }
-
-    .about-edu-card:hover { background: var(--c-hover); }
-
-    .about-edu-degree {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--c-accent);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .about-edu-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--c-text);
-      letter-spacing: -0.3px;
-      margin-bottom: 0.25rem;
-    }
-
-    .about-edu-inst {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--c-soft);
-    }
-
-    @media (max-width: 768px) {
-      .about-hero { padding: 3rem 0 2rem; }
-      .hub-wrap { padding: 0 1.25rem; }
-      .hub-section { padding: 3rem 0; }
-      .about-edu-grid { grid-template-columns: 1fr; }
-      .hub-exp-date { width: auto; display: block; padding-top: 0; margin-bottom: 0.4rem; }
-      .hub-exp-table td { display: block; padding: 0.5rem 0; }
-      .hub-exp-table tr { display: block; padding: 1.25rem 0; border-bottom: 1px solid var(--c-border); }
-      .hub-exp-table tr:last-child { border-bottom: none; }
-      .hub-footer { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre — Alexandre Arnoni</title>
+<meta name="description" content="Analista de dados e desenvolvedor. Conheça minha trajetória, stack e projetos.">
+<meta property="og:title" content="Sobre — Alexandre Arnoni">
+<meta property="og:description" content="Analista de dados e desenvolvedor. Conheça minha trajetória, stack e projetos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/about/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-home.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css" as="style">
+<link rel="stylesheet" href="/styles.css">
 </head>
-<body class="hub-page about-page">
-  <a href="#main" class="sr-skip">Pular para o conteúdo</a>
-  <div data-include="header"></div>
+<body class="hub-page">
 
-  <noscript>
-    <p style="padding:1rem;border:1px solid #444;border-radius:.5rem;margin:1rem">
-      Ative JavaScript para ver o menu e o rodapé.
-    </p>
-  </noscript>
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
 
-  <div class="hub-wrap">
-    <main id="main">
+<main id="main">
+<div class="hub-wrap">
 
-      <!-- Intro / Hero -->
-      <div class="about-hero">
-        <div class="about-hero-tag">
-          <span class="about-hero-dot"></span>
-          <span>Analista &amp; engenheiro de dados</span>
-          <span class="about-hero-loc">· São Paulo, BR</span>
-        </div>
-        <h1 class="about-hero-name">Alexandre<br>Arnoni</h1>
-        <p class="about-hero-desc">Analista e engenheiro de dados. Trabalho na Prefeitura de Praia Grande construindo dashboards e pipelines de dados municipais — e nas horas vagas desenvolvo produtos do zero com Python, FastAPI, dbt Core e PostgreSQL.</p>
-        <p class="about-hero-desc">Tenho formação em Comércio Exterior, Técnico em Informática e estou cursando <strong>Ciência de Dados</strong>. Uma trajetória que mistura visão de negócio, dados e código.</p>
-        <div class="about-contact-links">
-          <a href="https://github.com/alexarnoni" class="about-contact-link" target="_blank" rel="noopener noreferrer">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.44c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.74.08-.74 1.21.09 1.85 1.24 1.85 1.24 1.08 1.85 2.83 1.32 3.52 1.01.11-.78.42-1.32.76-1.63-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12C24 5.37 18.63 0 12 0Z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/alexandrearnoni/" class="about-contact-link" target="_blank" rel="noopener noreferrer">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM2.4 8.98h5.17V21.6H2.4V8.98Zm7.43 0h4.95v1.73h.07c.69-1.31 2.37-2.7 4.89-2.7 5.23 0 6.2 3.44 6.2 7.92v6.67h-5.17v-5.91c0-1.41-.03-3.24-1.98-3.24-1.99 0-2.3 1.55-2.3 3.14v6.01H9.83V8.98Z"/></svg>
-            LinkedIn
-          </a>
-          <a href="mailto:alexandre.anf@gmail.com" class="about-contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email
-          </a>
-        </div>
-      </div>
-
-      <!-- Stack -->
-      <section id="stack" class="hub-section" aria-labelledby="about-stack-title">
-        <div class="hub-sec-head">
-          <span class="hub-sec-num">01 —</span>
-          <span class="hub-sec-title" id="about-stack-title">Stack</span>
-        </div>
-        <div class="hub-stack-group">
-          <div class="hub-stack-label">dados &amp; pipelines</div>
-          <div class="hub-stack-pills">
-            <span class="hub-stack-pill">Python</span>
-            <span class="hub-stack-pill">dbt Core</span>
-            <span class="hub-stack-pill">PostgreSQL</span>
-            <span class="hub-stack-pill">scikit-learn</span>
-            <span class="hub-stack-pill">Power BI</span>
-          </div>
-        </div>
-        <div class="hub-stack-group">
-          <div class="hub-stack-label">apis &amp; backend</div>
-          <div class="hub-stack-pills">
-            <span class="hub-stack-pill">FastAPI</span>
-            <span class="hub-stack-pill">Docker</span>
-            <span class="hub-stack-pill">APScheduler</span>
-            <span class="hub-stack-pill">JavaScript</span>
-          </div>
-        </div>
-        <div class="hub-stack-group">
-          <div class="hub-stack-label">infra &amp; deploy</div>
-          <div class="hub-stack-pills">
-            <span class="hub-stack-pill">Cloudflare</span>
-            <span class="hub-stack-pill">Oracle VM</span>
-            <span class="hub-stack-pill">Git</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experiência -->
-      <section id="experiencia" class="hub-section" aria-labelledby="about-exp-title">
-        <div class="hub-sec-head">
-          <span class="hub-sec-num">02 —</span>
-          <span class="hub-sec-title" id="about-exp-title">Experiência</span>
-        </div>
-        <table class="hub-exp-table">
-          <tr>
-            <td class="hub-exp-date">Jan 2025 — Presente</td>
-            <td>
-              <div class="hub-exp-role">Analista de Dados</div>
-              <div class="hub-exp-org">Prefeitura de Praia Grande · CIDE</div>
-              <p class="hub-exp-desc">Desenvolvimento de dashboards e relatórios no Power BI para suporte a decisões estratégicas. Atuação na CIDE — Central Integrada de Dados e Estatísticas, construindo indicadores municipais e apoiando políticas públicas baseadas em evidências.</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="hub-exp-date">Mar 2022 — Dez 2024</td>
-            <td>
-              <div class="hub-exp-role">Chefe de Seção de Compensação Previdenciária</div>
-              <div class="hub-exp-org">Prefeitura de Praia Grande</div>
-              <p class="hub-exp-desc">Análise e instrução de processos de compensação previdenciária (Comprev) entre o RPPS municipal e o RGPS/INSS. Cruzamento e validação de dados de vínculos funcionais, elaboração de relatórios gerenciais e padronização de processos internos.</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="hub-exp-date">Dez 2014 — Fev 2022</td>
-            <td>
-              <div class="hub-exp-role">Agente Administrativo</div>
-              <div class="hub-exp-org">FPGPREV (antigo IPMPG) · Praia Grande</div>
-              <p class="hub-exp-desc">Gestão de arquivos e grandes volumes de dados, atendimento ao público e suporte a processos administrativos com foco em qualidade e agilidade.</p>
-            </td>
-          </tr>
-        </table>
-      </section>
-
-      <!-- Formação -->
-      <section id="formacao" class="hub-section" aria-labelledby="about-edu-title">
-        <div class="hub-sec-head">
-          <span class="hub-sec-num">03 —</span>
-          <span class="hub-sec-title" id="about-edu-title">Formação</span>
-        </div>
-        <div class="about-edu-grid">
-          <div class="about-edu-card">
-            <div class="about-edu-degree">Graduação · Em andamento</div>
-            <div class="about-edu-name">Ciência de Dados</div>
-            <div class="about-edu-inst">UNINTER · EAD</div>
-          </div>
-          <div class="about-edu-card">
-            <div class="about-edu-degree">Graduação · Concluído</div>
-            <div class="about-edu-name">Comércio Exterior</div>
-            <div class="about-edu-inst">FATEC — Faculdade de Tecnologia</div>
-          </div>
-          <div class="about-edu-card">
-            <div class="about-edu-degree">Técnico · Concluído</div>
-            <div class="about-edu-name">Informática</div>
-            <div class="about-edu-inst">ETEC — Escola Técnica Estadual</div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="hub-footer">
-      <span>alexarnoni.com/about</span>
-      <span>© <span class="js-year"></span> Alexandre Arnoni</span>
-    </footer>
-
+  <!-- ABOUT HERO -->
+  <div class="about-hero reveal">
+    <div class="about-hero-tag">
+      <span class="about-hero-dot" aria-hidden="true"></span>
+      <span>Analista &amp; engenheiro de dados</span>
+      <span class="about-hero-loc">· São Paulo, BR</span>
+    </div>
+    <h1 class="about-hero-name">Alexandre<br>Arnoni</h1>
+    <p class="about-hero-desc">Analista e engenheiro de dados. Trabalho na Prefeitura de Praia Grande construindo dashboards e pipelines de dados municipais — e nas horas vagas desenvolvo produtos do zero com Python, FastAPI, dbt Core e PostgreSQL.</p>
+    <p class="about-hero-desc">Tenho formação em Comércio Exterior, Técnico em Informática e estou cursando <strong>Ciência de Dados</strong>. Uma trajetória que mistura visão de negócio, dados e código.</p>
+    <div class="about-contact-links">
+      <a href="https://github.com/alexarnoni" class="about-contact-link" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.44c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.74.08-.74 1.21.09 1.85 1.24 1.85 1.24 1.08 1.85 2.83 1.32 3.52 1.01.11-.78.42-1.32.76-1.63-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12C24 5.37 18.63 0 12 0Z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/alexandrearnoni" class="about-contact-link" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM2.4 8.98h5.17V21.6H2.4V8.98Zm7.43 0h4.95v1.73h.07c.69-1.31 2.37-2.7 4.89-2.7 5.23 0 6.2 3.44 6.2 7.92v6.67h-5.17v-5.91c0-1.41-.03-3.24-1.98-3.24-1.99 0-2.3 1.55-2.3 3.14v6.01H9.83V8.98Z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:alexandre.anf@gmail.com" class="about-contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://medium.com/@alexarnoni" class="about-contact-link" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12Zm7.42 0c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.52-6.42 3.38-6.42 3.38 2.88 3.38 6.42ZM24 12c0 3.17-.53 5.75-1.19 5.75S21.62 15.17 21.62 12s.54-5.75 1.19-5.75S24 8.83 24 12Z"/></svg>
+        Medium
+      </a>
+    </div>
   </div>
 
-  <script src="/include-partials.js"></script>
-  <script src="/main.js"></script>
+  <!-- SEÇÃO 01 — STACK -->
+  <section id="stack" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">01 —</span>
+      <span class="hub-sec-title">Stack</span>
+    </div>
+    <div class="hub-stack-groups">
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">dados &amp; pipelines</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">Python</span>
+          <span class="hub-stack-pill">dbt Core</span>
+          <span class="hub-stack-pill">PostgreSQL</span>
+          <span class="hub-stack-pill">scikit-learn</span>
+          <span class="hub-stack-pill">Power BI</span>
+        </div>
+      </div>
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">apis &amp; backend</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">FastAPI</span>
+          <span class="hub-stack-pill">Docker</span>
+          <span class="hub-stack-pill">APScheduler</span>
+          <span class="hub-stack-pill">JavaScript</span>
+        </div>
+      </div>
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">infra &amp; deploy</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">Cloudflare</span>
+          <span class="hub-stack-pill">Oracle VM</span>
+          <span class="hub-stack-pill">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 02 — EXPERIÊNCIA -->
+  <section id="experiencia" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">02 —</span>
+      <span class="hub-sec-title">Experiência</span>
+    </div>
+    <div class="hub-exp-table">
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Jan 2025 — Presente</div>
+        <div>
+          <div class="hub-exp-role">Analista de Dados</div>
+          <div class="hub-exp-org">Prefeitura de Praia Grande · CIDE</div>
+          <p class="hub-exp-desc">Desenvolvimento de dashboards e relatórios no Power BI para suporte a decisões estratégicas. Atuação na CIDE — Central Integrada de Dados e Estatísticas, construindo indicadores municipais e apoiando políticas públicas baseadas em evidências.</p>
+        </div>
+      </div>
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Mar 2022 — Dez 2024</div>
+        <div>
+          <div class="hub-exp-role">Chefe de Seção de Compensação Previdenciária</div>
+          <div class="hub-exp-org">Prefeitura de Praia Grande</div>
+          <p class="hub-exp-desc">Análise e instrução de processos de compensação previdenciária (Comprev) entre o RPPS municipal e o RGPS/INSS. Cruzamento e validação de dados de vínculos funcionais, elaboração de relatórios gerenciais e padronização de processos internos.</p>
+        </div>
+      </div>
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Dez 2014 — Fev 2022</div>
+        <div>
+          <div class="hub-exp-role">Agente Administrativo</div>
+          <div class="hub-exp-org">FPGPREV (antigo IPMPG) · Praia Grande</div>
+          <p class="hub-exp-desc">Gestão de arquivos e grandes volumes de dados, atendimento ao público e suporte a processos administrativos com foco em qualidade e agilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 03 — FORMAÇÃO -->
+  <section id="formacao" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">03 —</span>
+      <span class="hub-sec-title">Formação</span>
+    </div>
+    <div class="about-edu-grid">
+      <div class="about-edu-card">
+        <div class="about-edu-degree">Graduação · Em andamento</div>
+        <div class="about-edu-name">Ciência de Dados</div>
+        <div class="about-edu-inst">UNINTER · EAD</div>
+      </div>
+      <div class="about-edu-card">
+        <div class="about-edu-degree">Graduação · Concluído</div>
+        <div class="about-edu-name">Comércio Exterior</div>
+        <div class="about-edu-inst">FATEC — Faculdade de Tecnologia</div>
+      </div>
+      <div class="about-edu-card">
+        <div class="about-edu-degree">Técnico · Concluído</div>
+        <div class="about-edu-name">Informática</div>
+        <div class="about-edu-inst">ETEC — Escola Técnica Estadual</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js"></script>
 </body>
 </html>

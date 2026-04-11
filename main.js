@@ -1,175 +1,21 @@
-// ano de copyright dinâmico
-function updateCopyrightYear() {
-  const yr = new Date().getFullYear();
-  document.querySelectorAll('.js-year').forEach(el => { el.textContent = yr; });
-}
-document.addEventListener('DOMContentLoaded', updateCopyrightYear);
-document.addEventListener('partials:ready', updateCopyrightYear);
+/**
+ * main.js — alexarnoni.com
+ *
+ * 5 funcionalidades:
+ *   1. Copyright dinâmico
+ *   2. Nav overflow (+ debounce)
+ *   3. Mobile menu toggle
+ *   4. Reveal animation (IntersectionObserver)
+ *   5. Astraea live data (API → painel NEO Feed)
+ */
 
-// pequeno script para parallax e flicker — mantém vida no teaser
-(() => {
-  let initialized = false;
-  function init() {
-    if (initialized) return;
+// ─── Utilitários ────────────────────────────────────────────
 
-    const grid = document.querySelector('.grid');
-    const scanner = document.querySelector('.scanner');
-    const navToggle = document.querySelector('[data-nav-toggle]');
-    const navMenu = document.querySelector('[data-nav-menu]');
-
-    if(!navToggle || !navMenu){
-      return;
-    }
-
-    initialized = true;
-
-    const MOBILE_BREAKPOINT = 768;
-
-    // leve parallax com o mouse para a grade
-    if(grid){
-      const onMove = (ev) => {
-        const x = (ev.clientX / window.innerWidth - 0.5) * 10; // -5..5
-        const y = (ev.clientY / window.innerHeight - 0.5) * 6; // -3..3
-        grid.style.transform = `perspective(800px) rotateX(${66 + y}deg) translateY(${18 + y * 2}vh) rotateZ(${x/40}deg) scaleY(0.6)`;
-      };
-
-      // reduz movimento se usuário preferir
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if(!mq.matches){
-        window.addEventListener('mousemove', onMove);
-      }
-    }
-
-    // menu responsivo acessível
-    if(navToggle && navMenu){
-      const focusableItems = () => Array.from(navMenu.querySelectorAll('a'));
-
-      const setMenuState = (open) => {
-        navMenu.classList.toggle('is-open', open);
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-
-        if(window.innerWidth <= MOBILE_BREAKPOINT){
-          navMenu.setAttribute('aria-hidden', String(!open));
-          navMenu.toggleAttribute('data-menu-hidden', !open);
-          if(open){
-            const [firstItem] = focusableItems();
-            if(firstItem){
-              firstItem.focus();
-            }
-          }
-        } else {
-          navMenu.removeAttribute('aria-hidden');
-          navMenu.removeAttribute('data-menu-hidden');
-        }
-      };
-
-      setMenuState(false);
-
-      navToggle.addEventListener('click', () => {
-        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        setMenuState(!isOpen);
-      });
-
-      navMenu.addEventListener('click', (event) => {
-        if(window.innerWidth > MOBILE_BREAKPOINT) return;
-        if(event.target instanceof Element && event.target.closest('a')){
-          setMenuState(false);
-        }
-      });
-
-      navMenu.addEventListener('keydown', (event) => {
-        if(event.key === 'Escape'){
-          setMenuState(false);
-          navToggle.focus();
-        }
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if(event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true'){
-          setMenuState(false);
-          navToggle.focus();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if(window.innerWidth > MOBILE_BREAKPOINT){
-          navMenu.classList.remove('is-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.setAttribute('aria-label', 'Abrir menu');
-          navMenu.removeAttribute('aria-hidden');
-          navMenu.removeAttribute('data-menu-hidden');
-        } else {
-          const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-          navMenu.setAttribute('aria-hidden', String(!isOpen));
-          navMenu.toggleAttribute('data-menu-hidden', !isOpen);
-        }
-      });
-    }
-
-    // flicker ocasional no brilho (apenas para dar vida)
-    function flicker(){
-      if(!scanner) return;
-      if(Math.random() < 0.14){
-        const prev = scanner.style.filter || '';
-        scanner.style.filter = 'drop-shadow(0 0 28px rgba(255,255,255,0.5))';
-        setTimeout(()=> scanner.style.filter = prev, 140 + Math.random()*360);
-      }
-    }
-    setInterval(flicker, 2400);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  }
-
-  document.addEventListener('partials:ready', init);
-})();
-
-// === Intelligent Nav Toggle: Show hamburger only when items overflow ===
-function checkNavOverflow() {
-  const navContainer = document.querySelector('.nav-container');
-  const siteNav = document.querySelector('.site-nav');
-  const brand = document.querySelector('.brand');
-  const navToggle = document.querySelector('.nav-toggle');
-
-  if (!navContainer || !siteNav || !brand || !navToggle) return;
-
-  // Temporarily remove overflow class to get accurate natural measurements
-  const hadOverflow = document.documentElement.classList.contains('nav-overflow');
-  document.documentElement.classList.remove('nav-overflow');
-
-  // Force reflow so measurements reflect the non-overflow state
-  void navContainer.offsetWidth;
-
-  const containerWidth = navContainer.offsetWidth;
-  const brandWidth = brand.offsetWidth;
-  const gaps = 48; // gap spacing
-  const availableSpace = containerWidth - brandWidth - gaps;
-
-  // Measure nav items at their natural width (no toggle taking space)
-  const navWidth = siteNav.scrollWidth;
-
-  if (navWidth > availableSpace) {
-    document.documentElement.classList.add('nav-overflow');
-  } else {
-    // Keep removed (already done above)
-    if (hadOverflow) {
-      // was overflow before, now it's not — menu should close
-      const toggle = navToggle;
-      if (toggle.getAttribute('aria-expanded') === 'true') {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Abrir menu');
-        siteNav.classList.remove('is-open');
-        siteNav.setAttribute('aria-hidden', 'true');
-        siteNav.toggleAttribute('data-menu-hidden', true);
-      }
-    }
-  }
-}
-
-// Debounce function for performance
-function debounce(func, wait) {
+/**
+ * Debounce genérico — adia a execução de `func` até que
+ * `wait` ms tenham passado sem nova chamada.
+ */
+function debounce(func, wait = 150) {
   let timeout;
   return function executedFunction(...args) {
     const later = () => {
@@ -181,17 +27,190 @@ function debounce(func, wait) {
   };
 }
 
-// Initialize on DOM ready and after partials are injected
-let navOverflowInitialized = false;
+// ─── 1. Copyright dinâmico ──────────────────────────────────
 
-function initNavOverflow() {
-  checkNavOverflow();
-  if (!navOverflowInitialized) {
-    navOverflowInitialized = true;
-    window.addEventListener('resize', debounce(checkNavOverflow, 150));
+/** Atualiza todos os elementos .js-year com o ano corrente. */
+function updateCopyrightYear() {
+  const year = new Date().getFullYear();
+  document.querySelectorAll('.js-year').forEach(el => {
+    el.textContent = year;
+  });
+}
+
+// ─── 2. Nav Overflow ────────────────────────────────────────
+
+/**
+ * Verifica se os itens de navegação cabem na largura disponível.
+ * Adiciona/remove a classe `nav-overflow` no <html> conforme necessário.
+ */
+function checkNavOverflow() {
+  const navContainer = document.querySelector('.nav-container');
+  const brand = document.querySelector('.brand');
+  const navList = document.querySelector('.nav-list');
+
+  if (!navContainer || !brand || !navList) return;
+
+  const containerWidth = navContainer.offsetWidth;
+  const brandWidth = brand.offsetWidth;
+  const navWidth = navList.scrollWidth;
+
+  if (brandWidth + navWidth + 80 > containerWidth) {
+    document.documentElement.classList.add('nav-overflow');
+  } else {
+    document.documentElement.classList.remove('nav-overflow');
   }
 }
 
-document.addEventListener('DOMContentLoaded', initNavOverflow);
-document.addEventListener('partials:ready', initNavOverflow);
+const debouncedCheckNavOverflow = debounce(checkNavOverflow, 150);
 
+// ─── 3. Mobile Menu Toggle ──────────────────────────────────
+
+/** Inicializa o toggle do menu mobile com acessibilidade completa. */
+function initMobileMenu() {
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const menu = document.querySelector('[data-nav-menu]');
+
+  if (!toggle || !menu) return;
+
+  const MOBILE_BREAKPOINT = 768;
+
+  /** Define o estado aberto/fechado do menu e atualiza atributos ARIA. */
+  const setMenuState = (open) => {
+    menu.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-hidden', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  };
+
+  // Toggle ao clicar no botão
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    setMenuState(!isOpen);
+  });
+
+  // Fecha com Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setMenuState(false);
+      toggle.focus();
+    }
+  });
+
+  // Fecha ao clicar em link dentro do menu (mobile)
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      setMenuState(false);
+    }
+  });
+
+  // Resize: reseta estado ao sair do breakpoint mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > MOBILE_BREAKPOINT) {
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menu');
+    }
+  });
+}
+
+// ─── 4. Reveal Animation ───────────────────────────────────
+
+/**
+ * Observa elementos com classe `.reveal` e adiciona `.visible`
+ * quando entram no viewport.
+ */
+function initReveal() {
+  const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px',
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
+// ─── 5. Astraea Live Data ───────────────────────────────────
+
+/**
+ * Busca dados da API Astraea e atualiza o painel NEO Feed
+ * e as stats. Fallback silencioso se a API estiver fora.
+ */
+async function loadAstraeaData() {
+  const panel = document.getElementById('astraea-panel');
+  if (!panel) return;
+
+  try {
+    const [statsRes, asteroidsRes] = await Promise.all([
+      fetch('https://astraea-api.alexarnoni.com/v1/stats/summary'),
+      fetch('https://astraea-api.alexarnoni.com/v1/asteroids/upcoming')
+    ]);
+
+    const stats = await statsRes.json();
+    const asteroids = await asteroidsRes.json();
+
+    // Stats
+    document.getElementById('stat-asteroids').textContent = stats.total_asteroids;
+    document.getElementById('stat-hazardous').textContent = stats.hazardous_count;
+    document.getElementById('stat-solar').textContent = stats.total_solar_events;
+
+    // Painel — 4 mais próximos por miss_distance_km
+    const top4 = [...asteroids]
+      .sort((a, b) => a.miss_distance_km - b.miss_distance_km)
+      .slice(0, 4);
+
+    const rows = document.getElementById('neo-rows');
+    rows.innerHTML = top4.map(a => {
+      const distAU = (a.miss_distance_km / 149597870.7).toFixed(4);
+      const riskClass = a.risk_label_ml === 'alto' ? 'hub-badge-high'
+        : a.risk_label_ml === 'médio' ? 'hub-badge-mid'
+        : 'hub-badge-low';
+      const riskLabel = a.risk_label_ml === 'alto' ? 'ALTO'
+        : a.risk_label_ml === 'médio' ? 'MÉDIO'
+        : 'BAIXO';
+      const name = a.name.replace(/[()]/g, '').trim();
+
+      return `<div class="hub-panel-row">
+        <span class="hub-panel-obj">${name}</span>
+        <span class="hub-panel-dist">${distAU} AU</span>
+        <span class="hub-badge ${riskClass}">${riskLabel}</span>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    // falha silenciosa — fallback já está no HTML
+    console.warn('[Astraea] API indisponível, usando fallback.');
+  }
+}
+
+// ─── Inicialização ─────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCopyrightYear();
+  checkNavOverflow();
+  initMobileMenu();
+  initReveal();
+  loadAstraeaData();
+});
+
+// Reinicializa após injeção dos partials (header/footer)
+document.addEventListener('partials:ready', () => {
+  updateCopyrightYear();
+  checkNavOverflow();
+  initMobileMenu();
+  initReveal();
+});
+
+// Nav overflow no resize (debounced)
+window.addEventListener('resize', debouncedCheckNavOverflow);

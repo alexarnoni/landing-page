@@ -1,493 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olheiro — Scouting do Brasileirão</title>
-  <meta name="description" content="Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts e o Garimpo — modelo que identifica talentos subvalorizados.">
-  <meta property="og:title" content="Olheiro — Scouting do Brasileirão">
-  <meta property="og:description" content="Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts e o Garimpo — modelo que identifica talentos subvalorizados.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alexarnoni.com/olheiro/">
-  <meta property="og:image" content="https://alexarnoni.com/assets/og-olheiro.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&display=swap">
-  <link rel="preload" href="/styles.css" as="style">
-  <style>
-    .sr-skip{position:absolute;left:-9999px;top:auto}
-    .sr-skip:focus{left:1rem;top:1rem}
-
-    /* ── Tokens ── */
-    .olheiro-page {
-      --bg-deep: #0b0c0e;
-      --bg-mid: #0f1114;
-      --bg-panel: #131619;
-      --bg-header: #080b10;
-      --border: #1e2128;
-      --accent: #ea580c;
-      --accent-dim: #1e1208;
-      --accent-border: #3d2010;
-      --text-primary: #f5f0ea;
-      --text-secondary: #c8c0b8;
-      --text-muted: #6b7585;
-      --positive: #4ade80;
-      font-family: 'Barlow', sans-serif;
-      background: var(--bg-deep);
-      color: var(--text-primary);
-    }
-
-    .olheiro-page h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; }
-    .olheiro-page h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
-    .olheiro-page h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
-
-    .olheiro-page .page-main { gap: clamp(2rem, 5vw, 3rem) !important; }
-
-    /* ── Hero ── */
-    .olheiro-hero {
-      min-height: unset !important;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: clamp(2rem, 6vw, 3.5rem) clamp(1.5rem, 5vw, 3rem) !important;
-    }
-
-    .olheiro-tag {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: .85rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin: 0 0 1rem;
-    }
-
-    .olheiro-hero h1 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: .95;
-      letter-spacing: -.02em;
-      color: var(--text-primary);
-      margin: 0 0 1.25rem;
-    }
-
-    .olheiro-subtitle {
-      font-size: 1.05rem;
-      font-weight: 400;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin: 0 0 2rem;
-    }
-
-    .olheiro-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: var(--accent);
-      color: #fff;
-      font-family: "Barlow", sans-serif;
-      font-weight: 600;
-      font-size: .95rem;
-      padding: .75rem 1.75rem;
-      border-radius: .375rem;
-      text-decoration: none;
-      transition: opacity .2s;
-    }
-    .olheiro-cta:hover { opacity: .85; }
-
-    /* ── Fake table ── */
-    .olheiro-table-wrap {
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: .75rem;
-      overflow: hidden;
-    }
-
-    .olheiro-table-header {
-      padding: .75rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    .olheiro-table-header span {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .olheiro-table-header .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--positive);
-    }
-
-    .olheiro-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .875rem;
-    }
-
-    .olheiro-table thead th {
-      padding: .5rem 1rem;
-      text-align: left;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .olheiro-table tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background .15s;
-    }
-    .olheiro-table tbody tr:last-child { border-bottom: none; }
-    .olheiro-table tbody tr:hover { background: var(--bg-mid); }
-
-    .olheiro-table tbody td {
-      padding: .65rem 1rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
-    .olheiro-table .pos { color: var(--text-muted); font-weight: 600; width: 2rem; }
-    .olheiro-table .team-name { color: var(--text-primary); font-weight: 600; }
-    .olheiro-table .pts { color: var(--accent); font-weight: 700; }
-    .olheiro-table .highlight-row td { background: var(--accent-dim); }
-    .olheiro-table .highlight-row .team-name { color: var(--accent); }
-
-    /* ── Stats bar ── */
-    .olheiro-stats {
-      background: var(--bg-mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .olheiro-stats-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2.5rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-
-    .olheiro-stat {
-      text-align: center;
-      padding: 1.25rem;
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: .5rem;
-    }
-
-    .olheiro-stat-value {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: .35rem;
-    }
-
-    .olheiro-stat-label {
-      font-size: .8rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    /* ── Features ── */
-    .olheiro-features {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-
-    .olheiro-section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .olheiro-section-header h2 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      color: var(--text-primary);
-      margin: 0 0 .75rem;
-    }
-
-    .olheiro-section-header p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .olheiro-feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .olheiro-feature-card {
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: .75rem;
-      padding: 2rem;
-      transition: border-color .2s;
-    }
-    .olheiro-feature-card:hover { border-color: var(--accent-border); }
-
-    .olheiro-feature-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      border-radius: .5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
-    }
-
-    .olheiro-feature-card h3 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin: 0 0 .6rem;
-    }
-
-    .olheiro-feature-card p {
-      font-size: .9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ── Tech stack ── */
-    .olheiro-tech {
-      background: var(--bg-mid);
-      border-top: 1px solid var(--border);
-    }
-
-    .olheiro-tech-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .olheiro-tech-label {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .olheiro-tech-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-
-    .olheiro-pill {
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: 2rem;
-      padding: .3rem .85rem;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 900px) {
-      .olheiro-hero { grid-template-columns: 1fr; padding-top: 4rem; }
-      .olheiro-table-wrap { display: none; }
-      .olheiro-stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .olheiro-feature-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 480px) {
-      .olheiro-stats-inner { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olheiro — Alexandre Arnoni</title>
+<meta name="description" content="Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts e o Garimpo — modelo que identifica talentos subvalorizados.">
+<meta property="og:title" content="Olheiro — Alexandre Arnoni">
+<meta property="og:description" content="Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts e o Garimpo — modelo que identifica talentos subvalorizados.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/olheiro/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-olheiro.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css" as="style">
+<link rel="stylesheet" href="/styles.css">
 </head>
-<body class="olheiro-page">
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-  <a href="#main" class="sr-skip">Pular para o conteúdo</a>
-  <div data-include="header"></div>
+<body class="hub-page">
 
-  <noscript>
-    <p style="padding:1rem;border:1px solid #444;border-radius:.5rem;margin:1rem">
-      Ative JavaScript para ver o menu e o rodapé.
-    </p>
-  </noscript>
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
 
-  <main id="main" class="page-main">
+<main id="main">
+<div class="hub-wrap">
 
-    <!-- Hero -->
-    <section class="olheiro-hero" aria-labelledby="olheiro-title">
-      <div class="olheiro-hero-content">
-        <p class="olheiro-tag">// Brasileirão Série A 2026</p>
-        <h1 id="olheiro-title">Olheiro</h1>
-        <p class="olheiro-subtitle">Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts, histórico de resultados e o Garimpo — modelo que identifica talentos subvalorizados cruzando performance com minutos jogados.</p>
-        <a class="olheiro-cta" href="https://scout.alexarnoni.com" target="_blank" rel="noopener noreferrer">
-          Acessar Plataforma →
-        </a>
-      </div>
-
-      <div class="olheiro-table-wrap" aria-hidden="true">
-        <div class="olheiro-table-header">
-          <span class="dot"></span>
-          <span>Classificação — Rodada 12</span>
-        </div>
-        <table class="olheiro-table">
-          <thead>
-            <tr>
-              <th class="pos">#</th>
-              <th>Time</th>
-              <th>J</th>
-              <th>Pts</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="pos">1</td>
-              <td class="team-name">Flamengo</td>
-              <td>12</td>
-              <td class="pts">28</td>
-            </tr>
-            <tr>
-              <td class="pos">2</td>
-              <td class="team-name">Palmeiras</td>
-              <td>12</td>
-              <td class="pts">25</td>
-            </tr>
-            <tr class="highlight-row">
-              <td class="pos">3</td>
-              <td class="team-name">Atlético-MG</td>
-              <td>12</td>
-              <td class="pts">23</td>
-            </tr>
-            <tr>
-              <td class="pos">4</td>
-              <td class="team-name">São Paulo</td>
-              <td>12</td>
-              <td class="pts">21</td>
-            </tr>
-            <tr>
-              <td class="pos">5</td>
-              <td class="team-name">Botafogo</td>
-              <td>12</td>
-              <td class="pts">20</td>
-            </tr>
-            <tr>
-              <td class="pos">6</td>
-              <td class="team-name">Grêmio</td>
-              <td>12</td>
-              <td class="pts">18</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Stats bar -->
-    <div class="olheiro-stats" role="region" aria-label="Estatísticas da plataforma">
-      <div class="olheiro-stats-inner">
-        <div class="olheiro-stat">
-          <div class="olheiro-stat-value">20</div>
-          <div class="olheiro-stat-label">Times monitorados</div>
-        </div>
-        <div class="olheiro-stat">
-          <div class="olheiro-stat-value">500+</div>
-          <div class="olheiro-stat-label">Jogadores analisados</div>
-        </div>
-        <div class="olheiro-stat">
-          <div class="olheiro-stat-value">⚡</div>
-          <div class="olheiro-stat-label">Dados em tempo real</div>
-        </div>
-        <div class="olheiro-stat">
-          <div class="olheiro-stat-value">⛏</div>
-          <div class="olheiro-stat-label">Garimpo ativo</div>
-        </div>
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// Brasileirão Série A 2026</p>
+      <h1 class="proj-title">Olheiro</h1>
+      <p class="proj-subtitle">Plataforma de scouting e análise de desempenho para o Campeonato Brasileiro. Rankings por posição, radar charts, histórico de resultados e o Garimpo — modelo que identifica talentos subvalorizados cruzando performance com minutos jogados.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://scout.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Plataforma →</a>
       </div>
     </div>
 
-    <!-- Features -->
-    <section class="olheiro-features" aria-labelledby="olheiro-features-title">
-      <div class="olheiro-section-header">
-        <h2 id="olheiro-features-title">Tudo que você precisa para analisar o Brasileirão</h2>
-        <p>Dados sincronizados, modelos proprietários e visualizações pensadas para quem vive de futebol.</p>
-      </div>
-      <div class="olheiro-feature-grid">
-        <article class="olheiro-feature-card">
-          <div class="olheiro-feature-icon" aria-hidden="true">🏆</div>
-          <h3>Análise de Times</h3>
-          <p>Classificação em tempo real, histórico de resultados, estatísticas de ataque e defesa por rodada. Dados sincronizados automaticamente via ESPN API.</p>
-        </article>
-        <article class="olheiro-feature-card">
-          <div class="olheiro-feature-icon" aria-hidden="true">📡</div>
-          <h3>Scout de Jogadores</h3>
-          <p>Rankings por posição com métricas normalizadas por 90 minutos. Radar chart de perfil com comparação entre jogadores da mesma posição.</p>
-        </article>
-        <article class="olheiro-feature-card">
-          <div class="olheiro-feature-icon" aria-hidden="true">⛏</div>
-          <h3>Garimpo</h3>
-          <p>Modelo proprietário que cruza score de performance com minutos jogados para identificar automaticamente jogadores com alto desempenho e baixa visibilidade.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Tech stack -->
-    <div class="olheiro-tech" role="region" aria-label="Tecnologias utilizadas">
-      <div class="olheiro-tech-inner">
-        <span class="olheiro-tech-label">Stack</span>
-        <div class="olheiro-tech-pills">
-          <span class="olheiro-pill">Python</span>
-          <span class="olheiro-pill">FastAPI</span>
-          <span class="olheiro-pill">SQLAlchemy</span>
-          <span class="olheiro-pill">PostgreSQL</span>
-          <span class="olheiro-pill">Docker</span>
-          <span class="olheiro-pill">APScheduler</span>
-          <span class="olheiro-pill">JavaScript</span>
-          <span class="olheiro-pill">ESPN API</span>
+    <div class="hub-hero-right" aria-hidden="true">
+      <div class="hub-panel">
+        <div class="hub-panel-header">
+          <span class="hub-panel-title">Classificação — Rodada 12</span>
+          <span class="hub-panel-live"><span class="hub-live-dot" aria-hidden="true"></span>live</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">1 · Flamengo</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-high">28 pts</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">2 · Palmeiras</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-mid">25 pts</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">3 · Atlético-MG</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-high">23 pts</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">4 · São Paulo</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-mid">21 pts</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">5 · Botafogo</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-low">20 pts</span>
+        </div>
+        <div class="hub-panel-row">
+          <span class="hub-panel-obj">6 · Grêmio</span>
+          <span class="hub-panel-dist">12J</span>
+          <span class="hub-badge hub-badge-low">18 pts</span>
         </div>
       </div>
     </div>
+  </div>
 
-  </main>
+  <!-- STATS BAR -->
+  <div class="proj-stats reveal" role="region" aria-label="Estatísticas da plataforma">
+    <div class="proj-stats-inner">
+      <div class="proj-stat">
+        <span class="proj-stat-value">20</span>
+        <span class="proj-stat-label">Times monitorados</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-value">500+</span>
+        <span class="proj-stat-label">Jogadores analisados</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-value">tempo real</span>
+        <span class="proj-stat-label">Dados</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-value">ativo</span>
+        <span class="proj-stat-label">Garimpo</span>
+      </div>
+    </div>
+  </div>
 
-  <div data-include="footer"></div>
+  <!-- FEATURES -->
+  <section class="proj-features reveal" aria-labelledby="features-title">
+    <div class="proj-section-header">
+      <h2 id="features-title">Funcionalidades</h2>
+    </div>
+    <div class="proj-feature-grid">
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🏆</span>
+        <h3>Análise de Times</h3>
+        <p>Classificação em tempo real, histórico de resultados, estatísticas de ataque e defesa por rodada. Dados sincronizados automaticamente via ESPN API.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">📡</span>
+        <h3>Scout de Jogadores</h3>
+        <p>Rankings por posição com métricas normalizadas por 90 minutos. Radar chart de perfil com comparação entre jogadores da mesma posição.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">⛏</span>
+        <h3>Garimpo</h3>
+        <p>Modelo proprietário que cruza score de performance com minutos jogados para identificar automaticamente jogadores com alto desempenho e baixa visibilidade.</p>
+      </article>
+    </div>
+  </section>
 
-  <script src="/include-partials.js"></script>
-  <script src="/main.js"></script>
+  <!-- STACK -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">SQLAlchemy</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">Docker</span>
+        <span class="proj-stack-badge">APScheduler</span>
+        <span class="proj-stack-badge">JavaScript</span>
+        <span class="proj-stack-badge">ESPN API</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js"></script>
 </body>
 </html>
