@@ -28,9 +28,10 @@
     });
   }
 
-  // Language toggle PT/EN
-  const langLink = document.querySelector('.lang-link');
-  if (langLink) {
+  // Language toggle PT/EN (defer to ensure DOM is updated after outerHTML)
+  setTimeout(() => {
+    const langLink = document.querySelector('.lang-link');
+    if (!langLink) return;
     const path = location.pathname;
     const isEn = path.startsWith('/en/') || path === '/en';
     if (isEn) {
@@ -40,7 +41,7 @@
       langLink.textContent = 'EN';
       langLink.href = '/en/' + path.replace(/^\//, '');
     }
-  }
+  }, 0);
 
   document.dispatchEvent(new CustomEvent('partials:ready'));
 })();
