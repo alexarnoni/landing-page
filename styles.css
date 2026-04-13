@@ -1613,3 +1613,21 @@ html.nav-overflow .nav-toggle {
     transform: none;
   }
 }
+
+/* ── Language toggle ── */
+.lang-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c-accent);
+  border: 1px solid var(--c-border);
+  padding: 4px 10px;
+  border-radius: 980px;
+  letter-spacing: 1px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.lang-link:hover {
+  border-color: var(--c-accent);
+  color: var(--c-text);
+}
