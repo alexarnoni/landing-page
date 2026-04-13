@@ -29,15 +29,16 @@
   }
 
   // Language toggle PT/EN
-  const langLink = document.getElementById('lang-link');
+  const langLink = document.querySelector('.lang-link');
   if (langLink) {
     const path = location.pathname;
-    if (path.startsWith('/en/')) {
+    const isEn = path.startsWith('/en/') || path === '/en';
+    if (isEn) {
       langLink.textContent = 'PT';
       langLink.href = (path === '/en/' || path === '/en') ? '/' : path.replace('/en/', '/');
     } else {
       langLink.textContent = 'EN';
-      langLink.href = '/en/';
+      langLink.href = '/en/' + path.replace(/^\//, '');
     }
   }
 
