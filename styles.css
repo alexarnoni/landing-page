@@ -1631,3 +1631,8 @@ html.nav-overflow .nav-toggle {
   border-color: var(--c-accent);
   color: var(--c-text);
 }
+
+/* ── Project card div (not link) ── */
+.hub-proj-card:not(a) {
+  cursor: default;
+}
