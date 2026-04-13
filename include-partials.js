@@ -5,7 +5,28 @@
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
-      host.outerHTML = await res.text();
+      let html = await res.text();
+
+      // Language toggle: patch the header HTML before injecting
+      if (id === 'header') {
+        const path = location.pathname;
+        const isEn = path.startsWith('/en/') || path === '/en';
+        if (isEn) {
+          const ptHref = (path === '/en/' || path === '/en') ? '/' : path.replace('/en/', '/');
+          html = html.replace(
+            '<a href="/en/" id="lang-link" class="lang-link">EN</a>',
+            '<a href="' + ptHref + '" id="lang-link" class="lang-link">PT</a>'
+          );
+        } else {
+          const enHref = '/en/' + path.replace(/^\//, '');
+          html = html.replace(
+            '<a href="/en/" id="lang-link" class="lang-link">EN</a>',
+            '<a href="' + enHref + '" id="lang-link" class="lang-link">EN</a>'
+          );
+        }
+      }
+
+      host.outerHTML = html;
     } catch (e) {
       console.error(`[partials] ${id} error:`, e);
     }
@@ -27,21 +48,6 @@
       }
     });
   }
-
-  // Language toggle PT/EN (use rAF to ensure DOM is fully updated after outerHTML)
-  requestAnimationFrame(() => {
-    const langLink = document.querySelector('.lang-link');
-    if (!langLink) return;
-    const path = location.pathname;
-    const isEn = path.startsWith('/en/') || path === '/en';
-    if (isEn) {
-      langLink.textContent = 'PT';
-      langLink.href = (path === '/en/' || path === '/en') ? '/' : path.replace('/en/', '/');
-    } else {
-      langLink.textContent = 'EN';
-      langLink.href = '/en/' + path.replace(/^\//, '');
-    }
-  });
 
   document.dispatchEvent(new CustomEvent('partials:ready'));
 })();
