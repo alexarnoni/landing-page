@@ -23,22 +23,3 @@
   </div>
 </header>
 
-<script>
-  (function() {
-    const path = window.location.pathname;
-    const langLink = document.getElementById('lang-link');
-    if (!langLink) return;
-
-    if (path.startsWith('/en/')) {
-      langLink.textContent = 'PT';
-      if (path === '/en/' || path === '/en') {
-        langLink.href = '/';
-      } else {
-        langLink.href = path.replace('/en/', '/');
-      }
-    } else {
-      langLink.textContent = 'EN';
-      langLink.href = '/en/';
-    }
-  })();
-</script>

@@ -28,5 +28,18 @@
     });
   }
 
+  // Language toggle PT/EN
+  const langLink = document.getElementById('lang-link');
+  if (langLink) {
+    const path = location.pathname;
+    if (path.startsWith('/en/')) {
+      langLink.textContent = 'PT';
+      langLink.href = (path === '/en/' || path === '/en') ? '/' : path.replace('/en/', '/');
+    } else {
+      langLink.textContent = 'EN';
+      langLink.href = '/en/';
+    }
+  }
+
   document.dispatchEvent(new CustomEvent('partials:ready'));
 })();
