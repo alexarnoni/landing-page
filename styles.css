@@ -1317,6 +1317,17 @@ html.nav-overflow .nav-toggle {
   color: var(--c-text);
 }
 
+.about-hero-link {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about-hero-link:hover {
+  color: var(--c-text);
+}
+
+
 /* === 12. Media Queries =========================================== */
 
 @media (max-width: 768px) {
