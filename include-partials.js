@@ -28,8 +28,8 @@
     });
   }
 
-  // Language toggle PT/EN (defer to ensure DOM is updated after outerHTML)
-  setTimeout(() => {
+  // Language toggle PT/EN (use rAF to ensure DOM is fully updated after outerHTML)
+  requestAnimationFrame(() => {
     const langLink = document.querySelector('.lang-link');
     if (!langLink) return;
     const path = location.pathname;
@@ -41,7 +41,7 @@
       langLink.textContent = 'EN';
       langLink.href = '/en/' + path.replace(/^\//, '');
     }
-  }, 0);
+  });
 
   document.dispatchEvent(new CustomEvent('partials:ready'));
 })();
