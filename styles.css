@@ -107,7 +107,7 @@ a:focus-visible {
   --c-badge-mid-text: #b85c00;
   --c-badge-low-bg: #e8f5ee;
   --c-badge-low-text: #1a7a45;
-  --header-height: 4.25rem;
+  --header-height: 5.25rem;
   --max-width: 960px;
 }
 
@@ -115,23 +115,27 @@ a:focus-visible {
 
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(248, 248, 250, 0.96);
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 900px;
+  border-radius: 16px;
+  border: 1px solid var(--c-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--c-border);
+  background: rgba(248,248,250,0.92);
   height: var(--header-height);
+  z-index: 1000;
 }
 
 .nav-container {
-  max-width: var(--max-width);
+  max-width: 100%;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
+  padding: 0 1.5rem;
   height: 100%;
 }
 
@@ -388,6 +392,14 @@ html.nav-overflow .nav-toggle {
   margin-bottom: 1rem;
 }
 
+.hub-hero-divider {
+  width: 48px;
+  height: 2px;
+  background: #2B2B59;
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+
 .hub-hero-desc {
   font-size: 1.2rem;
   color: var(--c-text-mid);
@@ -456,6 +468,17 @@ html.nav-overflow .nav-toggle {
 .hub-btn-s:hover {
   border-color: var(--c-accent);
   color: var(--c-accent);
+}
+
+.hub-btn-s--highlight {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+.hub-btn-s--highlight:hover {
+  background: var(--c-accent);
+  color: var(--c-bg);
 }
 
 /* Painel Astraea (NEO Feed) */
