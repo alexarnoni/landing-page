@@ -38,30 +38,49 @@
     </div>
 
     <div class="hub-hero-right" aria-hidden="true">
-      <div class="hub-panel">
+      <div class="hub-panel" id="astraea-panel">
         <div class="hub-panel-header">
           <span class="hub-panel-title">Astraea · NEO Feed</span>
           <span class="hub-panel-live"><span class="hub-live-dot" aria-hidden="true"></span>live</span>
         </div>
-        <div class="hub-panel-row">
-          <span class="hub-panel-obj">2024 YR4</span>
-          <span class="hub-panel-dist">0.0031 AU</span>
-          <span class="hub-badge hub-badge-high">ALTO</span>
+        <div id="neo-rows">
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2024 YR4</span>
+            <span class="hub-panel-dist">0.0031 AU</span>
+            <span class="hub-badge hub-badge-high">ALTO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2023 BU</span>
+            <span class="hub-panel-dist">0.0142 AU</span>
+            <span class="hub-badge hub-badge-mid">MÉDIO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2021 QM1</span>
+            <span class="hub-panel-dist">0.0287 AU</span>
+            <span class="hub-badge hub-badge-low">BAIXO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2020 NK1</span>
+            <span class="hub-panel-dist">0.0094 AU</span>
+            <span class="hub-badge hub-badge-high">ALTO</span>
+          </div>
         </div>
-        <div class="hub-panel-row">
-          <span class="hub-panel-obj">2023 BU</span>
-          <span class="hub-panel-dist">0.0142 AU</span>
-          <span class="hub-badge hub-badge-mid">MÉDIO</span>
+        <div class="hub-stats">
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-asteroids">—</div>
+            <div class="hub-stat-label">asteroides</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-hazardous">—</div>
+            <div class="hub-stat-label">perigosos (PHA)</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-solar">—</div>
+            <div class="hub-stat-label">eventos solares</div>
+          </div>
         </div>
-        <div class="hub-panel-row">
-          <span class="hub-panel-obj">2021 QM1</span>
-          <span class="hub-panel-dist">0.0287 AU</span>
-          <span class="hub-badge hub-badge-low">BAIXO</span>
-        </div>
-        <div class="hub-panel-row">
-          <span class="hub-panel-obj">2020 NK1</span>
-          <span class="hub-panel-dist">0.0094 AU</span>
-          <span class="hub-badge hub-badge-high">ALTO</span>
+        <div class="hub-panel-footer">
+          <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
         </div>
       </div>
     </div>
@@ -71,19 +90,15 @@
   <div class="proj-stats reveal" role="region" aria-label="Estatísticas do sistema">
     <div class="proj-stats-inner">
       <div class="proj-stat">
-        <span class="proj-stat-value">1.420+</span>
-        <span class="proj-stat-label">Asteroides catalogados</span>
+        <span class="proj-stat-value" id="proj-stat-asteroids">—</span>
+        <span class="proj-stat-label">Asteroides rastreados</span>
       </div>
       <div class="proj-stat">
-        <span class="proj-stat-value">312</span>
+        <span class="proj-stat-value" id="proj-stat-hazardous">—</span>
         <span class="proj-stat-label">Potencialmente perigosos</span>
       </div>
       <div class="proj-stat">
-        <span class="proj-stat-value">87</span>
-        <span class="proj-stat-label">Alto risco (ML)</span>
-      </div>
-      <div class="proj-stat">
-        <span class="proj-stat-value">203</span>
+        <span class="proj-stat-value" id="proj-stat-solar">—</span>
         <span class="proj-stat-label">Eventos solares</span>
       </div>
     </div>
@@ -138,5 +153,54 @@
 
 <script src="/include-partials.js"></script>
 <script src="/main.js?v=3"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const [statsRes, asteroidsRes] = await Promise.all([
+        fetch('https://astraea-api.alexarnoni.com/v1/stats/summary'),
+        fetch('https://astraea-api.alexarnoni.com/v1/asteroids/upcoming')
+      ]);
+
+      const stats = await statsRes.json();
+      const asteroids = await asteroidsRes.json();
+
+      // Stats bar
+      document.getElementById('proj-stat-asteroids').textContent = stats.total_asteroids;
+      document.getElementById('proj-stat-hazardous').textContent = stats.hazardous_count;
+      document.getElementById('proj-stat-solar').textContent = stats.total_solar_events;
+
+      // Painel NEO Feed
+      const top4 = [...asteroids]
+        .sort((a, b) => a.miss_distance_km - b.miss_distance_km)
+        .slice(0, 4);
+
+      const rows = document.getElementById('neo-rows');
+      rows.innerHTML = top4.map(a => {
+        const distAU = (a.miss_distance_km / 149597870.7).toFixed(4);
+        const riskClass = a.risk_label_ml === 'alto' ? 'hub-badge-high'
+          : a.risk_label_ml === 'médio' ? 'hub-badge-mid'
+          : 'hub-badge-low';
+        const riskLabel = a.risk_label_ml === 'alto' ? 'ALTO'
+          : a.risk_label_ml === 'médio' ? 'MÉDIO'
+          : 'BAIXO';
+        const name = a.name.replace(/[()]/g, '').trim();
+
+        return `<div class="hub-panel-row">
+          <span class="hub-panel-obj">${name}</span>
+          <span class="hub-panel-dist">${distAU} AU</span>
+          <span class="hub-badge ${riskClass}">${riskLabel}</span>
+        </div>`;
+      }).join('');
+
+      // Stats do painel
+      document.getElementById('stat-asteroids').textContent = stats.total_asteroids;
+      document.getElementById('stat-hazardous').textContent = stats.hazardous_count;
+      document.getElementById('stat-solar').textContent = stats.total_solar_events;
+
+    } catch (e) {
+      console.warn('[Astraea] API indisponível, usando fallback.');
+    }
+  });
+</script>
 </body>
 </html>
