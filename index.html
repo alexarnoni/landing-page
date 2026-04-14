@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandre Arnoni — Analista & Engenheiro de Dados</title>
+<meta name="description" content="Analista e engenheiro de dados. Construo pipelines, APIs e dashboards do dado bruto ao deploy.">
+<meta property="og:title" content="Alexandre Arnoni — Analista & Engenheiro de Dados">
+<meta property="og:description" content="Analista e engenheiro de dados. Construo pipelines, APIs e dashboards do dado bruto ao deploy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-home.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- HERO -->
+  <div class="hub-hero reveal">
+    <div>
+      <div class="hub-hero-tag">
+        <span class="hub-hero-dot" aria-hidden="true"></span>
+        <span>Analista & engenheiro de dados</span>
+        <span class="hub-hero-loc">· São Paulo, BR</span>
+      </div>
+      <h1 class="hub-hero-name">Alexandre<br>Arnoni</h1>
+      <div class="hub-hero-divider"></div>
+      <p class="hub-hero-desc">Monitoro asteroides com a NASA à noite e trabalho com dados públicos de 350 mil pessoas durante o dia. Do dado bruto ao deploy: pipelines, APIs e dashboards.
+</p>
+      <div class="hub-hero-ctas">
+        <a href="#projetos" class="hub-btn-p">Ver Projetos</a>
+        <a href="#contato" class="hub-btn-s hub-btn-s--highlight">Falar comigo</a>
+      </div>
+    </div>
+
+    <div class="hub-hero-right" aria-hidden="true">
+      <div class="hub-panel" id="astraea-panel">
+        <div class="hub-panel-header">
+          <span class="hub-panel-title">Astraea · NEO Feed</span>
+          <span class="hub-panel-live"><span class="hub-live-dot"></span>live</span>
+        </div>
+        <div id="neo-rows">
+          <!-- fallback estático enquanto carrega -->
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2026 GC</span>
+            <span class="hub-panel-dist">0.0349 AU</span>
+            <span class="hub-badge hub-badge-low">BAIXO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2026 FE7</span>
+            <span class="hub-panel-dist">0.0227 AU</span>
+            <span class="hub-badge hub-badge-low">BAIXO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2004 FG11</span>
+            <span class="hub-panel-dist">0.0565 AU</span>
+            <span class="hub-badge hub-badge-mid">MÉDIO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2024 OU</span>
+            <span class="hub-panel-dist">0.0146 AU</span>
+            <span class="hub-badge hub-badge-low">BAIXO</span>
+          </div>
+        </div>
+        <div class="hub-stats">
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-asteroids">—</div>
+            <div class="hub-stat-label">asteroides</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-hazardous">—</div>
+            <div class="hub-stat-label">perigosos (PHA)</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-solar">—</div>
+            <div class="hub-stat-label">eventos solares</div>
+          </div>
+        </div>
+        <div class="hub-panel-footer">
+          <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hub-about">
+      <div class="hub-about-label">sobre</div>
+      <p class="hub-about-text">Dez anos no setor público me ensinaram a trabalhar com dados imperfeitos, processos burocráticos e stakeholders que não falam "SQL". Agora construo os sistemas que eu não tinha à disposição.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 01 — PROJETOS -->
+  <section id="projetos" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">01 —</span>
+      <span class="hub-sec-title">Projetos</span>
+    </div>
+    <div class="hub-proj-grid">
+      <div class="hub-proj-card hub-proj-main">
+        <div class="hub-proj-tag">⬡ Projeto principal</div>
+        <div class="hub-proj-name">Astraea</div>
+        <div class="hub-proj-desc">Conecto a API da NASA a um pipeline de dados, classifico asteroides por risco com Machine Learning e exponho tudo via API pública.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">dbt Core</span>
+            <span class="hub-proj-pill">scikit-learn</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/astraea/" class="hub-proj-link">ver projeto →</a>
+            <a href="https://github.com/alexarnoni/astraea" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Projeto ativo</div>
+        <div class="hub-proj-name">Olheiro</div>
+        <div class="hub-proj-desc">Monitoro o Brasileirão em tempo real: rankings por posição, radar charts e um modelo próprio que "garimpa" jogadores com alto desempenho e baixa visibilidade.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">PostgreSQL</span>
+            <span class="hub-proj-pill">Docker</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/olheiro/" class="hub-proj-link">ver projeto →</a>
+            <a href="https://github.com/alexarnoni/scout" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Em produção · 24/7</div>
+        <div class="hub-proj-name">EV+ Sports Analyzer</div>
+        <div class="hub-proj-desc">Rodo um scanner de odds a cada 2 minutos em 200+ ligas esportivas, calculo valor esperado e disparo alertas automáticos no Telegram para oportunidades com EV positivo.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">Python</span>
+            <span class="hub-proj-pill">Odds API</span>
+            <span class="hub-proj-pill">Telegram</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/bot/" class="hub-proj-link">ev+ →</a>
+            <a href="https://github.com/alexarnoni/bot-ev-sqlite" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Arquitetural</div>
+        <div class="hub-proj-name">Luro</div>
+        <div class="hub-proj-desc">Comecei querendo aprender a construir um app do zero. O que era pra ser simples virou magic link, CSRF duplo, importador de extratos e categorização via LLM. Congelei intencionalmente para focar em outros projetos.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">PostgreSQL</span>
+            <span class="hub-proj-pill">LLM</span>
+          </div>
+          <a href="/finance/" class="hub-proj-link">luro →</a>
+        </div>
+      </div>      
+    </div>
+  </section>
+
+  <!-- SEÇÃO 02 — EXPERIÊNCIA -->
+  <section id="experiencia" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">02 —</span>
+      <span class="hub-sec-title">Experiência</span>
+    </div>
+    <div class="hub-exp-table">
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Jan 2025 — presente</div>
+        <div>
+          <div class="hub-exp-role">Analista de Dados</div>
+          <div class="hub-exp-org">Prefeitura de Praia Grande · CIDE</div>
+          <p class="hub-exp-desc">Mantenho dashboards no Power BI com indicadores municipais de Praia Grande (350 mil habitantes), consolidando dados de múltiplas secretarias. Estou desenvolvendo a versão mobile dos dashboards existentes e automatizando pipelines de atualização de dados.</p>
+        </div>
+      </div>
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Mar 2022 — Dez 2024</div>
+        <div>
+          <div class="hub-exp-role">Chefe de Seção — Compensação Previdenciária</div>
+          <div class="hub-exp-org">Prefeitura de Praia Grande</div>
+          <p class="hub-exp-desc">Responsável pela seção de Comprev (compensação entre RPPS municipal e INSS). Cruzamento e validação de dados de vínculos funcionais, instrução de processos administrativos e elaboração de relatórios gerenciais.</p>
+        </div>
+      </div>
+      <div class="hub-exp-row">
+        <div class="hub-exp-date">Dez 2014 — Fev 2022</div>
+        <div>
+          <div class="hub-exp-role">Agente Administrativo</div>
+          <div class="hub-exp-org">FPGPREV · Praia Grande</div>
+          <p class="hub-exp-desc">Gestão de arquivos e grandes volumes de dados, atendimento ao público e suporte a processos administrativos com foco em qualidade e agilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 03 — CONTATO -->
+  <section id="contato" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">03 —</span>
+      <span class="hub-sec-title">Contato</span>
+    </div>
+    <p class="hub-contact-desc">Aberto para oportunidades em dados no Brasil ou no exterior, presencial, híbrido ou remoto. Se quiser conversar sobre projetos ou uma vaga, é só chamar.</p>
+    <div class="hub-contact-links">
+      <a href="https://github.com/alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="hub-contact-icon" aria-hidden="true">gh</span>GitHub
+      </a>
+      <a href="https://linkedin.com/in/alexandrearnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="hub-contact-icon" aria-hidden="true">in</span>LinkedIn
+      </a>
+      <a href="mailto:alexandre.anf@gmail.com" class="hub-contact-link">
+        <span class="hub-contact-icon" aria-hidden="true">@</span>Email
+      </a>
+      <a href="https://medium.com/@alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="hub-contact-icon" aria-hidden="true">✍</span>Medium
+      </a>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 04 — STACK -->
+  <section id="stack" class="hub-section reveal">
+    <div class="hub-sec-head">
+      <span class="hub-sec-num">04 —</span>
+      <span class="hub-sec-title">Stack</span>
+    </div>
+    <div class="hub-stack-groups">
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">dados & pipelines</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">Python</span>
+          <span class="hub-stack-pill">dbt Core</span>
+          <span class="hub-stack-pill">PostgreSQL</span>
+          <span class="hub-stack-pill">scikit-learn</span>
+          <span class="hub-stack-pill">Power BI</span>
+          <span class="hub-stack-pill">Airflow</span>
+        </div>
+      </div>
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">apis & backend</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">FastAPI</span>      
+          <span class="hub-stack-pill">APScheduler</span>
+        </div>
+      </div>
+      <div class="hub-stack-group">
+        <div class="hub-stack-label">infra & deploy</div>
+        <div class="hub-stack-pills">
+          <span class="hub-stack-pill">Cloudflare</span>
+          <span class="hub-stack-pill">Oracle VM</span>
+          <span class="hub-stack-pill">Docker</span>
+          <span class="hub-stack-pill">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

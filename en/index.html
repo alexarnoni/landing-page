@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandre Arnoni — Data Analyst & Engineer</title>
+<meta name="description" content="Data analyst and engineer. I build pipelines, APIs and dashboards from raw data to deploy.">
+<meta property="og:title" content="Alexandre Arnoni — Data Analyst & Engineer">
+<meta property="og:description" content="Data analyst and engineer. I build pipelines, APIs and dashboards from raw data to deploy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/en/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-home.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+<style>
+.lang-banner {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+  padding: 0.6rem 2.5rem;
+  margin-top: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--c-text-muted);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+.lang-banner a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lang-banner a:hover { color: var(--c-text); }
+</style>
+</head>
+<body class="hub-page">
+<a href="#main" class="sr-skip">Skip to content</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+<p class="lang-banner">Project pages are in Portuguese. Use your browser's translation feature for the full experience — or <a href="/">switch to Portuguese</a>.</p>
+
+<!-- HERO -->
+<div class="hub-hero reveal">
+<div>
+  <div class="hub-hero-tag">
+    <span class="hub-hero-dot" aria-hidden="true"></span>
+    <span>Data Analyst & Engineer</span>
+    <span class="hub-hero-loc">· São Paulo, BR</span>
+  </div>
+  <h1 class="hub-hero-name">Alexandre<br>Arnoni</h1>
+  <div class="hub-hero-divider"></div>
+  <p class="hub-hero-desc">I monitor asteroids with NASA at night and work with public data from 350,000 people during the day. From raw data to deploy: pipelines, APIs and dashboards.</p>
+  <div class="hub-hero-ctas">
+    <a href="#projects" class="hub-btn-p">View Projects</a>
+    <a href="#contact" class="hub-btn-s hub-btn-s--highlight">Get in touch</a>
+  </div>
+</div>
+
+<div class="hub-hero-right" aria-hidden="true">
+  <div class="hub-panel" id="astraea-panel">
+    <div class="hub-panel-header">
+      <span class="hub-panel-title">Astraea · NEO Feed</span>
+      <span class="hub-panel-live"><span class="hub-live-dot"></span>live</span>
+    </div>
+    <div id="neo-rows">
+      <div class="hub-panel-row"><span class="hub-panel-obj">2026 GC</span><span class="hub-panel-dist">0.0349 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
+      <div class="hub-panel-row"><span class="hub-panel-obj">2026 FE7</span><span class="hub-panel-dist">0.0227 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
+      <div class="hub-panel-row"><span class="hub-panel-obj">2004 FG11</span><span class="hub-panel-dist">0.0565 AU</span><span class="hub-badge hub-badge-mid">MED</span></div>
+      <div class="hub-panel-row"><span class="hub-panel-obj">2024 OU</span><span class="hub-panel-dist">0.0146 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
+    </div>
+    <div class="hub-stats">
+      <div class="hub-stat"><div class="hub-stat-val" id="stat-asteroids">—</div><div class="hub-stat-label">asteroids</div></div>
+      <div class="hub-stat"><div class="hub-stat-val" id="stat-hazardous">—</div><div class="hub-stat-label">hazardous</div></div>
+      <div class="hub-stat"><div class="hub-stat-val" id="stat-solar">—</div><div class="hub-stat-label">solar events</div></div>
+    </div>
+    <div class="hub-panel-footer">
+      <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="hub-about">
+  <div class="hub-about-label">about</div>
+  <p class="hub-about-text">Ten years in the public sector taught me to work with messy data, bureaucratic processes and stakeholders who don't speak SQL. Now I build the systems I never had available.</p>
+</div>
+</div>
+
+<!-- SECTION 01 — PROJECTS -->
+<section id="projects" class="hub-section reveal">
+<div class="hub-sec-head">
+  <span class="hub-sec-num">01 —</span>
+  <span class="hub-sec-title">Projects</span>
+</div>
+<div class="hub-proj-grid">
+  <div class="hub-proj-card hub-proj-main">
+    <div class="hub-proj-tag">⬡ Main project</div>
+    <div class="hub-proj-name">Astraea</div>
+    <div class="hub-proj-desc">I connect NASA's API to a data pipeline, classify asteroids by risk using Machine Learning and expose everything through a public REST API with 1,400+ catalogued objects.</div>
+    <div class="hub-proj-footer">
+      <div class="hub-proj-stack">
+        <span class="hub-proj-pill">FastAPI</span>
+        <span class="hub-proj-pill">dbt Core</span>
+        <span class="hub-proj-pill">scikit-learn</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="/astraea/" class="hub-proj-link">view project →</a>
+        <a href="https://github.com/alexarnoni/astraea" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hub-proj-card">
+    <div class="hub-proj-tag">⬡ Active project</div>
+    <div class="hub-proj-name">Olheiro</div>
+    <div class="hub-proj-desc">I monitor Brazil's top football league in real time: team stats, player rankings by position and a proprietary model that surfaces high-performing undervalued players.</div>
+    <div class="hub-proj-footer">
+      <div class="hub-proj-stack">
+        <span class="hub-proj-pill">FastAPI</span>
+        <span class="hub-proj-pill">PostgreSQL</span>
+        <span class="hub-proj-pill">Docker</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="/olheiro/" class="hub-proj-link">view project →</a>
+        <a href="https://github.com/alexarnoni/scout" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hub-proj-card">
+    <div class="hub-proj-tag">⬡ Architectural</div>
+    <div class="hub-proj-name">Luro</div>
+    <div class="hub-proj-desc">Started wanting to learn how to build an app from scratch. What was supposed to be simple turned into magic link auth, double CSRF, statement importer and LLM categorisation. Intentionally frozen to focus on data projects, but still running in production.</div>
+    <div class="hub-proj-footer">
+      <div class="hub-proj-stack">
+        <span class="hub-proj-pill">FastAPI</span>
+        <span class="hub-proj-pill">PostgreSQL</span>
+        <span class="hub-proj-pill">LLM</span>
+      </div>
+      <a href="/finance/" class="hub-proj-link">luro →</a>
+    </div>
+  </div>
+  <div class="hub-proj-card">
+    <div class="hub-proj-tag">⬡ Live · 24/7</div>
+    <div class="hub-proj-name">EV+ Sports Analyzer</div>
+    <div class="hub-proj-desc">I run an odds scanner every 2 minutes across 200+ sports leagues, calculate expected value and fire automatic Telegram alerts for positive EV opportunities.</div>
+    <div class="hub-proj-footer">
+      <div class="hub-proj-stack">
+        <span class="hub-proj-pill">Python</span>
+        <span class="hub-proj-pill">Odds API</span>
+        <span class="hub-proj-pill">Telegram</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="/bot/" class="hub-proj-link">ev+ →</a>
+        <a href="https://github.com/alexarnoni/bot-ev-sqlite" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 02 — EXPERIENCE -->
+<section id="experience" class="hub-section reveal">
+<div class="hub-sec-head">
+  <span class="hub-sec-num">02 —</span>
+  <span class="hub-sec-title">Experience</span>
+</div>
+<div class="hub-exp-table">
+  <div class="hub-exp-row">
+    <div class="hub-exp-date">Jan 2025 — present</div>
+    <div>
+      <div class="hub-exp-role">Data Analyst</div>
+      <div class="hub-exp-org">Praia Grande City Hall · CIDE</div>
+      <p class="hub-exp-desc">Maintaining Power BI dashboards with municipal indicators for Praia Grande (350,000 residents), consolidating data from multiple departments. Currently developing a mobile version of existing dashboards and automating data update pipelines.</p>
+    </div>
+  </div>
+  <div class="hub-exp-row">
+    <div class="hub-exp-date">Mar 2022 — Dec 2024</div>
+    <div>
+      <div class="hub-exp-role">Section Head — Pension Compensation</div>
+      <div class="hub-exp-org">Praia Grande City Hall</div>
+      <p class="hub-exp-desc">Responsible for the Comprev section (pension compensation between the municipal RPPS and INSS). Cross-referencing and validating employment records data, processing administrative cases and producing management reports.</p>
+    </div>
+  </div>
+  <div class="hub-exp-row">
+    <div class="hub-exp-date">Dec 2014 — Feb 2022</div>
+    <div>
+      <div class="hub-exp-role">Administrative Agent</div>
+      <div class="hub-exp-org">FPGPREV · Praia Grande</div>
+      <p class="hub-exp-desc">Administrative process and records management. First systematic contact with organising and validating data at scale.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 03 — STACK -->
+<section id="stack" class="hub-section reveal">
+<div class="hub-sec-head">
+  <span class="hub-sec-num">03 —</span>
+  <span class="hub-sec-title">Stack</span>
+</div>
+<div class="hub-stack-groups">
+  <div class="hub-stack-group">
+    <div class="hub-stack-label">data & pipelines</div>
+    <div class="hub-stack-pills">
+      <span class="hub-stack-pill">Python</span>
+      <span class="hub-stack-pill">dbt Core</span>
+      <span class="hub-stack-pill">PostgreSQL</span>
+      <span class="hub-stack-pill">scikit-learn</span>
+      <span class="hub-stack-pill">Power BI</span>
+      <span class="hub-stack-pill">Airflow (learning)</span>
+    </div>
+  </div>
+  <div class="hub-stack-group">
+    <div class="hub-stack-label">apis & backend</div>
+    <div class="hub-stack-pills">
+      <span class="hub-stack-pill">FastAPI</span>
+      <span class="hub-stack-pill">APScheduler</span>
+    </div>
+  </div>
+  <div class="hub-stack-group">
+    <div class="hub-stack-label">infra & deploy</div>
+    <div class="hub-stack-pills">
+      <span class="hub-stack-pill">Cloudflare</span>
+      <span class="hub-stack-pill">Oracle VM</span>
+      <span class="hub-stack-pill">Docker</span>
+      <span class="hub-stack-pill">Git</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 04 — CONTACT -->
+<section id="contact" class="hub-section reveal">
+<div class="hub-sec-head">
+  <span class="hub-sec-num">04 —</span>
+  <span class="hub-sec-title">Contact</span>
+</div>
+<p class="hub-contact-desc">Open to data opportunities anywhere in the world, on-site, hybrid or remote. Feel free to reach out about projects or a position.</p>
+<div class="hub-contact-links">
+  <a href="https://github.com/alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer"><span class="hub-contact-icon" aria-hidden="true">gh</span>GitHub</a>
+  <a href="https://linkedin.com/in/alexandrearnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer"><span class="hub-contact-icon" aria-hidden="true">in</span>LinkedIn</a>
+  <a href="mailto:alexandre.anf@gmail.com" class="hub-contact-link"><span class="hub-contact-icon" aria-hidden="true">@</span>Email</a>
+  <a href="https://medium.com/@alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer"><span class="hub-contact-icon" aria-hidden="true">✍</span>Medium</a>
+</div>
+</section>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

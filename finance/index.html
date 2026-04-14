@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luro — Alexandre Arnoni</title>
+<meta name="description" content="Luro é um app de finanças pessoais construído do zero com foco em segurança e boas práticas de engenharia. Em produção, congelado intencionalmente.">
+<meta property="og:title" content="Luro — Alexandre Arnoni">
+<meta property="og:description" content="App de finanças pessoais com magic link, CSRF duplo, rate limiting persistente, importador CSV/OFX e categorização via LLM.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/finance/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-finance.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">projeto arquitetural · em produção</p>
+      <h1 class="proj-title">Luro</h1>
+      <p class="proj-subtitle">App de finanças pessoais construído do zero, com foco em segurança e boas práticas de engenharia. FastAPI, PostgreSQL, autenticação por magic link, importação de extratos e insights via LLM.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://luro.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar App</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/Luro" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="proj-features reveal" aria-labelledby="features-title">
+    <div class="proj-section-header">
+      <h2 id="features-title">O que foi construído</h2>
+      <p>Três pilares que guiaram as decisões de arquitetura.</p>
+    </div>
+    <div class="proj-feature-grid">
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🔒</span>
+        <h3>Segurança</h3>
+        <p>Magic link sem senha, CSRF duplo (cookie + header), rate limiting por IP e email com persistência em banco, sessões revogáveis, audit log completo e CSP com nonce por requisição.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">📂</span>
+        <h3>Importação inteligente</h3>
+        <p>Importador de CSV e OFX com deduplicação por hash de transação. Categorização automática via LLM (Gemini, OpenAI ou Ollama) com sistema de regras configurável por usuário.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">📊</span>
+        <h3>Produto completo</h3>
+        <p>Dashboard, gestão de contas, cartão de crédito com parcelamento, metas financeiras e insights mensais gerados via LLM. Frontend em Jinja2 com JS vanilla.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">SQLAlchemy 2.0</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">Alembic</span>
+        <span class="proj-stack-badge">Docker</span>
+        <span class="proj-stack-badge">Jinja2</span>
+        <span class="proj-stack-badge">Resend</span>
+        <span class="proj-stack-badge">Gemini / OpenAI</span>
+        <span class="proj-stack-badge">Cloudflare</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="proj-status reveal">
+    <h2>Status</h2>
+    <p>O Luro cumpriu o objetivo: aprender segurança e engenharia de software na prática, construindo algo real do zero. A maior lição foi que o desafio de um SaaS não é a engenharia, e sim a distribuição. O projeto está em produção e congelado intencionalmente.</p>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

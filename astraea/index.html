@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astraea — Alexandre Arnoni</title>
+<meta name="description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
+<meta property="og:title" content="Astraea — Alexandre Arnoni">
+<meta property="og:description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/astraea/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-astraea.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// monitoramento em tempo real</p>
+      <h1 class="proj-title">Astraea</h1>
+      <p class="proj-subtitle">Pipeline end-to-end de monitoramento de objetos próximos à Terra e eventos solares, com ingestão via NASA APIs, transformação com dbt Core, classificação de risco com Random Forest e API pública REST.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://astraea.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Dashboard</a>
+        <a class="proj-cta-secondary" href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">Ver API</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/astraea" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+      </div>
+    </div>
+
+    <div class="hub-hero-right" aria-hidden="true">
+      <div class="hub-panel" id="astraea-panel">
+        <div class="hub-panel-header">
+          <span class="hub-panel-title">Astraea · NEO Feed</span>
+          <span class="hub-panel-live"><span class="hub-live-dot" aria-hidden="true"></span>live</span>
+        </div>
+        <div id="neo-rows">
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2024 YR4</span>
+            <span class="hub-panel-dist">0.0031 AU</span>
+            <span class="hub-badge hub-badge-high">ALTO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2023 BU</span>
+            <span class="hub-panel-dist">0.0142 AU</span>
+            <span class="hub-badge hub-badge-mid">MÉDIO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2021 QM1</span>
+            <span class="hub-panel-dist">0.0287 AU</span>
+            <span class="hub-badge hub-badge-low">BAIXO</span>
+          </div>
+          <div class="hub-panel-row">
+            <span class="hub-panel-obj">2020 NK1</span>
+            <span class="hub-panel-dist">0.0094 AU</span>
+            <span class="hub-badge hub-badge-high">ALTO</span>
+          </div>
+        </div>
+        <div class="hub-stats">
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-asteroids">—</div>
+            <div class="hub-stat-label">asteroides</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-hazardous">—</div>
+            <div class="hub-stat-label">perigosos (PHA)</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-solar">—</div>
+            <div class="hub-stat-label">eventos solares</div>
+          </div>
+        </div>
+        <div class="hub-panel-footer">
+          <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="proj-stats reveal" role="region" aria-label="Estatísticas do sistema">
+    <div class="proj-stats-inner">
+      <div class="proj-stat">
+        <span class="proj-stat-value" id="proj-stat-asteroids">—</span>
+        <span class="proj-stat-label">Asteroides rastreados</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-value" id="proj-stat-hazardous">—</span>
+        <span class="proj-stat-label">Potencialmente perigosos</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-value" id="proj-stat-solar">—</span>
+        <span class="proj-stat-label">Eventos solares</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="proj-features reveal" aria-labelledby="features-title">
+    <div class="proj-section-header">
+      <h2 id="features-title">Funcionalidades</h2>
+    </div>
+    <div class="proj-feature-grid">
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🔄</span>
+        <h3>Pipeline de Dados</h3>
+        <p>Ingestão diária via NASA NeoWs + DONKI APIs, transformação em camadas staging/mart com dbt Core, PostgreSQL como storage central.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🧠</span>
+        <h3>ML Risk Scoring</h3>
+        <p>Random Forest treinado em dados históricos de aproximação. Classifica cada asteroide em baixo/médio/alto risco usando 7 features orbitais.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🌐</span>
+        <h3>API Pública REST</h3>
+        <p>8 endpoints documentados, rate limiting de 60 req/min por IP, dados em tempo real atualizados diariamente. Acesse via <a href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">astraea-api.alexarnoni.com/docs</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">dbt Core</span>
+        <span class="proj-stack-badge">scikit-learn</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">Docker</span>
+        <span class="proj-stack-badge">Nginx</span>
+        <span class="proj-stack-badge">Oracle VM</span>
+        <span class="proj-stack-badge">NASA APIs</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const [statsRes, asteroidsRes] = await Promise.all([
+        fetch('https://astraea-api.alexarnoni.com/v1/stats/summary'),
+        fetch('https://astraea-api.alexarnoni.com/v1/asteroids/upcoming')
+      ]);
+
+      const stats = await statsRes.json();
+      const asteroids = await asteroidsRes.json();
+
+      // Stats bar
+      document.getElementById('proj-stat-asteroids').textContent = stats.total_asteroids;
+      document.getElementById('proj-stat-hazardous').textContent = stats.hazardous_count;
+      document.getElementById('proj-stat-solar').textContent = stats.total_solar_events;
+
+      // Painel NEO Feed
+      const top4 = [...asteroids]
+        .sort((a, b) => a.miss_distance_km - b.miss_distance_km)
+        .slice(0, 4);
+
+      const rows = document.getElementById('neo-rows');
+      rows.innerHTML = top4.map(a => {
+        const distAU = (a.miss_distance_km / 149597870.7).toFixed(4);
+        const riskClass = a.risk_label_ml === 'alto' ? 'hub-badge-high'
+          : a.risk_label_ml === 'médio' ? 'hub-badge-mid'
+          : 'hub-badge-low';
+        const riskLabel = a.risk_label_ml === 'alto' ? 'ALTO'
+          : a.risk_label_ml === 'médio' ? 'MÉDIO'
+          : 'BAIXO';
+        const name = a.name.replace(/[()]/g, '').trim();
+
+        return `<div class="hub-panel-row">
+          <span class="hub-panel-obj">${name}</span>
+          <span class="hub-panel-dist">${distAU} AU</span>
+          <span class="hub-badge ${riskClass}">${riskLabel}</span>
+        </div>`;
+      }).join('');
+
+      // Stats do painel
+      document.getElementById('stat-asteroids').textContent = stats.total_asteroids;
+      document.getElementById('stat-hazardous').textContent = stats.hazardous_count;
+      document.getElementById('stat-solar').textContent = stats.total_solar_events;
+
+    } catch (e) {
+      console.warn('[Astraea] API indisponível, usando fallback.');
+    }
+  });
+</script>
+</body>
+</html>
