@@ -302,7 +302,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-section {
   padding: 5.5rem 0;
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 2px solid var(--c-bg-dark);
 }
 
 .hub-section:last-of-type {
@@ -1399,6 +1399,22 @@ html.nav-overflow .nav-toggle {
   border-color: #2a2a4a;
 }
 
+[data-theme="dark"] .hub-section {
+  border-bottom-color: #3a3a5a;
+}
+
+[data-theme="dark"] .hub-proj-grid {
+  background: #3a3a5a;
+}
+
+[data-theme="dark"] .hub-exp-row {
+  border-bottom-color: #3a3a5a;
+}
+
+[data-theme="dark"] .hub-proj-footer {
+  border-top-color: #3a3a5a;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--c-border);
@@ -1680,68 +1696,6 @@ html.nav-overflow .nav-toggle {
     opacity: 1;
     transform: none;
   }
-}
-
-/* === Dark Mode ============================================= */
-
-[data-theme="dark"] {
-  --c-bg:              #0f0f1a;
-  --c-bg-card:         #16162a;
-  --c-bg-dark:         #e8e8ff;
-  --c-text:            #f0f0ff;
-  --c-text-mid:        #c0c0e0;
-  --c-text-dim:        #9090c0;
-  --c-text-muted:      #6060a0;
-  --c-accent:          #9090c0;
-  --c-soft:            #5050a0;
-  --c-border:          #2a2a4a;
-  --c-surface:         #1a1a2e;
-  --c-hover:           #1e1e35;
-  --c-live:            #2d9a5f;
-  --c-badge-high-bg:   #3a1a1a;
-  --c-badge-high-text: #ff8080;
-  --c-badge-mid-bg:    #2a2010;
-  --c-badge-mid-text:  #ffb060;
-  --c-badge-low-bg:    #0a2a1a;
-  --c-badge-low-text:  #60c090;
-}
-
-[data-theme="dark"] .site-header {
-  background: rgba(15,15,26,0.92);
-  border-color: #2a2a4a;
-}
-
-[data-theme="dark"] .hub-proj-main {
-  background: #1a1a35;
-}
-
-[data-theme="dark"] .hub-proj-main:hover {
-  background: #202040;
-}
-
-[data-theme="dark"] .site-nav.is-open {
-  background: rgba(15,15,26,0.98);
-  border-color: #2a2a4a;
-}
-
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--c-border);
-  border-radius: 980px;
-  padding: 4px 10px;
-  cursor: pointer;
-  color: var(--c-text-muted);
-  font-size: 14px;
-  line-height: 1;
-  transition: border-color 0.2s, color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle:hover {
-  border-color: var(--c-accent);
-  color: var(--c-text);
 }
 
 /* ── Language toggle ── */
