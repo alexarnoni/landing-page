@@ -22,25 +22,3 @@
     </nav>
   </div>
 </header>
-
-<script>
-  document.addEventListener('partials:ready', function() {
-    const langLink = document.getElementById('lang-link');
-    if (!langLink) return;
-
-    const path = window.location.pathname;
-
-    if (path.startsWith('/en/')) {
-      langLink.textContent = 'PT';
-      const ptPath = path.replace('/en/', '/');
-      langLink.href = ptPath === '/' ? '/' : ptPath;
-    } else {
-      langLink.textContent = 'EN';
-      if (path === '/' || path === '') {
-        langLink.href = '/en/';
-      } else {
-        langLink.href = '/en' + path;
-      }
-    }
-  });
-</script>

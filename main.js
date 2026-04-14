@@ -1,20 +1,17 @@
 /**
  * main.js — alexarnoni.com
  *
- * 5 funcionalidades:
+ * 6 funcionalidades:
  *   1. Copyright dinâmico
  *   2. Nav overflow (+ debounce)
  *   3. Mobile menu toggle
  *   4. Reveal animation (IntersectionObserver)
  *   5. Astraea live data (API → painel NEO Feed)
+ *   6. Lang link (EN/PT toggle)
  */
 
 // ─── Utilitários ────────────────────────────────────────────
 
-/**
- * Debounce genérico — adia a execução de `func` até que
- * `wait` ms tenham passado sem nova chamada.
- */
 function debounce(func, wait = 150) {
   let timeout;
   return function executedFunction(...args) {
@@ -29,7 +26,6 @@ function debounce(func, wait = 150) {
 
 // ─── 1. Copyright dinâmico ──────────────────────────────────
 
-/** Atualiza todos os elementos .js-year com o ano corrente. */
 function updateCopyrightYear() {
   const year = new Date().getFullYear();
   document.querySelectorAll('.js-year').forEach(el => {
@@ -39,10 +35,6 @@ function updateCopyrightYear() {
 
 // ─── 2. Nav Overflow ────────────────────────────────────────
 
-/**
- * Verifica se os itens de navegação cabem na largura disponível.
- * Adiciona/remove a classe `nav-overflow` no <html> conforme necessário.
- */
 function checkNavOverflow() {
   const navContainer = document.querySelector('.nav-container');
   const brand = document.querySelector('.brand');
@@ -65,7 +57,6 @@ const debouncedCheckNavOverflow = debounce(checkNavOverflow, 150);
 
 // ─── 3. Mobile Menu Toggle ──────────────────────────────────
 
-/** Inicializa o toggle do menu mobile com acessibilidade completa. */
 function initMobileMenu() {
   const toggle = document.querySelector('[data-nav-toggle]');
   const menu = document.querySelector('[data-nav-menu]');
@@ -74,7 +65,6 @@ function initMobileMenu() {
 
   const MOBILE_BREAKPOINT = 768;
 
-  /** Define o estado aberto/fechado do menu e atualiza atributos ARIA. */
   const setMenuState = (open) => {
     menu.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
@@ -82,13 +72,11 @@ function initMobileMenu() {
     toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
   };
 
-  // Toggle ao clicar no botão
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
     setMenuState(!isOpen);
   });
 
-  // Fecha com Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
       setMenuState(false);
@@ -96,14 +84,12 @@ function initMobileMenu() {
     }
   });
 
-  // Fecha ao clicar em link dentro do menu (mobile)
   menu.addEventListener('click', (e) => {
     if (e.target.closest('a')) {
       setMenuState(false);
     }
   });
 
-  // Resize: reseta estado ao sair do breakpoint mobile
   window.addEventListener('resize', () => {
     if (window.innerWidth > MOBILE_BREAKPOINT) {
       menu.classList.remove('is-open');
@@ -116,10 +102,6 @@ function initMobileMenu() {
 
 // ─── 4. Reveal Animation ───────────────────────────────────
 
-/**
- * Observa elementos com classe `.reveal` e adiciona `.visible`
- * quando entram no viewport.
- */
 function initReveal() {
   const elements = document.querySelectorAll('.reveal');
   if (!elements.length) return;
@@ -144,10 +126,6 @@ function initReveal() {
 
 // ─── 5. Astraea Live Data ───────────────────────────────────
 
-/**
- * Busca dados da API Astraea e atualiza o painel NEO Feed
- * e as stats. Fallback silencioso se a API estiver fora.
- */
 async function loadAstraeaData() {
   const panel = document.getElementById('astraea-panel');
   if (!panel) return;
@@ -161,12 +139,10 @@ async function loadAstraeaData() {
     const stats = await statsRes.json();
     const asteroids = await asteroidsRes.json();
 
-    // Stats
     document.getElementById('stat-asteroids').textContent = stats.total_asteroids;
     document.getElementById('stat-hazardous').textContent = stats.hazardous_count;
     document.getElementById('stat-solar').textContent = stats.total_solar_events;
 
-    // Painel — 4 mais próximos por miss_distance_km
     const top4 = [...asteroids]
       .sort((a, b) => a.miss_distance_km - b.miss_distance_km)
       .slice(0, 4);
@@ -189,8 +165,29 @@ async function loadAstraeaData() {
       </div>`;
     }).join('');
   } catch (e) {
-    // falha silenciosa — fallback já está no HTML
     console.warn('[Astraea] API indisponível, usando fallback.');
+  }
+}
+
+// ─── 6. Lang Link ───────────────────────────────────────────
+
+function updateLangLink() {
+  const langLink = document.getElementById('lang-link');
+  if (!langLink) return;
+
+  const path = window.location.pathname;
+
+  if (path.startsWith('/en/')) {
+    langLink.textContent = 'PT';
+    const ptPath = path.replace('/en/', '/');
+    langLink.href = ptPath || '/';
+  } else {
+    langLink.textContent = 'EN';
+    if (path === '/' || path === '') {
+      langLink.href = '/en/';
+    } else {
+      langLink.href = '/en' + path;
+    }
   }
 }
 
@@ -202,15 +199,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initReveal();
   loadAstraeaData();
+  updateLangLink();
 });
 
-// Reinicializa após injeção dos partials (header/footer)
 document.addEventListener('partials:ready', () => {
   updateCopyrightYear();
   checkNavOverflow();
   initMobileMenu();
   initReveal();
+  updateLangLink();
 });
 
-// Nav overflow no resize (debounced)
 window.addEventListener('resize', debouncedCheckNavOverflow);
