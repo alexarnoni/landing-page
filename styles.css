@@ -420,6 +420,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-about {
   margin-top: 1rem;
+  grid-column: 1 / -1;
 }
 
 .hub-about-label {
@@ -716,6 +717,8 @@ html.nav-overflow .nav-toggle {
   align-items: center;
   padding-top: 1rem;
   border-top: 1px solid var(--c-border);
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .hub-proj-main .hub-proj-footer {
