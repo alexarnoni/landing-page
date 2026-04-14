@@ -742,7 +742,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-proj-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--c-accent);
   display: flex;
   align-items: center;
