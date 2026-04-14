@@ -191,9 +191,47 @@ function updateLangLink() {
   }
 }
 
+// ─── 7. Dark Mode ───────────────────────────────────────────
+
+function initTheme() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeButton(theme);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  btn.setAttribute('aria-label', theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro');
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
 // ─── Inicialização ─────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   updateCopyrightYear();
   checkNavOverflow();
   initMobileMenu();
@@ -208,6 +246,8 @@ document.addEventListener('partials:ready', () => {
   initMobileMenu();
   initReveal();
   updateLangLink();
+  initThemeToggle();
+  updateThemeButton(document.documentElement.getAttribute('data-theme') || 'light');
 });
 
 window.addEventListener('resize', debouncedCheckNavOverflow);
