@@ -1,50 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f0d09"/>
-      <stop offset="100%" stop-color="#1a1610"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c9a84c"/>
-      <stop offset="100%" stop-color="#a07828"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="1200" height="630" fill="url(#bg)"/>
-
-  <!-- Texture lines -->
-  <g stroke="#c9a84c" stroke-opacity="0.03" stroke-width="1">
+  <rect width="1200" height="630" fill="#F8F8FA"/>
+  <g stroke="#555584" stroke-opacity="0.06" stroke-width="1">
     <line x1="0" y1="105" x2="1200" y2="105"/>
     <line x1="0" y1="210" x2="1200" y2="210"/>
     <line x1="0" y1="315" x2="1200" y2="315"/>
     <line x1="0" y1="420" x2="1200" y2="420"/>
     <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
-
-  <!-- Diagonal texture -->
-  <g stroke="#c9a84c" stroke-opacity="0.02" stroke-width="1">
-    <line x1="0" y1="0" x2="630" y2="630"/>
-    <line x1="200" y1="0" x2="830" y2="630"/>
-    <line x1="400" y1="0" x2="1030" y2="630"/>
-    <line x1="600" y1="0" x2="1200" y2="600"/>
-  </g>
-
-  <!-- Glow -->
-  <ellipse cx="300" cy="250" rx="400" ry="300" fill="#c9a84c" fill-opacity="0.06"/>
-
-  <!-- Accent line -->
-  <rect x="80" y="80" width="80" height="2" fill="url(#gold)"/>
-
-  <!-- Tag -->
-  <text x="80" y="140" font-family="serif" font-size="16" fill="#c9a84c" letter-spacing="6" opacity="0.8">FANTASIA ÉPICA</text>
-
-  <!-- Title -->
-  <text x="80" y="290" font-family="serif" font-size="100" font-weight="700" fill="#c9a84c" letter-spacing="2">Crônicas de</text>
-  <text x="80" y="400" font-family="serif" font-size="100" font-weight="700" fill="#e8dcc8" letter-spacing="2">Aenvar</text>
-
-  <!-- Subtitle -->
-  <text x="80" y="460" font-family="serif" font-size="22" fill="#8a7560" font-style="italic">Mitologia original · Reinos ancestrais · Escolhas que moldam o destino</text>
-
-  <!-- Domain -->
-  <text x="80" y="540" font-family="monospace" font-size="16" fill="#c9a84c" opacity="0.4" letter-spacing="2">alexarnoni.com/aenvar</text>
+  <rect x="80" y="80" width="60" height="3" fill="#555584"/>
+  <text x="80" y="140" font-family="monospace" font-size="14" fill="#555584" letter-spacing="4" opacity="0.7">FANTASIA ÉPICA · MITOLOGIA ORIGINAL</text>
+  <text x="80" y="270" font-family="sans-serif" font-size="96" font-weight="800" fill="#101033" letter-spacing="-3">CRÔNICAS</text>
+  <text x="80" y="370" font-family="sans-serif" font-size="96" font-weight="800" fill="none" stroke="#555584" stroke-width="1.5" letter-spacing="-3">DE AENVAR</text>
+  <text x="80" y="440" font-family="monospace" font-size="20" fill="#B2B2D9" letter-spacing="1">Ficção · Mitologia · Medium</text>
+  <text x="80" y="540" font-family="monospace" font-size="16" fill="#555584" opacity="0.5" letter-spacing="2">alexarnoni.com/aenvar</text>
 </svg>
