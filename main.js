@@ -262,7 +262,7 @@ window.addEventListener('resize', debouncedCheckNavOverflow);
     return;
   }
 
-  const phrases = ['Data Engineer', 'Data Analyst', 'BI Developer', 'Python Developer'];
+  const phrases = ['Data Engineer', 'Data Analyst', 'BI Developer', 'Python Developer', 'Wake up, Neo...', 'The Matrix has you...', 'Follow the white rabbit.', 'Knock, Knock, Neo.'];
   let phraseIndex = 0, charIndex = 0, deleting = false;
 
   function tick() {
