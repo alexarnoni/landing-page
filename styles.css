@@ -1723,3 +1723,16 @@ html.nav-overflow .nav-toggle {
 .hub-proj-card:not(a) {
   cursor: default;
 }
+
+/* ── Typewriter cursor ── */
+#typewriter-role::after {
+  content: '|';
+  margin-left: 2px;
+  color: var(--c-accent);
+  animation: tw-blink 0.8s step-end infinite;
+}
+
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
