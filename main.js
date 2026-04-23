@@ -251,3 +251,29 @@ document.addEventListener('partials:ready', () => {
 });
 
 window.addEventListener('resize', debouncedCheckNavOverflow);
+
+(function () {
+  const el = document.getElementById('typewriter-role');
+  if (!el) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = 'Data Engineer';
+    return;
+  }
+
+  const phrases = ['Data Engineer', 'Data Analyst', 'BI Developer', 'Python Developer'];
+  let phraseIndex = 0, charIndex = 0, deleting = false;
+
+  function tick() {
+    const current = phrases[phraseIndex];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++charIndex);
+      if (charIndex === current.length) { deleting = true; setTimeout(tick, 1800); return; }
+      setTimeout(tick, 80);
+    } else {
+      el.textContent = current.slice(0, --charIndex);
+      if (charIndex === 0) { deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(tick, 400); return; }
+      setTimeout(tick, 40);
+    }
+  }
+  tick();
+})();
