@@ -109,6 +109,18 @@ a:focus-visible {
   --c-badge-low-text: #1a7a45;
   --header-height: 5.25rem;
   --max-width: 960px;
+
+  /* Type Scale (Major Third ~1.25) */
+  --fs-xs: 0.75rem;      /* 12px — badges, labels */
+  --fs-sm: 0.8125rem;    /* 13px — nav, small buttons */
+  --fs-base: 1rem;       /* 16px — body text */
+  --fs-md: 1.125rem;     /* 18px — emphasized descriptions */
+  --fs-lg: 1.25rem;      /* 20px — card titles, subtitles */
+  --fs-xl: 1.5rem;       /* 24px — section headings */
+  --fs-2xl: 2rem;        /* 32px — page headings */
+  --fs-3xl: clamp(2.2rem, 5vw, 3.2rem); /* hero titles */
+  --fs-mono-xs: 0.625rem;  /* 10px — mono labels uppercase */
+  --fs-mono-sm: 0.6875rem; /* 11px — mono metadata */
 }
 
 /* === 3. Header Compartilhado ==================================== */
@@ -144,7 +156,7 @@ a:focus-visible {
 
 .brand {
   font-weight: 700;
-  font-size: 15px;
+  font-size: var(--fs-sm);
   color: var(--c-text);
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -163,7 +175,7 @@ a:focus-visible {
 }
 
 .nav-list a {
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--c-text-muted);
   padding: 0.5rem 0.75rem;
   transition: color 0.2s;
@@ -180,7 +192,7 @@ a:focus-visible {
   border: 1px solid var(--c-border);
   background: var(--c-bg);
   color: var(--c-text);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-weight: 500;
   padding: 6px 14px;
   border-radius: 980px;
@@ -255,13 +267,13 @@ html.nav-overflow .nav-toggle {
 
 .footer-copy {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
 }
 
 .site-tagline {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
 }
 
@@ -273,7 +285,7 @@ html.nav-overflow .nav-toggle {
 
 .footer-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   transition: color 0.2s;
   display: inline-flex;
@@ -318,13 +330,13 @@ html.nav-overflow .nav-toggle {
 
 .hub-sec-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   letter-spacing: 1px;
 }
 
 .hub-sec-title {
-  font-size: 1.5rem;
+  font-size: var(--fs-xl);
   font-weight: 800;
   color: var(--c-text);
   letter-spacing: -0.5px;
@@ -363,7 +375,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-hero-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-accent);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -383,7 +395,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-hero-loc {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   margin-left: auto;
 }
@@ -405,7 +417,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-hero-desc {
-  font-size: 1.2rem;
+  font-size: var(--fs-md);
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -425,7 +437,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-about-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-soft);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -433,7 +445,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-about-text {
-  font-size: 1.05rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.7;
 }
@@ -445,7 +457,7 @@ html.nav-overflow .nav-toggle {
   gap: 8px;
   background: var(--c-text);
   color: var(--c-bg);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   padding: 12px 28px;
   border-radius: 980px;
@@ -463,7 +475,7 @@ html.nav-overflow .nav-toggle {
   background: transparent;
   border: 1px solid var(--c-border);
   color: var(--c-text);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   padding: 12px 28px;
   border-radius: 980px;
@@ -504,7 +516,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-panel-title {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   font-weight: 500;
   color: var(--c-text);
   text-transform: uppercase;
@@ -516,7 +528,7 @@ html.nav-overflow .nav-toggle {
   align-items: center;
   gap: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-live);
 }
 
@@ -539,7 +551,7 @@ html.nav-overflow .nav-toggle {
   align-items: center;
   padding: 0.65rem 1.25rem;
   border-bottom: 1px solid var(--c-border);
-  font-size: 13px;
+  font-size: var(--fs-sm);
 }
 
 .hub-panel-row:last-child {
@@ -553,13 +565,13 @@ html.nav-overflow .nav-toggle {
 
 .hub-panel-dist {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-text-dim);
 }
 
 .hub-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
+  font-size: var(--fs-mono-xs);
   font-weight: 500;
   padding: 2px 8px;
   border-radius: 4px;
@@ -592,7 +604,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-panel-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-accent);
   transition: color 0.2s;
 }
@@ -616,14 +628,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-stat-val {
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   font-weight: 800;
   color: var(--c-bg-dark);
 }
 
 .hub-stat-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-soft);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -690,7 +702,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-proj-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-accent);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -698,13 +710,13 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-proj-name {
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hub-proj-desc {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.6;
   margin-bottom: auto;
@@ -733,7 +745,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-proj-pill {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   padding: 3px 8px;
   border: 1px solid var(--c-border);
   border-radius: 6px;
@@ -742,7 +754,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-proj-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--c-accent);
   display: flex;
   align-items: center;
@@ -775,7 +787,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-exp-date {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   padding-top: 2px;
 }
@@ -787,13 +799,13 @@ html.nav-overflow .nav-toggle {
 }
 
 .hub-exp-org {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-mid);
   margin-bottom: 4px;
 }
 
 .hub-exp-desc {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.6;
 }
@@ -809,7 +821,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-stack-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-soft);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -824,7 +836,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-stack-pill {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   padding: 6px 12px;
   border: 1px solid var(--c-border);
   border-radius: 8px;
@@ -834,7 +846,7 @@ html.nav-overflow .nav-toggle {
 
 /* Contato */
 .hub-contact-desc {
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 2rem;
@@ -850,7 +862,7 @@ html.nav-overflow .nav-toggle {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 15px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--c-text);
   padding: 10px 20px;
@@ -870,7 +882,7 @@ html.nav-overflow .nav-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   flex-shrink: 0;
 }
 
@@ -882,7 +894,7 @@ html.nav-overflow .nav-toggle {
 
 .hub-footer p {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
 }
 
@@ -901,7 +913,7 @@ html.nav-overflow .nav-toggle {
 
 .proj-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-accent);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -909,7 +921,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .proj-title {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: var(--fs-3xl);
   font-weight: 800;
   line-height: 1.1;
   color: var(--c-text);
@@ -917,7 +929,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .proj-subtitle {
-  font-size: 1.15rem;
+  font-size: var(--fs-md);
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -936,7 +948,7 @@ html.nav-overflow .nav-toggle {
   gap: 8px;
   background: var(--c-text);
   color: var(--c-bg);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   padding: 10px 24px;
   border-radius: 980px;
@@ -954,7 +966,7 @@ html.nav-overflow .nav-toggle {
   background: transparent;
   border: 1px solid var(--c-border);
   color: var(--c-text);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   padding: 10px 24px;
   border-radius: 980px;
@@ -995,14 +1007,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .proj-stat-value {
-  font-size: 1.3rem;
+  font-size: var(--fs-lg);
   font-weight: 800;
   color: var(--c-bg-dark);
 }
 
 .proj-stat-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-soft);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1022,14 +1034,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .proj-section-title {
-  font-size: 1.3rem;
+  font-size: var(--fs-xl);
   font-weight: 800;
   color: var(--c-text);
 }
 
 .proj-section-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   letter-spacing: 1px;
 }
@@ -1057,18 +1069,18 @@ html.nav-overflow .nav-toggle {
   border: 1px solid var(--c-border);
   border-radius: 8px;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
 }
 
 .proj-feature-card h3 {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 700;
   color: var(--c-text);
   margin-bottom: 0.5rem;
 }
 
 .proj-feature-card p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.6;
 }
@@ -1087,7 +1099,7 @@ html.nav-overflow .nav-toggle {
 
 .proj-stack-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-soft);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -1102,7 +1114,7 @@ html.nav-overflow .nav-toggle {
 
 .proj-stack-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   padding: 6px 12px;
   border: 1px solid var(--c-border);
   border-radius: 8px;
@@ -1117,7 +1129,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .proj-status p {
-  font-size: 1.05rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.7;
 }
@@ -1131,7 +1143,7 @@ html.nav-overflow .nav-toggle {
 
 .about-hero-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-accent);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -1151,13 +1163,13 @@ html.nav-overflow .nav-toggle {
 
 .about-hero-loc {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   color: var(--c-soft);
   margin-left: auto;
 }
 
 .about-hero-name {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: var(--fs-3xl);
   font-weight: 800;
   line-height: 1.1;
   color: var(--c-text);
@@ -1165,7 +1177,7 @@ html.nav-overflow .nav-toggle {
 }
 
 .about-hero-desc {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-mid);
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -1183,7 +1195,7 @@ html.nav-overflow .nav-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-weight: 500;
   color: var(--c-text);
   padding: 8px 16px;
@@ -1212,7 +1224,7 @@ html.nav-overflow .nav-toggle {
 
 .about-edu-degree {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-mono-xs);
   color: var(--c-accent);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1220,14 +1232,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .about-edu-name {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 700;
   color: var(--c-text);
   margin-bottom: 0.25rem;
 }
 
 .about-edu-inst {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
 }
 
@@ -1260,14 +1272,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .aenvar-leitura-card h3 {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 700;
   color: var(--c-text);
   margin-bottom: 0.5rem;
 }
 
 .aenvar-leitura-card p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.6;
 }
@@ -1286,14 +1298,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .aenvar-feature-card h3 {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 700;
   color: var(--c-text);
   margin-bottom: 0.5rem;
 }
 
 .aenvar-feature-card p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--c-text-dim);
   line-height: 1.6;
 }
@@ -1319,14 +1331,14 @@ html.nav-overflow .nav-toggle {
 }
 
 .not-found-title {
-  font-size: 1.5rem;
+  font-size: var(--fs-xl);
   font-weight: 800;
   color: var(--c-text);
   margin-top: 1rem;
 }
 
 .not-found-desc {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--c-text-mid);
   margin-top: 0.75rem;
   line-height: 1.6;
@@ -1337,7 +1349,7 @@ html.nav-overflow .nav-toggle {
   align-items: center;
   gap: 8px;
   margin-top: 2rem;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--c-accent);
   transition: color 0.2s;
@@ -1425,7 +1437,7 @@ html.nav-overflow .nav-toggle {
   padding: 4px 10px;
   cursor: pointer;
   color: var(--c-text-muted);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   line-height: 1;
   transition: border-color 0.2s, color 0.2s;
   display: flex;
@@ -1537,7 +1549,7 @@ html.nav-overflow .nav-toggle {
 
   .hub-panel-row {
     padding: 0.65rem 1rem;
-    font-size: 12px;
+    font-size: var(--fs-xs);
   }
 
   .hub-panel-header {
@@ -1549,15 +1561,15 @@ html.nav-overflow .nav-toggle {
   }
 
   .hub-panel-obj {
-    font-size: 12px;
+    font-size: var(--fs-xs);
   }
 
   .hub-panel-dist {
-    font-size: 10px;
+    font-size: var(--fs-mono-xs);
   }
 
   .hub-badge {
-    font-size: 8px;
+    font-size: 0.5rem;
   }
 
   /* Force hamburger on mobile */
@@ -1600,7 +1612,7 @@ html.nav-overflow .nav-toggle {
   .site-nav.is-open .nav-list a {
     display: block;
     padding: 0.85rem 0;
-    font-size: 15px;
+    font-size: var(--fs-sm);
     color: var(--c-text);
   }
 }
@@ -1647,11 +1659,11 @@ html.nav-overflow .nav-toggle {
   }
 
   .hub-stat-val {
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
   }
 
   .hub-stat-label {
-    font-size: 9px;
+    font-size: 0.5625rem;
   }
 
   .hub-hero-name {
@@ -1663,7 +1675,7 @@ html.nav-overflow .nav-toggle {
   }
 
   .hub-hero-desc {
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
   }
 
   .not-found-code {
@@ -1704,7 +1716,7 @@ html.nav-overflow .nav-toggle {
 /* ── Language toggle ── */
 .lang-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-mono-sm);
   font-weight: 500;
   color: var(--c-accent);
   border: 1px solid var(--c-border);
