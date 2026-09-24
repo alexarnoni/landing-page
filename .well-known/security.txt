@@ -1,0 +1,4 @@
+Contact: mailto:alexandre.anf@gmail.com
+Expires: 2027-09-24T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://alexarnoni.com/.well-known/security.txt
