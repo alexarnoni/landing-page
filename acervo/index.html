@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acervo — Alexandre Arnoni</title>
+<meta name="description" content="Acervo transforma 12 anos de histórico de escuta musical em um pipeline de dados e um dashboard público que conta como o gosto mudou ao longo do tempo.">
+<meta property="og:title" content="Acervo — Alexandre Arnoni">
+<meta property="og:description" content="Acervo transforma 12 anos de histórico de escuta musical em um pipeline de dados e um dashboard público que conta como o gosto mudou ao longo do tempo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/acervo/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-acervo.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// 12 anos de escuta · ~413 mil registros</p>
+      <h1 class="proj-title">Acervo</h1>
+      <p class="proj-subtitle">Engenharia e análise de dados sobre o meu próprio histórico de escuta musical, de 2014 a 2026. Um pipeline em Python limpa cerca de 413 mil registros do export estendido do Spotify e modela o resultado em esquema estrela, com validação de chaves e testes. O mesmo modelo alimenta um relatório em Power BI e uma API FastAPI somente leitura.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://musica.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Dashboard</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/escuta" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="proj-features reveal" aria-labelledby="features-title">
+    <div class="proj-section-header">
+      <h2 id="features-title">Funcionalidades</h2>
+    </div>
+    <div class="proj-feature-grid">
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">📖</span>
+        <h3>Narrativa em 5 capítulos</h3>
+        <p>Texto e números gerados diretamente do banco, então acompanham qualquer reprocessamento. Mostra, por exemplo, o artista mais ouvido caindo de 36% das horas em 2020 para 10% em 2025, enquanto os artistas novos por ano sobem de 76 (2019) para 401 (2025).</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🔍</span>
+        <h3>Qualidade de dados na prática</h3>
+        <p>O campo de "skip" do export estava vazio em 2017–2021, o que fazia a taxa parecer 0%. A métrica passou a ser derivada do evento de encerramento, e escutas de terceiros (uma conta emprestada) foram removidas por janelas de data.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🗓</span>
+        <h3>Heatmap & rankings</h3>
+        <p>Visualizações de hábitos de escuta ao longo dos anos, rankings de artistas e faixas, e um diagrama do próprio pipeline — do export bruto até o dashboard público.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">pandas</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">Power BI</span>
+        <span class="proj-stack-badge">Docker Compose</span>
+        <span class="proj-stack-badge">nginx</span>
+        <span class="proj-stack-badge">Chart.js</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="proj-status reveal">
+    <h2>Sobre os dados</h2>
+    <p>Só resultados agregados são publicados — o export bruto do Spotify nunca vai para o repositório. O site final é estático e mostra a narrativa em cinco capítulos, o heatmap, os rankings e o diagrama do pipeline gerados a partir dos dados já tratados.</p>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encore — Alexandre Arnoni</title>
+<meta name="description" content="Encore mede como sete bandas usam o próprio catálogo em shows ao vivo — repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.">
+<meta property="og:title" content="Encore — Alexandre Arnoni">
+<meta property="og:description" content="Encore mede como sete bandas usam o próprio catálogo em shows ao vivo — repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/encore/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-encore.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// Setlists & discografia · em produção</p>
+      <h1 class="proj-title">Encore</h1>
+      <p class="proj-subtitle">Analiso como Arctic Monkeys, Oasis, Linkin Park, Twenty One Pilots, Muse, Metallica e Avenged Sevenfold usam a própria discografia em shows ao vivo. A partir de dados de setlists (setlist.fm) e discografia (MusicBrainz), o pipeline calcula três métricas centrais: idade do repertório, rotação entre shows e sobrevivência de músicas ao longo da carreira, usando análise de sobrevivência Kaplan-Meier.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://encore.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Plataforma</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/encore-setlist-analytics" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="proj-features reveal" aria-labelledby="features-title">
+    <div class="proj-section-header">
+      <h2 id="features-title">Métricas</h2>
+      <p>Três lentes sobre como cada banda usa o próprio catálogo ao vivo.</p>
+    </div>
+    <div class="proj-feature-grid">
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🕰</span>
+        <h3>Idade do repertório</h3>
+        <p>Mede, ano a ano, o quão "recentes" são as músicas tocadas em cada show. Revela padrões como o de Metallica: a cada álbum novo, o repertório rejuvenesce temporariamente e volta a envelhecer até o próximo lançamento.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">🔁</span>
+        <h3>Rotação</h3>
+        <p>Compara shows noite a noite: a banda muda o setlist ou repete a mesma sequência em toda a turnê? A métrica separa artistas fiéis a um roteiro fixo de artistas que variam a cada apresentação.</p>
+      </article>
+      <article class="proj-feature-card">
+        <span class="proj-feature-icon" aria-hidden="true">📉</span>
+        <h3>Sobrevivência de repertório</h3>
+        <p>Usando Kaplan-Meier, mostra quantas músicas de cada álbum ainda são tocadas centenas de shows depois do lançamento — tratando corretamente os casos censurados: músicas ainda tocadas ou que sumiram e voltaram.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">Apache Airflow</span>
+        <span class="proj-stack-badge">dbt Core</span>
+        <span class="proj-stack-badge">pandas</span>
+        <span class="proj-stack-badge">lifelines</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">Docker Compose</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="proj-status reveal">
+    <h2>Sobre os dados</h2>
+    <p>O pipeline roda em Airflow (LocalExecutor) e modela staging, intermediate e marts em dbt Core sobre PostgreSQL. Os dados brutos do setlist.fm nunca são armazenados — apenas agregados são publicados, respeitando a política de uso não comercial da API. O site final é estático, bilíngue (pt-BR/en) e gerado diretamente a partir dos marts analíticos.</p>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>
