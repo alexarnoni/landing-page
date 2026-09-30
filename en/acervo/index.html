@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acervo | Alexandre Arnoni</title>
+<meta name="description" content="Data engineering and analysis of 12 years of music listening history.">
+<meta property="og:title" content="Acervo | Alexandre Arnoni">
+<meta property="og:description" content="Data engineering and analysis of 12 years of music listening history.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/en/acervo/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-acervo.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/acervo/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/acervo/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Skip to content</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// 12 years of listening · ~413k records</p>
+      <h1 class="proj-title">Acervo</h1>
+      <p class="proj-subtitle">Data engineering and analysis of my own music listening history, from 2014 to 2026.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://musica.alexarnoni.com" target="_blank" rel="noopener noreferrer">Open Dashboard</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/acervo" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Problem</h2>
+    <p>How has my listening behavior changed over 12 years? Acervo answers it with my own music listening history, from 2014 to 2026.</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Data</h2>
+    <p>The base is about 413,000 raw events from Spotify's extended streaming history export (2014-2026). Cleaning separated podcasts, removed noise and duplicates, and discarded IP and location.</p>
+    <h3>Data quality</h3>
+    <ul>
+      <li>The skip field came back zeroed for 2017-2021, so the metric is now derived from the forward button.</li>
+      <li>768 plays from someone else (a borrowed account) were removed by date windows.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Technical decisions and trade-offs</h2>
+    <ul>
+      <li>A Python pipeline with pandas models the result as a star schema, with key validation and tests.</li>
+      <li>The analyses include eras detected automatically by dynamic programming with Hellinger distance, Kaplan-Meier by artist generation, and rediscoveries.</li>
+      <li data-flag="ACERVO_POWERBI_READY=false">The same model is ready for Power BI (M queries and DAX measures) and feeds a read-only FastAPI API.</li>
+      <li data-flag="ACERVO_POWERBI_READY=true" hidden>The same model feeds a Power BI report, already delivered, and a read-only FastAPI API.</li>
+      <li>The published site is static, reading JSON generated from the cleaned data. The API only runs locally.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Result</h2>
+    <p>Two findings already shown on the published dashboard: the top artist's share dropped from 36% (2020) to 10% (2025), and new artists per year rose from 76 (2019) to 401 (2025).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Limitations</h2>
+    <ul>
+      <li>The 2017-2021 skip rate is derived, not measured: the original field was empty in those years.</li>
+      <li>Only aggregated results are published. The raw Spotify export never goes into the repository.</li>
+    </ul>
+  </section>
+
+  <!-- STACK E LINKS -->
+  <div class="proj-stack reveal" role="region" aria-label="Technologies used">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack and links</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">pandas</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge" data-flag="ACERVO_POWERBI_READY=true" hidden>Power BI</span>
+        <span class="proj-stack-badge">JavaScript</span>
+        <span class="proj-stack-badge">Chart.js</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+      </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://musica.alexarnoni.com" target="_blank" rel="noopener noreferrer">dashboard</a></li>
+        <li><a href="https://github.com/alexarnoni/acervo" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

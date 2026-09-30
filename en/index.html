@@ -46,7 +46,7 @@
 <main id="main">
 <div class="hub-wrap">
 
-<p class="lang-banner">Project pages are in Portuguese. Use your browser's translation feature for the full experience — or <a href="/">switch to Portuguese</a>.</p>
+<p class="lang-banner">Luro and Crônicas de Aenvar are only available in Portuguese. Use your browser's translation feature, or <a href="/">switch to Portuguese</a>.</p>
 
 <!-- HERO -->
 <div class="hub-hero reveal">
@@ -58,39 +58,47 @@
   </div>
   <h1 class="hub-hero-name">Alexandre<br>Arnoni</h1>
   <div class="hub-hero-divider"></div>
-  <p class="hub-hero-desc">I monitor asteroids with NASA at night and work with public data from 350,000 people during the day. From raw data to deploy: pipelines, APIs and dashboards.</p>
+  <p class="hub-hero-desc">I monitor asteroids with NASA data at night and work with public data from 350,000 people during the day. From raw data to deploy: pipelines, APIs and dashboards.</p>
   <div class="hub-hero-ctas">
     <a href="#projects" class="hub-btn-p">View Projects</a>
     <a href="#contact" class="hub-btn-s hub-btn-s--highlight">Get in touch</a>
+      <details class="cv-menu" data-cv-menu hidden>
+        <summary class="hub-btn-s">Download CV</summary>
+        <div class="cv-menu-list"></div>
+      </details>
   </div>
 </div>
 
-<div class="hub-hero-right" aria-hidden="true">
-  <div class="hub-panel" id="astraea-panel">
-    <div class="hub-panel-header">
-      <span class="hub-panel-title">Astraea · NEO Feed</span>
-      <span class="hub-panel-live"><span class="hub-live-dot"></span>live</span>
+<div class="hub-hero-right" id="astraea-panel-wrap" aria-hidden="true" hidden>
+      <div class="hub-panel" id="astraea-panel">
+        <div class="hub-panel-header">
+          <span class="hub-panel-title">Astraea · NEO Feed</span>
+          <span class="hub-panel-live">API · daily update</span>
+        </div>
+        <div id="neo-rows"></div>
+        <div class="hub-stats">
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-asteroids">…</div>
+            <div class="hub-stat-label">close approaches</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-hazardous">…</div>
+            <div class="hub-stat-label">PHA-flagged</div>
+          </div>
+          <div class="hub-stat">
+            <div class="hub-stat-val" id="stat-solar">…</div>
+            <div class="hub-stat-label">solar events</div>
+          </div>
+        </div>
+        <div class="hub-panel-footer">
+          <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
+        </div>
+      </div>
     </div>
-    <div id="neo-rows">
-      <div class="hub-panel-row"><span class="hub-panel-obj">2026 GC</span><span class="hub-panel-dist">0.0349 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
-      <div class="hub-panel-row"><span class="hub-panel-obj">2026 FE7</span><span class="hub-panel-dist">0.0227 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
-      <div class="hub-panel-row"><span class="hub-panel-obj">2004 FG11</span><span class="hub-panel-dist">0.0565 AU</span><span class="hub-badge hub-badge-mid">MED</span></div>
-      <div class="hub-panel-row"><span class="hub-panel-obj">2024 OU</span><span class="hub-panel-dist">0.0146 AU</span><span class="hub-badge hub-badge-low">LOW</span></div>
-    </div>
-    <div class="hub-stats">
-      <div class="hub-stat"><div class="hub-stat-val" id="stat-asteroids">—</div><div class="hub-stat-label">asteroids</div></div>
-      <div class="hub-stat"><div class="hub-stat-val" id="stat-hazardous">—</div><div class="hub-stat-label">hazardous</div></div>
-      <div class="hub-stat"><div class="hub-stat-val" id="stat-solar">—</div><div class="hub-stat-label">solar events</div></div>
-    </div>
-    <div class="hub-panel-footer">
-      <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
-    </div>
-  </div>
-</div>
 
-<div class="hub-about">
+    <div class="hub-about">
   <div class="hub-about-label">about</div>
-  <p class="hub-about-text">Ten years in the public sector taught me to work with messy data, bureaucratic processes and stakeholders who don't speak SQL. Now I build the systems I never had available.</p>
+  <p class="hub-about-text">More than ten years in the public sector taught me to work with messy data, bureaucratic processes and stakeholders who don't speak SQL. Now I build the systems I never had available.</p>
 </div>
 </div>
 
@@ -101,101 +109,111 @@
   <span class="hub-sec-title">Projects</span>
 </div>
 <div class="hub-proj-grid">
-  <div class="hub-proj-card">
-    <div class="hub-proj-tag">⬡ Live</div>
-    <div class="hub-proj-name">Encore</div>
-    <div class="hub-proj-desc">I measure how seven bands use their own catalogue live — repertoire age, rotation and song survival across a career, built from real setlist data.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">Python</span>
-        <span class="hub-proj-pill">Airflow</span>
-        <span class="hub-proj-pill">dbt Core</span>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ In production</div>
+        <div class="hub-proj-name">Encore</div>
+        <div class="hub-proj-desc">I measure how seven bands use their own catalogue live: repertoire age, rotation and song survival across a career, built from real setlist data.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">Python</span>
+            <span class="hub-proj-pill">Airflow</span>
+            <span class="hub-proj-pill">dbt Core</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/encore/" class="hub-proj-link">view project →</a>
+            <a href="https://github.com/alexarnoni/encore-setlist-analytics" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;gap:12px;">
-        <a href="/encore/" class="hub-proj-link">view project →</a>
-        <a href="https://github.com/alexarnoni/encore-setlist-analytics" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ In production</div>
+        <div class="hub-proj-name">Acervo</div>
+        <div class="hub-proj-desc">I turned 12 years of my own listening history into a data pipeline and public dashboard that tells how my taste changed over time.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">Python</span>
+            <span class="hub-proj-pill">PostgreSQL</span>
+            <span class="hub-proj-pill">FastAPI</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/acervo/" class="hub-proj-link">view project →</a>
+            <a href="https://github.com/alexarnoni/acervo" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="hub-proj-card">
-    <div class="hub-proj-tag">⬡ Live</div>
-    <div class="hub-proj-name">Acervo</div>
-    <div class="hub-proj-desc">I turned 12 years of my own listening history into a data pipeline and public dashboard that tells how my taste changed over time.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">Python</span>
-        <span class="hub-proj-pill">PostgreSQL</span>
-        <span class="hub-proj-pill">FastAPI</span>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <a href="/acervo/" class="hub-proj-link">view project →</a>
-        <a href="https://github.com/alexarnoni/escuta" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
-      </div>
-    </div>
-  </div>
-  <div class="hub-proj-card hub-proj-main">
-    <div class="hub-proj-tag">⬡ Main project</div>
-    <div class="hub-proj-name">Astraea</div>
-    <div class="hub-proj-desc">I connect NASA's API to a data pipeline, classify asteroids by risk using Machine Learning and expose everything through a public REST API with 1,400+ catalogued objects.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">FastAPI</span>
-        <span class="hub-proj-pill">dbt Core</span>
-        <span class="hub-proj-pill">scikit-learn</span>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <a href="/astraea/" class="hub-proj-link">view project →</a>
-        <a href="https://github.com/alexarnoni/astraea" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
-      </div>
-    </div>
-  </div>
-  <div class="hub-proj-card">
-    <div class="hub-proj-tag">⬡ Active project</div>
-    <div class="hub-proj-name">Olheiro</div>
-    <div class="hub-proj-desc">I monitor Brazil's top football league in real time: team stats, player rankings by position and a proprietary model that surfaces high-performing undervalued players.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">FastAPI</span>
-        <span class="hub-proj-pill">PostgreSQL</span>
-        <span class="hub-proj-pill">Docker</span>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <a href="/olheiro/" class="hub-proj-link">view project →</a>
-        <a href="https://github.com/alexarnoni/scout" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ In production</div>
+        <div class="hub-proj-name">Astraea</div>
+        <div class="hub-proj-desc">I connect NASA's API to a data pipeline and expose everything through a public API. A model estimates the probability that an asteroid carries NASA's PHA flag; the risk shown comes from my own rule.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">dbt Core</span>
+            <span class="hub-proj-pill">scikit-learn</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/astraea/" class="hub-proj-link">view project →</a>
+            <a href="https://github.com/alexarnoni/astraea" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hub-proj-card">
-    <div class="hub-proj-tag">⬡ Live · 24/7</div>
-    <div class="hub-proj-name">EV+ Sports Analyzer</div>
-    <div class="hub-proj-desc">I run an odds scanner every 2 minutes across 200+ sports leagues, calculate expected value and fire automatic Telegram alerts for positive EV opportunities.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">Python</span>
-        <span class="hub-proj-pill">Odds API</span>
-        <span class="hub-proj-pill">Telegram</span>
+
+    <div class="hub-proj-group">
+      <div class="hub-proj-grid">
+      <div class="hub-proj-card">
+        <div class="hub-proj-name">Olheiro</div>
+        <div class="hub-proj-desc">Team performance analysis and talent identification for the Brazilian Série A, with data synced through the SportDB API and Garimpo, a model that rates players by position.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">PostgreSQL</span>
+            <span class="hub-proj-pill">Docker</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/olheiro/" class="hub-proj-link">view project →</a>
+            <a href="https://github.com/alexarnoni/scout" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;gap:12px;">
-        <a href="/bot/" class="hub-proj-link">ev+ →</a>
-        <a href="https://github.com/alexarnoni/bot-ev-sqlite" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
       </div>
     </div>
-  </div>
-  <div class="hub-proj-card">
-    <div class="hub-proj-tag">⬡ Architectural</div>
-    <div class="hub-proj-name">Luro</div>
-    <div class="hub-proj-desc">Started wanting to learn how to build an app from scratch. What was supposed to be simple turned into magic link auth, double CSRF, statement importer and LLM categorisation. Intentionally frozen to focus on data projects, but still running in production.</div>
-    <div class="hub-proj-footer">
-      <div class="hub-proj-stack">
-        <span class="hub-proj-pill">FastAPI</span>
-        <span class="hub-proj-pill">PostgreSQL</span>
-        <span class="hub-proj-pill">LLM</span>
+
+    <div class="hub-proj-group hub-proj-group--archive">
+      <h3 class="hub-proj-group-title">Archive</h3>
+      <div class="hub-proj-grid">
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Closed</div>
+        <div class="hub-proj-name">EV+ Sports Analyzer</div>
+        <div class="hub-proj-desc">Bot that analyzed odds across 200+ leagues, calculated expected value and sent Telegram alerts, with history in SQLite. Project closed.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">Python</span>
+            <span class="hub-proj-pill">Odds API</span>
+            <span class="hub-proj-pill">SQLite</span>
+            <span class="hub-proj-pill">Telegram</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/bot/" class="hub-proj-link">view project →</a>
+            <a href="https://github.com/alexarnoni/bot-ev-sqlite" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
       </div>
-      <a href="/finance/" class="hub-proj-link">luro →</a>
+      <div class="hub-proj-card">
+        <div class="hub-proj-name">Luro</div>
+        <div class="hub-proj-desc">Started wanting to learn how to build an app from scratch. What was supposed to be simple turned into magic link auth, double CSRF, statement importer and LLM categorisation. Intentionally frozen to focus on other projects.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">FastAPI</span>
+            <span class="hub-proj-pill">PostgreSQL</span>
+            <span class="hub-proj-pill">LLM</span>
+          </div>
+          <a href="/finance/" class="hub-proj-link">luro →</a>
+        </div>
+      </div>
+      </div>
     </div>
-  </div>
-</div>
-</section>
+  </section>
 
 <!-- SECTION 02 — EXPERIENCE -->
 <section id="experience" class="hub-section reveal">
@@ -209,7 +227,7 @@
     <div>
       <div class="hub-exp-role">Data Analyst</div>
       <div class="hub-exp-org">Praia Grande City Hall · CIDE</div>
-      <p class="hub-exp-desc">Maintaining Power BI dashboards with municipal indicators for Praia Grande (350,000 residents), consolidating data from multiple departments. Currently developing a mobile version of existing dashboards and automating data update pipelines.</p>
+      <p class="hub-exp-desc">I gather data and receive spreadsheets from city departments, clean and standardize them in Excel, and build Power BI dashboards with municipal indicators for Praia Grande (350,000 residents) across 18 thematic areas, such as demographics, health, education, public safety, mobility and environment, working alongside the CIDE team. I am also building the mobile version of the existing dashboards.</p>
     </div>
   </div>
   <div class="hub-exp-row">
@@ -229,7 +247,16 @@
     </div>
   </div>
 </div>
-</section>
+    <div class="hub-cide">
+      <h3 class="hub-cide-title">CIDE dashboards</h3>
+      <p class="hub-cide-text">Public dashboards from the CIDE team, covering 18 thematic areas of the municipality. In my day-to-day I gather data, receive spreadsheets from city departments, clean and standardize them in Excel and build the reports in Power BI, from raw data to dashboard.</p>
+      <div class="hub-cide-links">
+        <a class="hub-cide-link" href="https://www.praiagrande.sp.gov.br/atendimento/Seplan/CIDE/menucide.asp" target="_blank" rel="noopener noreferrer">CIDE data portal<small>18 thematic areas</small></a>
+        <a class="hub-cide-link" href="https://app.powerbi.com/view?r=eyJrIjoiZDAyYTFmOWQtZmU2MS00YzZkLTg0N2QtMGE4Mjg5MDI5MmM3IiwidCI6ImJkOTFhMDZhLTAzMGMtNDBiNC1hMWUzLTE5Y2Y4ODE0Zjk2MCJ9" target="_blank" rel="noopener noreferrer">Economic Activity, dashboard 1<small>Power BI</small></a>
+        <a class="hub-cide-link" href="https://app.powerbi.com/view?r=eyJrIjoiYTQ2Njg3MmEtNzZlNC00NDViLWE0NmItNDJhZmEyZTBjZGFhIiwidCI6ImJkOTFhMDZhLTAzMGMtNDBiNC1hMWUzLTE5Y2Y4ODE0Zjk2MCJ9" target="_blank" rel="noopener noreferrer">Economic Activity, dashboard 2<small>Power BI</small></a>
+      </div>
+    </div>
+  </section>
 
 <!-- SECTION 03 — STACK -->
 <section id="stack" class="hub-section reveal">
@@ -242,10 +269,13 @@
     <div class="hub-stack-label">data & pipelines</div>
     <div class="hub-stack-pills">
       <span class="hub-stack-pill">Python</span>
+          <span class="hub-stack-pill">SQL</span>
+          <span class="hub-stack-pill">pandas</span>
       <span class="hub-stack-pill">dbt Core</span>
       <span class="hub-stack-pill">PostgreSQL</span>
       <span class="hub-stack-pill">scikit-learn</span>
-      <span class="hub-stack-pill">Power BI</span>
+      <span class="hub-stack-pill">Excel</span>
+          <span class="hub-stack-pill">Power BI</span>
       <span class="hub-stack-pill">Airflow (learning)</span>
     </div>
   </div>
@@ -281,6 +311,13 @@
   <a href="mailto:alexandre.anf@gmail.com" class="hub-contact-link"><span class="hub-contact-icon" aria-hidden="true">@</span>Email</a>
   <a href="https://medium.com/@alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer"><span class="hub-contact-icon" aria-hidden="true">✍</span>Medium</a>
 </div>
+
+    <div class="hub-contact-cv">
+      <details class="cv-menu" data-cv-menu hidden>
+        <summary class="hub-btn-p">Download CV</summary>
+        <div class="cv-menu-list"></div>
+      </details>
+    </div>
 </section>
 
 </div>

@@ -20,5 +20,11 @@
 /include-partials.js
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/*
+/assets/*.svg
   Cache-Control: public, max-age=31536000, immutable
+
+/assets/cv/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+/assets/data/*
+  Cache-Control: public, max-age=300, must-revalidate

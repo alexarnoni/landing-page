@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astraea — Alexandre Arnoni</title>
-<meta name="description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
-<meta property="og:title" content="Astraea — Alexandre Arnoni">
-<meta property="og:description" content="Pipeline end-to-end de monitoramento de asteroides e eventos solares com NASA APIs, dbt Core, Random Forest e API pública REST.">
+<title>Astraea | Alexandre Arnoni</title>
+<meta name="description" content="Pipeline de dados da NASA sobre asteroides e eventos solares, com dbt Core, API pública e um modelo de probabilidade de PHA.">
+<meta property="og:title" content="Astraea | Alexandre Arnoni">
+<meta property="og:description" content="Pipeline de dados da NASA sobre asteroides e eventos solares, com dbt Core, API pública e um modelo de probabilidade de PHA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexarnoni.com/astraea/">
 <meta property="og:image" content="https://alexarnoni.com/assets/og-astraea.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/astraea/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/astraea/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +30,9 @@
   <!-- PROJ HERO -->
   <div class="proj-hero reveal">
     <div class="proj-hero-text">
-      <p class="proj-tag">// monitoramento em tempo real</p>
+      <p class="proj-tag">// pipeline de dados · API pública · em produção</p>
       <h1 class="proj-title">Astraea</h1>
-      <p class="proj-subtitle">Pipeline end-to-end de monitoramento de objetos próximos à Terra e eventos solares, com ingestão via NASA APIs, transformação com dbt Core, classificação de risco com Random Forest e API pública REST.</p>
+      <p class="proj-subtitle">Pipeline de monitoramento de objetos próximos à Terra e eventos solares: ingestão das APIs da NASA, transformação com dbt Core, API pública REST e um modelo que estima a probabilidade de um asteroide ter a flag de PHA da NASA.</p>
       <div class="proj-ctas">
         <a class="proj-cta-primary" href="https://astraea.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Dashboard</a>
         <a class="proj-cta-secondary" href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">Ver API</a>
@@ -38,47 +40,17 @@
       </div>
     </div>
 
-    <div class="hub-hero-right" aria-hidden="true">
+    <div class="hub-hero-right" id="astraea-panel-wrap" aria-hidden="true" hidden>
       <div class="hub-panel" id="astraea-panel">
         <div class="hub-panel-header">
           <span class="hub-panel-title">Astraea · NEO Feed</span>
-          <span class="hub-panel-live"><span class="hub-live-dot" aria-hidden="true"></span>live</span>
+          <span class="hub-panel-live">API · atualização diária</span>
         </div>
-        <div id="neo-rows">
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2024 YR4</span>
-            <span class="hub-panel-dist">0.0031 AU</span>
-            <span class="hub-badge hub-badge-high">ALTO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2023 BU</span>
-            <span class="hub-panel-dist">0.0142 AU</span>
-            <span class="hub-badge hub-badge-mid">MÉDIO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2021 QM1</span>
-            <span class="hub-panel-dist">0.0287 AU</span>
-            <span class="hub-badge hub-badge-low">BAIXO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2020 NK1</span>
-            <span class="hub-panel-dist">0.0094 AU</span>
-            <span class="hub-badge hub-badge-high">ALTO</span>
-          </div>
-        </div>
+        <div id="neo-rows"></div>
         <div class="hub-stats">
-          <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-asteroids">—</div>
-            <div class="hub-stat-label">asteroides</div>
-          </div>
-          <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-hazardous">—</div>
-            <div class="hub-stat-label">perigosos (PHA)</div>
-          </div>
-          <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-solar">—</div>
-            <div class="hub-stat-label">eventos solares</div>
-          </div>
+          <div class="hub-stat"><div class="hub-stat-val" id="stat-asteroids">…</div><div class="hub-stat-label">aproximações</div></div>
+          <div class="hub-stat"><div class="hub-stat-val" id="stat-hazardous">…</div><div class="hub-stat-label">com flag PHA</div></div>
+          <div class="hub-stat"><div class="hub-stat-val" id="stat-solar">…</div><div class="hub-stat-label">eventos solares</div></div>
         </div>
         <div class="hub-panel-footer">
           <a href="https://astraea.alexarnoni.com" class="hub-panel-link" target="_blank" rel="noopener noreferrer">→ astraea.alexarnoni.com</a>
@@ -90,49 +62,74 @@
   <!-- STATS BAR -->
   <div class="proj-stats reveal" role="region" aria-label="Estatísticas do sistema">
     <div class="proj-stats-inner">
-      <div class="proj-stat">
-        <span class="proj-stat-value" id="proj-stat-asteroids">—</span>
-        <span class="proj-stat-label">Asteroides rastreados</span>
-      </div>
-      <div class="proj-stat">
-        <span class="proj-stat-value" id="proj-stat-hazardous">—</span>
-        <span class="proj-stat-label">Potencialmente perigosos</span>
-      </div>
-      <div class="proj-stat">
-        <span class="proj-stat-value" id="proj-stat-solar">—</span>
-        <span class="proj-stat-label">Eventos solares</span>
-      </div>
+      <div class="proj-stat"><span class="proj-stat-value" id="proj-stat-asteroids">…</span><span class="proj-stat-label">Aproximações registradas</span></div>
+      <div class="proj-stat"><span class="proj-stat-value" id="proj-stat-hazardous">…</span><span class="proj-stat-label">Aproximações com flag PHA</span></div>
+      <div class="proj-stat"><span class="proj-stat-value" id="proj-stat-solar">…</span><span class="proj-stat-label">Eventos solares</span></div>
     </div>
   </div>
 
-  <!-- FEATURES -->
-  <section class="proj-features reveal" aria-labelledby="features-title">
-    <div class="proj-section-header">
-      <h2 id="features-title">Funcionalidades</h2>
-    </div>
-    <div class="proj-feature-grid">
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🔄</span>
-        <h3>Pipeline de Dados</h3>
-        <p>Ingestão diária via NASA NeoWs + DONKI APIs, transformação em camadas staging/mart com dbt Core, PostgreSQL como storage central.</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🧠</span>
-        <h3>ML Risk Scoring</h3>
-        <p>Random Forest treinado em dados históricos de aproximação. Classifica cada asteroide em baixo/médio/alto risco usando 7 features orbitais.</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🌐</span>
-        <h3>API Pública REST</h3>
-        <p>8 endpoints documentados, rate limiting de 60 req/min por IP, dados em tempo real atualizados diariamente. Acesse via <a href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">astraea-api.alexarnoni.com/docs</a></p>
-      </article>
+<div id="astraea-model">
+
+  <!-- ESTADO DO MODELO -->
+  <div class="proj-note reveal" data-ml-ok data-flag="ML_IN_PRODUCTION=true" hidden>O modelo <span data-ml-field="model_version">2.0.0</span> (probabilidade de PHA) está em produção.</div>
+  <div class="proj-note reveal" data-ml-ok data-flag="ML_IN_PRODUCTION=false" hidden>O modelo <span data-ml-field="model_version">2.0.0</span> foi validado, mas ainda não está em produção. Hoje o dashboard ainda exibe o rótulo do modelo anterior, em migração.</div>
+
+  <section class="proj-case reveal">
+    <h2>Problema</h2>
+    <p>O Astraea junta dados públicos da NASA sobre asteroides próximos à Terra e eventos solares em um pipeline, e os expõe numa API pública. Sobre esses dados há um modelo de machine learning, e foi ele que precisou ser refeito.</p>
+    <p>A versão anterior (1.0.0) previa o <code>risk_label</code>, que é calculado por regra sobre as mesmas colunas que o modelo recebia. A acurácia alta só mostrava que ele tinha reaprendido a regra. O alvo agora é a flag <code>is_potentially_hazardous</code> da NASA, usando só velocidade relativa, distância de aproximação em distâncias lunares e magnitude H, sem a flag como entrada (3 variáveis).</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Dados</h2>
+    <p>A ingestão é diária, via NASA NeoWs e DONKI. A transformação usa dbt Core em camadas staging e mart, e o PostgreSQL é o armazenamento central.</p>
+    <p data-ml-ok hidden>Para o modelo: <span data-ml-field="n_samples">2.083</span> aproximações de <span data-ml-field="n_asteroids">1.822</span> asteroides. Sobre os positivos, os dois números aparecem no <a href="https://github.com/alexarnoni/astraea/blob/main/docs/ml-report.md" target="_blank" rel="noopener noreferrer">relatório do modelo</a> e medem coisas diferentes: 189 aproximações com a flag positiva, que correspondem a 180 asteroides (o mesmo asteroide pode ter mais de uma aproximação).</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Decisões</h2>
+    <h3>O risco exibido é uma regra, não o modelo</h3>
+    <p>O risco exibido é o <code>risk_score</code> por regra, uma heurística própria com limiares escolhidos por mim (20 km/s, 1.000.000 km, 0,5 km), e não uma metodologia da NASA. A pontuação soma 3 pontos se o asteroide é PHA, 2 se a velocidade passa de 20 km/s, 2 se a distância fica abaixo de 1.000.000 km e 1 se o diâmetro passa de 0,5 km. Com 6 pontos ou mais o risco é alto; com 3 ou mais, médio.</p>
+    <p data-ml-ok hidden>O modelo expõe outra coisa: a probabilidade de a flag de PHA da NASA ser positiva.</p>
+    <h3 data-ml-ok hidden>Validação</h3>
+    <p data-ml-ok hidden>StratifiedGroupKFold com 5 folds, agrupado por asteroide, para que o mesmo asteroide não apareça no treino e no teste. Além disso, uma avaliação temporal, com treino nas datas mais antigas e teste nas mais recentes (corte em 12 de julho de 2026).</p>
+    <h3>API</h3>
+    <p>9 endpoints: 7 de dados com prefixo <code>/v1</code>, mais <code>/</code> e <code>/health</code>. Limite de 60 requisições por minuto por IP. Documentação em <a href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">astraea-api.alexarnoni.com/docs</a>.</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Resultado</h2>
+    <p data-ml-fallback hidden>O score de risco é calculado por regra no dbt</p>
+    <div data-ml-ok hidden>
+      <div class="ml-table-wrap">
+        <table class="ml-table">
+          <caption>Classe positiva (PHA), limiar 0,5, média entre os 5 folds</caption>
+          <thead><tr><th scope="col">Modelo</th><th scope="col">Precisão</th><th scope="col">Recall</th><th scope="col">F1</th><th scope="col">PR-AUC</th></tr></thead>
+          <tbody id="ml-table-body"></tbody>
+        </table>
+      </div>
+      <p data-ml-recall-low>Com o limiar padrão de 0,5, o recall é <span data-ml-field="recall">0,44</span>: o modelo deixa passar mais da metade dos PHAs.</p>
+      <h3>Comparação com uma regra simples</h3>
+      <p>O modelo ordena os asteroides melhor do que a magnitude sozinha em validação agrupada (PR-AUC 0,64 contra 0,36, nas probabilidades fora da amostra dos 5 folds juntos; na tabela, 0,65 é a média entre folds). Com recall alto, a vantagem sobre o corte simples H &lt;= 22 é pequena (precisão 0,405 contra 0,389, dentro do ruído). A regra H &lt;= 22 sozinha tem recall 0,995 e precisão 0,39. Análise exploratória feita depois de ver os primeiros resultados, fora do plano original. Os números desta comparação estão no <a href="https://github.com/alexarnoni/astraea/blob/main/docs/ml-report.md" target="_blank" rel="noopener noreferrer">relatório do modelo</a>.</p>
     </div>
   </section>
 
-  <!-- STACK -->
+  <section class="proj-case reveal" data-ml-ok hidden>
+    <h2>Limitações</h2>
+    <ul>
+      <li>A MOID (distância mínima de interseção orbital, limite de 0,05 UA), que define a flag junto com H, não está entre as variáveis do modelo.</li>
+      <li>A distância usada é a de uma aproximação específica, não uma propriedade estável do asteroide.</li>
+      <li>H domina o modelo. O diâmetro estimado foi descartado por ser função exata de H.</li>
+      <li>Há poucos asteroides positivos (180).</li>
+      <li>O F1 cai de 0,52 para 0,39 no split temporal, e os dados não separam deriva temporal de variância (43 positivos no teste). Detalhes no <a href="https://github.com/alexarnoni/astraea/blob/main/docs/ml-report.md" target="_blank" rel="noopener noreferrer">relatório</a>.</li>
+    </ul>
+  </section>
+
+</div>
+  <!-- STACK E LINKS -->
   <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
     <div class="proj-stack-inner">
-      <p class="proj-stack-label">Stack</p>
+      <p class="proj-stack-label">Stack e links</p>
       <div class="proj-stack-badges">
         <span class="proj-stack-badge">Python</span>
         <span class="proj-stack-badge">FastAPI</span>
@@ -144,6 +141,12 @@
         <span class="proj-stack-badge">Oracle VM</span>
         <span class="proj-stack-badge">NASA APIs</span>
       </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://astraea.alexarnoni.com" target="_blank" rel="noopener noreferrer">dashboard</a></li>
+        <li><a href="https://astraea-api.alexarnoni.com/docs" target="_blank" rel="noopener noreferrer">API</a></li>
+        <li><a href="https://github.com/alexarnoni/astraea" target="_blank" rel="noopener noreferrer">github</a></li>
+        <li><a href="https://github.com/alexarnoni/astraea/blob/main/docs/ml-report.md" target="_blank" rel="noopener noreferrer">relatório do modelo</a></li>
+      </ul>
     </div>
   </div>
 
@@ -154,54 +157,5 @@
 
 <script src="/include-partials.js"></script>
 <script src="/main.js?v=3"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const [statsRes, asteroidsRes] = await Promise.all([
-        fetch('https://astraea-api.alexarnoni.com/v1/stats/summary'),
-        fetch('https://astraea-api.alexarnoni.com/v1/asteroids/upcoming')
-      ]);
-
-      const stats = await statsRes.json();
-      const asteroids = await asteroidsRes.json();
-
-      // Stats bar
-      document.getElementById('proj-stat-asteroids').textContent = stats.total_asteroids;
-      document.getElementById('proj-stat-hazardous').textContent = stats.hazardous_count;
-      document.getElementById('proj-stat-solar').textContent = stats.total_solar_events;
-
-      // Painel NEO Feed
-      const top4 = [...asteroids]
-        .sort((a, b) => a.miss_distance_km - b.miss_distance_km)
-        .slice(0, 4);
-
-      const rows = document.getElementById('neo-rows');
-      rows.innerHTML = top4.map(a => {
-        const distAU = (a.miss_distance_km / 149597870.7).toFixed(4);
-        const riskClass = a.risk_label_ml === 'alto' ? 'hub-badge-high'
-          : a.risk_label_ml === 'médio' ? 'hub-badge-mid'
-          : 'hub-badge-low';
-        const riskLabel = a.risk_label_ml === 'alto' ? 'ALTO'
-          : a.risk_label_ml === 'médio' ? 'MÉDIO'
-          : 'BAIXO';
-        const name = a.name.replace(/[()]/g, '').trim();
-
-        return `<div class="hub-panel-row">
-          <span class="hub-panel-obj">${name}</span>
-          <span class="hub-panel-dist">${distAU} AU</span>
-          <span class="hub-badge ${riskClass}">${riskLabel}</span>
-        </div>`;
-      }).join('');
-
-      // Stats do painel
-      document.getElementById('stat-asteroids').textContent = stats.total_asteroids;
-      document.getElementById('stat-hazardous').textContent = stats.hazardous_count;
-      document.getElementById('stat-solar').textContent = stats.total_solar_events;
-
-    } catch (e) {
-      console.warn('[Astraea] API indisponível, usando fallback.');
-    }
-  });
-</script>
 </body>
 </html>
