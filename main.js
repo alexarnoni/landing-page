@@ -20,14 +20,14 @@
 
 // Mudam os textos das páginas do Astraea (estado do modelo 2.0.0) e do Acervo.
 const ML_IN_PRODUCTION = false;
-const ACERVO_POWERBI_READY = false;
+const ACERVO_POWERBI_READY = true;
 
 // Lista de CVs. Para adicionar uma versão em inglês, inclua uma linha com
 // lang: 'en' e o mesmo target: nas páginas em EN ela substitui a versão PT.
 // Enquanto só existir PT, o modo EN mostra o arquivo PT com a marca "(PT)".
 const CV_FILES = [
   {
-    file: '/assets/cv/alexandre-arnoni-cv-bi-data-analyst.pdf',
+    file: '/assets/cv/cv_alexandre_bi_data_analyst.pdf',
     target: 'bi', lang: 'pt',
     label: { pt: 'BI / Data Analyst', en: 'BI / Data Analyst' },
     desc: {
@@ -36,7 +36,7 @@ const CV_FILES = [
     }
   },
   {
-    file: '/assets/cv/alexandre-arnoni-cv-ciencia-dados.pdf',
+    file: '/assets/cv/cv_alexandre_ciencia_dados.pdf',
     target: 'ds', lang: 'pt',
     label: { pt: 'Ciência de Dados', en: 'Data Science' },
     desc: {
@@ -45,7 +45,7 @@ const CV_FILES = [
     }
   },
   {
-    file: '/assets/cv/alexandre-arnoni-cv-engenharia-dados.pdf',
+    file: '/assets/cv/cv_alexandre_engenharia_dados.pdf',
     target: 'de', lang: 'pt',
     label: { pt: 'Engenharia de Dados', en: 'Data Engineering' },
     desc: {

@@ -11,3 +11,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# CVs em Word ficam so na pasta local
+assets/cv/*.docx
