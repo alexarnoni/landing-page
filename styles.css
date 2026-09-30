@@ -1844,58 +1844,6 @@ html.nav-overflow .nav-toggle {
   font-size: var(--fs-sm);
 }
 
-/* Painéis da CIDE */
-.hub-cide {
-  margin-top: 2.5rem;
-  padding: 1.75rem;
-  background: var(--c-bg-card);
-  border: 1px solid var(--c-border);
-  border-radius: 16px;
-}
-
-.hub-cide-title {
-  font-size: var(--fs-lg);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.hub-cide-text {
-  font-size: var(--fs-base);
-  color: var(--c-text-dim);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.hub-cide-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.hub-cide-link {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 16px;
-  border: 1px solid var(--c-border);
-  border-radius: 12px;
-  color: var(--c-text);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  transition: border-color 0.2s;
-}
-
-.hub-cide-link:hover {
-  border-color: var(--c-accent);
-}
-
-.hub-cide-link small {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono-xs);
-  font-weight: 400;
-  color: var(--c-text-dim);
-}
-
 /* Páginas de projeto no formato caso */
 .proj-case {
   padding: 2.5rem 0;
@@ -2004,7 +1952,6 @@ html.nav-overflow .nav-toggle {
 }
 
 @media (max-width: 768px) {
-  .hub-cide,
   .hub-proj-group--archive .hub-proj-card {
     padding: 1.25rem;
   }
