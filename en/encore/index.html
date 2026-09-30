@@ -53,7 +53,7 @@
   <section class="proj-case reveal">
     <h2>Technical decisions and trade-offs</h2>
     <ul>
-      <li>A monthly Airflow DAG orchestrates extraction, validation, dbt Core transformation and the survival analysis in Python.</li>
+      <li>An Airflow DAG, run on demand, orchestrates extraction, validation, dbt Core transformation and the survival analysis in Python.</li>
       <li>A guard test fails the build if a <code>setlist_id</code> column ever appears in the <code>analytics</code> schema, so no per-show data leaks into the published layer.</li>
       <li>The site build (Jinja2 and SVG) fails on a missing translation or a broken link.</li>
       <li>The pipeline runs on the VM, and the site is static on Cloudflare Pages, with no cost for infrastructure running 24 hours a day.</li>

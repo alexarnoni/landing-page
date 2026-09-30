@@ -53,7 +53,7 @@
   <section class="proj-case reveal">
     <h2>Decisões técnicas e trade-offs</h2>
     <ul>
-      <li>Um DAG mensal no Airflow orquestra extração, validação, transformação com dbt Core e a análise de sobrevivência em Python.</li>
+      <li>Um DAG no Airflow, executado sob demanda, orquestra extração, validação, transformação com dbt Core e a análise de sobrevivência em Python.</li>
       <li>Um teste de guarda falha o build se surgir uma coluna <code>setlist_id</code> no schema <code>analytics</code>, para que nenhum dado por show vaze para a camada publicada.</li>
       <li>O build do site (Jinja2 e SVG) falha se faltar uma tradução ou se houver um link quebrado.</li>
       <li>O pipeline roda na VM, e o site é estático no Cloudflare Pages, sem custo de infraestrutura ligada 24 horas.</li>
