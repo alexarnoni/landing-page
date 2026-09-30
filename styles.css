@@ -1735,3 +1735,302 @@ html.nav-overflow .nav-toggle {
 .hub-proj-card:not(a) {
   cursor: default;
 }
+
+/* === 11. Blocos adicionados (CV, casos de projeto, painéis) ====== */
+
+[hidden] {
+  display: none !important;
+}
+
+/* Menu de download de CV */
+.cv-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.cv-menu > summary {
+  white-space: nowrap;
+  list-style: none;
+  cursor: pointer;
+}
+
+.cv-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cv-menu > summary::after {
+  content: "▾";
+  margin-left: 6px;
+  font-size: 0.75em;
+}
+
+.cv-menu[open] > summary::after {
+  content: "▴";
+}
+
+.cv-menu-list {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(340px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(16, 16, 51, 0.12);
+  padding: 6px;
+}
+
+.cv-menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--c-text);
+}
+
+.cv-menu-item:hover,
+.cv-menu-item:focus-visible {
+  background: var(--c-surface);
+}
+
+.cv-menu-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.cv-menu-desc {
+  font-size: var(--fs-xs);
+  color: var(--c-text-dim);
+  line-height: 1.4;
+}
+
+.hub-contact-cv {
+  margin-top: 1rem;
+}
+
+/* Projetos: três destaques, bloco esportivo e arquivo */
+.hub-proj-grid > .hub-proj-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.hub-proj-group {
+  margin-top: 2.5rem;
+}
+
+.hub-proj-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1rem;
+}
+
+.hub-proj-group--archive .hub-proj-card {
+  padding: 1.25rem 1.75rem;
+  background: var(--c-surface);
+}
+
+.hub-proj-group--archive .hub-proj-name {
+  font-size: var(--fs-base);
+  color: var(--c-text-mid);
+}
+
+.hub-proj-group--archive .hub-proj-desc {
+  font-size: var(--fs-sm);
+}
+
+/* Painéis da CIDE */
+.hub-cide {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+}
+
+.hub-cide-title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hub-cide-text {
+  font-size: var(--fs-base);
+  color: var(--c-text-dim);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.hub-cide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hub-cide-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: border-color 0.2s;
+}
+
+.hub-cide-link:hover {
+  border-color: var(--c-accent);
+}
+
+.hub-cide-link small {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono-xs);
+  font-weight: 400;
+  color: var(--c-text-dim);
+}
+
+/* Páginas de projeto no formato caso */
+.proj-case {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.proj-case h2 {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  color: var(--c-text);
+  margin-bottom: 1rem;
+}
+
+.proj-case h3 {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.proj-case p,
+.proj-case li {
+  font-size: var(--fs-base);
+  color: var(--c-text-mid);
+  line-height: 1.7;
+  max-width: 72ch;
+}
+
+.proj-case p + p {
+  margin-top: 0.75rem;
+}
+
+.proj-case ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.proj-case li + li {
+  margin-top: 0.4rem;
+}
+
+.proj-case a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.proj-case a:hover {
+  color: var(--c-text);
+}
+
+.proj-note {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--c-border);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 8px;
+  background: var(--c-surface);
+  font-size: var(--fs-base);
+  color: var(--c-text-mid);
+  line-height: 1.6;
+  max-width: 72ch;
+}
+
+.ml-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.ml-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 480px;
+  font-size: var(--fs-sm);
+}
+
+.ml-table caption {
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-dim);
+  padding-bottom: 0.5rem;
+}
+
+.ml-table th,
+.ml-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--c-border);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text-mid);
+}
+
+.ml-table thead th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono-sm);
+  font-weight: 500;
+  color: var(--c-text-dim);
+}
+
+.ml-table th:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+@media (max-width: 768px) {
+  .hub-cide,
+  .hub-proj-group--archive .hub-proj-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Seletor de idioma fora do menu no celular */
+.nav-lang-mobile {
+  display: none;
+}
+
+html.nav-overflow .nav-lang-mobile {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+html.nav-overflow .nav-lang-mobile + .nav-toggle {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .nav-lang-mobile {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .nav-lang-mobile + .nav-toggle {
+    margin-left: 0.5rem;
+  }
+}

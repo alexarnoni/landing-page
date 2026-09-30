@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Encore — Alexandre Arnoni</title>
-<meta name="description" content="Encore mede como sete bandas usam o próprio catálogo em shows ao vivo — repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.">
-<meta property="og:title" content="Encore — Alexandre Arnoni">
-<meta property="og:description" content="Encore mede como sete bandas usam o próprio catálogo em shows ao vivo — repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.">
+<title>Encore | Alexandre Arnoni</title>
+<meta name="description" content="Pipeline de dados que mede como sete bandas usam o próprio catálogo em shows ao vivo: idade do repertório, rotação e sobrevivência de músicas.">
+<meta property="og:title" content="Encore | Alexandre Arnoni">
+<meta property="og:description" content="Pipeline de dados que mede como sete bandas usam o próprio catálogo em shows ao vivo: idade do repertório, rotação e sobrevivência de músicas.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexarnoni.com/encore/">
 <meta property="og:image" content="https://alexarnoni.com/assets/og-encore.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/encore/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/encore/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,45 +30,52 @@
   <!-- PROJ HERO -->
   <div class="proj-hero reveal">
     <div class="proj-hero-text">
-      <p class="proj-tag">// Setlists & discografia · em produção</p>
+      <p class="proj-tag">// setlists & discografia · em produção</p>
       <h1 class="proj-title">Encore</h1>
-      <p class="proj-subtitle">Analiso como Arctic Monkeys, Oasis, Linkin Park, Twenty One Pilots, Muse, Metallica e Avenged Sevenfold usam a própria discografia em shows ao vivo. A partir de dados de setlists (setlist.fm) e discografia (MusicBrainz), o pipeline calcula três métricas centrais: idade do repertório, rotação entre shows e sobrevivência de músicas ao longo da carreira, usando análise de sobrevivência Kaplan-Meier.</p>
+      <p class="proj-subtitle">Pipeline de dados que mede como sete bandas usam a própria discografia em shows ao vivo, a partir de setlists e de dados de discografia.</p>
       <div class="proj-ctas">
         <a class="proj-cta-primary" href="https://encore.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Plataforma</a>
         <a class="proj-cta-secondary" href="https://github.com/alexarnoni/encore-setlist-analytics" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
       </div>
     </div>
+
   </div>
 
-  <!-- FEATURES -->
-  <section class="proj-features reveal" aria-labelledby="features-title">
-    <div class="proj-section-header">
-      <h2 id="features-title">Métricas</h2>
-      <p>Três lentes sobre como cada banda usa o próprio catálogo ao vivo.</p>
-    </div>
-    <div class="proj-feature-grid">
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🕰</span>
-        <h3>Idade do repertório</h3>
-        <p>Mede, ano a ano, o quão "recentes" são as músicas tocadas em cada show. Revela padrões como o de Metallica: a cada álbum novo, o repertório rejuvenesce temporariamente e volta a envelhecer até o próximo lançamento.</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🔁</span>
-        <h3>Rotação</h3>
-        <p>Compara shows noite a noite: a banda muda o setlist ou repete a mesma sequência em toda a turnê? A métrica separa artistas fiéis a um roteiro fixo de artistas que variam a cada apresentação.</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">📉</span>
-        <h3>Sobrevivência de repertório</h3>
-        <p>Usando Kaplan-Meier, mostra quantas músicas de cada álbum ainda são tocadas centenas de shows depois do lançamento — tratando corretamente os casos censurados: músicas ainda tocadas ou que sumiram e voltaram.</p>
-      </article>
-    </div>
+  <section class="proj-case reveal">
+    <h2>Problema</h2>
+    <p>Como uma banda usa o próprio catálogo ao vivo ao longo da carreira? O Encore analisa Arctic Monkeys, Oasis, Linkin Park, Twenty One Pilots, Muse, Metallica e Avenged Sevenfold em três métricas: idade do repertório, rotação entre shows e sobrevivência de músicas (Kaplan-Meier).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Dados</h2>
+    <p>Setlists vêm do setlist.fm e a discografia vem do MusicBrainz. Na fase de escopo, o setlist.fm tinha 9.499 shows mapeados para as sete bandas (a cobertura de setlist varia de 75% a 97% entre elas), e o recorte tem 59 álbuns de estúdio.</p>
+    <p>Os dados brutos do setlist.fm são apagados ao fim de cada execução do pipeline. Só resultados agregados são guardados e publicados.</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Decisões técnicas e trade-offs</h2>
+    <ul>
+      <li>Um DAG mensal no Airflow orquestra extração, validação, transformação com dbt Core e a análise de sobrevivência em Python.</li>
+      <li>Um teste de guarda falha o build se surgir uma coluna <code>setlist_id</code> no schema <code>analytics</code>, para que nenhum dado por show vaze para a camada publicada.</li>
+      <li>O build do site (Jinja2 e SVG) falha se faltar uma tradução ou se houver um link quebrado.</li>
+      <li>O pipeline roda na VM, e o site é estático no Cloudflare Pages, sem custo de infraestrutura ligada 24 horas.</li>
+      <li>O site publicado é estático: não há API nem backend em execução.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Resultado</h2>
+    <p>O site publica as três métricas por banda. Um exemplo é o padrão do Metallica: a cada álbum novo, o repertório rejuvenesce temporariamente e volta a envelhecer até o próximo lançamento. A suíte de testes tem 318 testes passando (14 são ignorados quando o banco de testes não está no ar).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Limitações</h2>
+    <ul>
+      <li>O site não é reconstruído automaticamente depois de cada execução do pipeline. A publicação é um passo manual.</li>
+      <li>São sete bandas, escolhidas por história interessante e boa cobertura de dados, e não uma amostra do universo de bandas.</li>
+    </ul>
   </section>
 
-  <!-- STACK -->
+  <!-- STACK E LINKS -->
   <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
     <div class="proj-stack-inner">
-      <p class="proj-stack-label">Stack</p>
+      <p class="proj-stack-label">Stack e links</p>
       <div class="proj-stack-badges">
         <span class="proj-stack-badge">Python</span>
         <span class="proj-stack-badge">PostgreSQL</span>
@@ -78,13 +87,11 @@
         <span class="proj-stack-badge">Docker Compose</span>
         <span class="proj-stack-badge">Cloudflare Pages</span>
       </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://encore.alexarnoni.com" target="_blank" rel="noopener noreferrer">plataforma</a></li>
+        <li><a href="https://github.com/alexarnoni/encore-setlist-analytics" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
     </div>
-  </div>
-
-  <!-- STATUS -->
-  <div class="proj-status reveal">
-    <h2>Sobre os dados</h2>
-    <p>O pipeline roda em Airflow (LocalExecutor) e modela staging, intermediate e marts em dbt Core sobre PostgreSQL. Os dados brutos do setlist.fm nunca são armazenados — apenas agregados são publicados, respeitando a política de uso não comercial da API. O site final é estático, bilíngue (pt-BR/en) e gerado diretamente a partir dos marts analíticos.</p>
   </div>
 
 </div>

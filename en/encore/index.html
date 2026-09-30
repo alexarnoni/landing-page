@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encore | Alexandre Arnoni</title>
+<meta name="description" content="Data pipeline that measures how seven bands use their own catalogue in live shows: repertoire age, rotation and song survival.">
+<meta property="og:title" content="Encore | Alexandre Arnoni">
+<meta property="og:description" content="Data pipeline that measures how seven bands use their own catalogue in live shows: repertoire age, rotation and song survival.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/en/encore/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-encore.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/encore/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/encore/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Skip to content</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// setlists & discography · in production</p>
+      <h1 class="proj-title">Encore</h1>
+      <p class="proj-subtitle">Data pipeline that measures how seven bands use their own discography in live shows, built from setlist and discography data.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://encore.alexarnoni.com" target="_blank" rel="noopener noreferrer">Open Platform</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/encore-setlist-analytics" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Problem</h2>
+    <p>How does a band use its own catalogue live over a career? Encore analyzes Arctic Monkeys, Oasis, Linkin Park, Twenty One Pilots, Muse, Metallica and Avenged Sevenfold through three metrics: repertoire age, rotation between shows and song survival (Kaplan-Meier).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Data</h2>
+    <p>Setlists come from setlist.fm and discography comes from MusicBrainz. In the scoping phase, setlist.fm had 9,499 mapped shows for the seven bands (setlist coverage ranges from 75% to 97% across them), and the scope has 59 studio albums.</p>
+    <p>Raw setlist.fm data is deleted at the end of every pipeline run. Only aggregated results are kept and published.</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Technical decisions and trade-offs</h2>
+    <ul>
+      <li>A monthly Airflow DAG orchestrates extraction, validation, dbt Core transformation and the survival analysis in Python.</li>
+      <li>A guard test fails the build if a <code>setlist_id</code> column ever appears in the <code>analytics</code> schema, so no per-show data leaks into the published layer.</li>
+      <li>The site build (Jinja2 and SVG) fails on a missing translation or a broken link.</li>
+      <li>The pipeline runs on the VM, and the site is static on Cloudflare Pages, with no cost for infrastructure running 24 hours a day.</li>
+      <li>The published site is static: there is no API or backend running.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Result</h2>
+    <p>The site publishes the three metrics per band. One example is Metallica's pattern: with each new album the repertoire gets younger for a while, then ages again until the next release. The test suite has 318 passing tests (14 are skipped when the test database is not running).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Limitations</h2>
+    <ul>
+      <li>The site is not rebuilt automatically after each pipeline run. Publishing is a manual step.</li>
+      <li>There are seven bands, chosen for an interesting history and good data coverage, not a sample of the universe of bands.</li>
+    </ul>
+  </section>
+
+  <!-- STACK E LINKS -->
+  <div class="proj-stack reveal" role="region" aria-label="Technologies used">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack and links</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">Python</span>
+        <span class="proj-stack-badge">PostgreSQL</span>
+        <span class="proj-stack-badge">Apache Airflow</span>
+        <span class="proj-stack-badge">dbt Core</span>
+        <span class="proj-stack-badge">pandas</span>
+        <span class="proj-stack-badge">lifelines</span>
+        <span class="proj-stack-badge">FastAPI</span>
+        <span class="proj-stack-badge">Docker Compose</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+      </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://encore.alexarnoni.com" target="_blank" rel="noopener noreferrer">platform</a></li>
+        <li><a href="https://github.com/alexarnoni/encore-setlist-analytics" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

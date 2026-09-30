@@ -35,54 +35,36 @@
       </div>
       <h1 class="hub-hero-name">Alexandre<br>Arnoni</h1>
       <div class="hub-hero-divider"></div>
-      <p class="hub-hero-desc">Monitoro asteroides com a NASA à noite e trabalho com dados públicos de 350 mil pessoas durante o dia. Do dado bruto ao deploy: pipelines, APIs e dashboards.
+      <p class="hub-hero-desc">Monitoro asteroides com dados da NASA à noite e trabalho com dados públicos de 350 mil pessoas durante o dia. Do dado bruto ao deploy: pipelines, APIs e dashboards.
 </p>
       <div class="hub-hero-ctas">
         <a href="#projetos" class="hub-btn-p">Ver Projetos</a>
         <a href="#contato" class="hub-btn-s hub-btn-s--highlight">Falar comigo</a>
+        <details class="cv-menu" data-cv-menu hidden>
+          <summary class="hub-btn-s">Baixar CV</summary>
+          <div class="cv-menu-list"></div>
+        </details>
       </div>
     </div>
 
-    <div class="hub-hero-right" aria-hidden="true">
+    <div class="hub-hero-right" id="astraea-panel-wrap" aria-hidden="true" hidden>
       <div class="hub-panel" id="astraea-panel">
         <div class="hub-panel-header">
           <span class="hub-panel-title">Astraea · NEO Feed</span>
-          <span class="hub-panel-live"><span class="hub-live-dot"></span>live</span>
+          <span class="hub-panel-live">API · atualização diária</span>
         </div>
-        <div id="neo-rows">
-          <!-- fallback estático enquanto carrega -->
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2026 GC</span>
-            <span class="hub-panel-dist">0.0349 AU</span>
-            <span class="hub-badge hub-badge-low">BAIXO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2026 FE7</span>
-            <span class="hub-panel-dist">0.0227 AU</span>
-            <span class="hub-badge hub-badge-low">BAIXO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2004 FG11</span>
-            <span class="hub-panel-dist">0.0565 AU</span>
-            <span class="hub-badge hub-badge-mid">MÉDIO</span>
-          </div>
-          <div class="hub-panel-row">
-            <span class="hub-panel-obj">2024 OU</span>
-            <span class="hub-panel-dist">0.0146 AU</span>
-            <span class="hub-badge hub-badge-low">BAIXO</span>
-          </div>
-        </div>
+        <div id="neo-rows"></div>
         <div class="hub-stats">
           <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-asteroids">—</div>
-            <div class="hub-stat-label">asteroides</div>
+            <div class="hub-stat-val" id="stat-asteroids">…</div>
+            <div class="hub-stat-label">aproximações</div>
           </div>
           <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-hazardous">—</div>
-            <div class="hub-stat-label">perigosos (PHA)</div>
+            <div class="hub-stat-val" id="stat-hazardous">…</div>
+            <div class="hub-stat-label">com flag PHA</div>
           </div>
           <div class="hub-stat">
-            <div class="hub-stat-val" id="stat-solar">—</div>
+            <div class="hub-stat-val" id="stat-solar">…</div>
             <div class="hub-stat-label">eventos solares</div>
           </div>
         </div>
@@ -94,7 +76,7 @@
 
     <div class="hub-about">
       <div class="hub-about-label">sobre</div>
-      <p class="hub-about-text">Dez anos no setor público me ensinaram a trabalhar com dados imperfeitos, processos burocráticos e stakeholders que não falam "SQL". Agora construo os sistemas que eu não tinha à disposição.</p>
+      <p class="hub-about-text">Mais de dez anos no setor público me ensinaram a trabalhar com dados imperfeitos, processos burocráticos e stakeholders que não falam "SQL". Agora construo os sistemas que eu não tinha à disposição.</p>
     </div>
   </div>
 
@@ -108,7 +90,7 @@
       <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Em produção</div>
         <div class="hub-proj-name">Encore</div>
-        <div class="hub-proj-desc">Meço como sete bandas usam o próprio catálogo em shows ao vivo — repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.</div>
+        <div class="hub-proj-desc">Meço como sete bandas usam o próprio catálogo em shows ao vivo: repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">Python</span>
@@ -133,14 +115,14 @@
           </div>
           <div style="display:flex;gap:12px;">
             <a href="/acervo/" class="hub-proj-link">ver projeto →</a>
-            <a href="https://github.com/alexarnoni/escuta" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+            <a href="https://github.com/alexarnoni/acervo" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
           </div>
         </div>
       </div>
-      <div class="hub-proj-card hub-proj-main">
-        <div class="hub-proj-tag">⬡ Projeto principal</div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Em produção</div>
         <div class="hub-proj-name">Astraea</div>
-        <div class="hub-proj-desc">Conecto a API da NASA a um pipeline de dados, classifico asteroides por risco com Machine Learning e exponho tudo via API pública.</div>
+        <div class="hub-proj-desc">Conecto a API da NASA a um pipeline de dados e exponho tudo via API pública. Um modelo estima a probabilidade de o asteroide ter a flag de PHA da NASA; o risco exibido vem de uma regra própria.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">FastAPI</span>
@@ -153,10 +135,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="hub-proj-group">
+      <div class="hub-proj-grid">
       <div class="hub-proj-card">
-        <div class="hub-proj-tag">⬡ Projeto ativo</div>
         <div class="hub-proj-name">Olheiro</div>
-        <div class="hub-proj-desc">Monitoro o Brasileirão em tempo real: rankings por posição, radar charts e um modelo próprio que "garimpa" jogadores com alto desempenho e baixa visibilidade.</div>
+        <div class="hub-proj-desc">Análise de desempenho de times e identificação de talentos no Brasileirão Série A, com dados sincronizados via API SportDB e o Garimpo, modelo que avalia jogadores por posição.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">FastAPI</span>
@@ -169,24 +154,30 @@
           </div>
         </div>
       </div>
+      </div>
+    </div>
+
+    <div class="hub-proj-group hub-proj-group--archive">
+      <h3 class="hub-proj-group-title">Arquivo</h3>
+      <div class="hub-proj-grid">
       <div class="hub-proj-card">
-        <div class="hub-proj-tag">⬡ Em produção · 24/7</div>
+        <div class="hub-proj-tag">⬡ Encerrado</div>
         <div class="hub-proj-name">EV+ Sports Analyzer</div>
-        <div class="hub-proj-desc">Rodo um scanner de odds a cada 2 minutos em 200+ ligas esportivas, calculo valor esperado e disparo alertas automáticos no Telegram para oportunidades com EV positivo.</div>
+        <div class="hub-proj-desc">Bot que analisou odds em 200+ ligas, calculou valor esperado e enviou alertas no Telegram, com histórico em SQLite. Projeto encerrado.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">Python</span>
             <span class="hub-proj-pill">Odds API</span>
+            <span class="hub-proj-pill">SQLite</span>
             <span class="hub-proj-pill">Telegram</span>
           </div>
           <div style="display:flex;gap:12px;">
-            <a href="/bot/" class="hub-proj-link">ev+ →</a>
+            <a href="/bot/" class="hub-proj-link">ver projeto →</a>
             <a href="https://github.com/alexarnoni/bot-ev-sqlite" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
           </div>
         </div>
       </div>
       <div class="hub-proj-card">
-        <div class="hub-proj-tag">⬡ Arquitetural</div>
         <div class="hub-proj-name">Luro</div>
         <div class="hub-proj-desc">Comecei querendo aprender a construir um app do zero. O que era pra ser simples virou magic link, CSRF duplo, importador de extratos e categorização via LLM. Congelei intencionalmente para focar em outros projetos.</div>
         <div class="hub-proj-footer">
@@ -197,6 +188,7 @@
           </div>
           <a href="/finance/" class="hub-proj-link">luro →</a>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -213,7 +205,7 @@
         <div>
           <div class="hub-exp-role">Analista de Dados</div>
           <div class="hub-exp-org">Prefeitura de Praia Grande · CIDE</div>
-          <p class="hub-exp-desc">Mantenho dashboards no Power BI com indicadores municipais de Praia Grande (350 mil habitantes), consolidando dados de múltiplas secretarias. Estou desenvolvendo a versão mobile dos dashboards existentes e automatizando pipelines de atualização de dados.</p>
+          <p class="hub-exp-desc">Levanto dados e recebo planilhas das secretarias, trato e padronizo no Excel e construo painéis no Power BI com indicadores municipais de Praia Grande (350 mil habitantes) em 18 áreas temáticas, como demografia, saúde, educação, segurança pública, mobilidade e meio ambiente, em trabalho conjunto com a equipe da CIDE. Desenvolvo também a versão mobile dos painéis existentes.</p>
         </div>
       </div>
       <div class="hub-exp-row">
@@ -233,6 +225,15 @@
         </div>
       </div>
     </div>
+      <div class="hub-cide">
+      <h3 class="hub-cide-title">Painéis da CIDE</h3>
+      <p class="hub-cide-text">Painéis públicos da equipe da CIDE, que cobrem 18 áreas temáticas do município. No meu dia a dia levanto dados, recebo planilhas das secretarias, trato e padronizo no Excel e construo os relatórios no Power BI, do dado ao painel.</p>
+      <div class="hub-cide-links">
+        <a class="hub-cide-link" href="https://www.praiagrande.sp.gov.br/atendimento/Seplan/CIDE/menucide.asp" target="_blank" rel="noopener noreferrer">Portal de dados da CIDE<small>18 áreas temáticas</small></a>
+        <a class="hub-cide-link" href="https://app.powerbi.com/view?r=eyJrIjoiZDAyYTFmOWQtZmU2MS00YzZkLTg0N2QtMGE4Mjg5MDI5MmM3IiwidCI6ImJkOTFhMDZhLTAzMGMtNDBiNC1hMWUzLTE5Y2Y4ODE0Zjk2MCJ9" target="_blank" rel="noopener noreferrer">Atividade Econômica, painel 1<small>Power BI</small></a>
+        <a class="hub-cide-link" href="https://app.powerbi.com/view?r=eyJrIjoiYTQ2Njg3MmEtNzZlNC00NDViLWE0NmItNDJhZmEyZTBjZGFhIiwidCI6ImJkOTFhMDZhLTAzMGMtNDBiNC1hMWUzLTE5Y2Y4ODE0Zjk2MCJ9" target="_blank" rel="noopener noreferrer">Atividade Econômica, painel 2<small>Power BI</small></a>
+      </div>
+    </div>
   </section>
 
   <!-- SEÇÃO 03 — STACK -->
@@ -246,9 +247,12 @@
         <div class="hub-stack-label">dados & pipelines</div>
         <div class="hub-stack-pills">
           <span class="hub-stack-pill">Python</span>
+          <span class="hub-stack-pill">SQL</span>
+          <span class="hub-stack-pill">pandas</span>
           <span class="hub-stack-pill">dbt Core</span>
           <span class="hub-stack-pill">PostgreSQL</span>
           <span class="hub-stack-pill">scikit-learn</span>
+          <span class="hub-stack-pill">Excel</span>
           <span class="hub-stack-pill">Power BI</span>
           <span class="hub-stack-pill">Airflow</span>
         </div>
@@ -292,6 +296,13 @@
       <a href="https://medium.com/@alexarnoni" class="hub-contact-link" target="_blank" rel="noopener noreferrer">
         <span class="hub-contact-icon" aria-hidden="true">✍</span>Medium
       </a>
+    </div>
+
+    <div class="hub-contact-cv">
+      <details class="cv-menu" data-cv-menu hidden>
+        <summary class="hub-btn-p">Baixar CV</summary>
+        <div class="cv-menu-list"></div>
+      </details>
     </div>
   </section>
 

@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acervo — Alexandre Arnoni</title>
-<meta name="description" content="Acervo transforma 12 anos de histórico de escuta musical em um pipeline de dados e um dashboard público que conta como o gosto mudou ao longo do tempo.">
-<meta property="og:title" content="Acervo — Alexandre Arnoni">
-<meta property="og:description" content="Acervo transforma 12 anos de histórico de escuta musical em um pipeline de dados e um dashboard público que conta como o gosto mudou ao longo do tempo.">
+<title>Acervo | Alexandre Arnoni</title>
+<meta name="description" content="Engenharia e análise de dados sobre 12 anos de histórico de escuta musical.">
+<meta property="og:title" content="Acervo | Alexandre Arnoni">
+<meta property="og:description" content="Engenharia e análise de dados sobre 12 anos de histórico de escuta musical.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexarnoni.com/acervo/">
 <meta property="og:image" content="https://alexarnoni.com/assets/og-acervo.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/acervo/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/acervo/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,60 +32,69 @@
     <div class="proj-hero-text">
       <p class="proj-tag">// 12 anos de escuta · ~413 mil registros</p>
       <h1 class="proj-title">Acervo</h1>
-      <p class="proj-subtitle">Engenharia e análise de dados sobre o meu próprio histórico de escuta musical, de 2014 a 2026. Um pipeline em Python limpa cerca de 413 mil registros do export estendido do Spotify e modela o resultado em esquema estrela, com validação de chaves e testes. O mesmo modelo alimenta um relatório em Power BI e uma API FastAPI somente leitura.</p>
+      <p class="proj-subtitle">Engenharia e análise de dados sobre o meu próprio histórico de escuta musical, de 2014 a 2026.</p>
       <div class="proj-ctas">
         <a class="proj-cta-primary" href="https://musica.alexarnoni.com" target="_blank" rel="noopener noreferrer">Acessar Dashboard</a>
-        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/escuta" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/acervo" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
       </div>
     </div>
+
   </div>
 
-  <!-- FEATURES -->
-  <section class="proj-features reveal" aria-labelledby="features-title">
-    <div class="proj-section-header">
-      <h2 id="features-title">Funcionalidades</h2>
-    </div>
-    <div class="proj-feature-grid">
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">📖</span>
-        <h3>Narrativa em 5 capítulos</h3>
-        <p>Texto e números gerados diretamente do banco, então acompanham qualquer reprocessamento. Mostra, por exemplo, o artista mais ouvido caindo de 36% das horas em 2020 para 10% em 2025, enquanto os artistas novos por ano sobem de 76 (2019) para 401 (2025).</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🔍</span>
-        <h3>Qualidade de dados na prática</h3>
-        <p>O campo de "skip" do export estava vazio em 2017–2021, o que fazia a taxa parecer 0%. A métrica passou a ser derivada do evento de encerramento, e escutas de terceiros (uma conta emprestada) foram removidas por janelas de data.</p>
-      </article>
-      <article class="proj-feature-card">
-        <span class="proj-feature-icon" aria-hidden="true">🗓</span>
-        <h3>Heatmap & rankings</h3>
-        <p>Visualizações de hábitos de escuta ao longo dos anos, rankings de artistas e faixas, e um diagrama do próprio pipeline — do export bruto até o dashboard público.</p>
-      </article>
-    </div>
+  <section class="proj-case reveal">
+    <h2>Problema</h2>
+    <p>Como meu comportamento de escuta mudou em 12 anos? O Acervo responde com o meu próprio histórico de escuta musical, de 2014 a 2026.</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Dados</h2>
+    <p>A base são cerca de 413 mil eventos brutos do export estendido do Spotify (2014-2026). A limpeza separou os podcasts, removeu ruído e duplicados e descartou IP e localização.</p>
+    <h3>Qualidade de dados</h3>
+    <ul>
+      <li>O campo de skip veio zerado em 2017-2021, então a métrica passou a ser derivada do botão avançar.</li>
+      <li>768 plays de terceiros (uma conta emprestada) foram removidos por janelas de data.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Decisões técnicas e trade-offs</h2>
+    <ul>
+      <li>Um pipeline em Python com pandas modela o resultado em esquema estrela, com validação de chaves e testes.</li>
+      <li>As análises incluem eras detectadas automaticamente por programação dinâmica com distância de Hellinger, Kaplan-Meier por geração de artistas e redescobertas.</li>
+      <li data-flag="ACERVO_POWERBI_READY=false">O mesmo modelo está pronto para Power BI (queries M e medidas DAX) e alimenta uma API FastAPI somente leitura.</li>
+      <li data-flag="ACERVO_POWERBI_READY=true" hidden>O mesmo modelo alimenta um relatório em Power BI, já entregue, e uma API FastAPI somente leitura.</li>
+      <li>O site publicado é estático, lendo JSON gerado a partir dos dados tratados. A API roda só localmente.</li>
+    </ul>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Resultado</h2>
+    <p>Dois achados que já aparecem no dashboard publicado: a participação do artista mais ouvido caiu de 36% (2020) para 10% (2025), e os artistas novos por ano subiram de 76 (2019) para 401 (2025).</p>
+  </section>
+  <section class="proj-case reveal">
+    <h2>Limitações</h2>
+    <ul>
+      <li>A taxa de skip de 2017-2021 é derivada, não medida: o campo original estava vazio nesses anos.</li>
+      <li>Só resultados agregados são publicados. O export bruto do Spotify não vai para o repositório.</li>
+    </ul>
   </section>
 
-  <!-- STACK -->
+  <!-- STACK E LINKS -->
   <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
     <div class="proj-stack-inner">
-      <p class="proj-stack-label">Stack</p>
+      <p class="proj-stack-label">Stack e links</p>
       <div class="proj-stack-badges">
         <span class="proj-stack-badge">Python</span>
         <span class="proj-stack-badge">pandas</span>
         <span class="proj-stack-badge">PostgreSQL</span>
         <span class="proj-stack-badge">FastAPI</span>
-        <span class="proj-stack-badge">Power BI</span>
-        <span class="proj-stack-badge">Docker Compose</span>
-        <span class="proj-stack-badge">nginx</span>
+        <span class="proj-stack-badge" data-flag="ACERVO_POWERBI_READY=true" hidden>Power BI</span>
+        <span class="proj-stack-badge">JavaScript</span>
         <span class="proj-stack-badge">Chart.js</span>
         <span class="proj-stack-badge">Cloudflare Pages</span>
       </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://musica.alexarnoni.com" target="_blank" rel="noopener noreferrer">dashboard</a></li>
+        <li><a href="https://github.com/alexarnoni/acervo" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
     </div>
-  </div>
-
-  <!-- STATUS -->
-  <div class="proj-status reveal">
-    <h2>Sobre os dados</h2>
-    <p>Só resultados agregados são publicados — o export bruto do Spotify nunca vai para o repositório. O site final é estático e mostra a narrativa em cinco capítulos, o heatmap, os rankings e o diagrama do pipeline gerados a partir dos dados já tratados.</p>
   </div>
 
 </div>
