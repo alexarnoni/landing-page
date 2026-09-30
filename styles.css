@@ -1981,3 +1981,26 @@ html.nav-overflow .nav-lang-mobile + .nav-toggle {
     margin-left: 0.5rem;
   }
 }
+
+/* Botões dos painéis na experiência */
+.hub-exp-links-label {
+  margin-top: 0.75rem;
+}
+
+.hub-exp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.hub-exp-actions a {
+  min-height: 44px;
+  padding: 10px 22px;
+  line-height: 1.3;
+}
+
+.hub-exp-actions .hub-btn-p {
+  background: var(--c-accent);
+  color: var(--c-bg-card);
+}

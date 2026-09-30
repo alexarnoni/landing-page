@@ -20,7 +20,7 @@
 
 // Mudam os textos das páginas do Astraea (estado do modelo 2.0.0) e do Acervo.
 const ML_IN_PRODUCTION = false;
-const ACERVO_POWERBI_READY = true;
+const ACERVO_POWERBI_READY = false;
 
 // Lista de CVs. Para adicionar uma versão em inglês, inclua uma linha com
 // lang: 'en' e o mesmo target: nas páginas em EN ela substitui a versão PT.
