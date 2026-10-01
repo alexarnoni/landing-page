@@ -19,7 +19,7 @@
 // Único bloco para editar à mão.
 
 // Mudam os textos das páginas do Astraea (estado do modelo 2.0.0) e do Acervo.
-const ML_IN_PRODUCTION = false;
+const ML_IN_PRODUCTION = true;
 const ACERVO_POWERBI_READY = false;
 
 // Lista de CVs. Para adicionar uma versão em inglês, inclua uma linha com
