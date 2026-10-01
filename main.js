@@ -352,6 +352,20 @@ function initCvMenus() {
       return a;
     }));
     menu.hidden = false;
+
+    const summary = menu.querySelector('summary');
+    if (summary) {
+      summary.setAttribute('aria-haspopup', 'true');
+      summary.setAttribute('aria-expanded', String(menu.open));
+    }
+    menu.addEventListener('toggle', () => {
+      if (summary) summary.setAttribute('aria-expanded', String(menu.open));
+      if (!menu.open) return;
+      list.classList.remove('is-right');
+      if (list.getBoundingClientRect().right > window.innerWidth - 8) {
+        list.classList.add('is-right');
+      }
+    });
   });
 
   document.addEventListener('click', (e) => {
