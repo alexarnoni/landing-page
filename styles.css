@@ -426,8 +426,42 @@ html.nav-overflow .nav-toggle {
 
 .hub-hero-ctas {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 2rem;
+}
+
+/* Botões de CTA: mesma altura, fonte, raio e sem quebra de linha */
+.hub-hero-ctas .hub-btn-p,
+.hub-hero-ctas .hub-btn-s,
+.hub-btn-s.hub-btn-cv {
+  box-sizing: border-box;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 24px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  border-radius: 980px;
+}
+
+.hub-hero-ctas .hub-btn-p {
+  background: var(--c-accent);
+  color: var(--c-bg-card);
+  border: 1px solid var(--c-accent);
+}
+
+/* Baixar CV: contorno, mais discreto em cor */
+.hub-btn-s.hub-btn-cv {
+  border-color: var(--c-text-dim);
+  color: var(--c-text-mid);
+}
+
+.hub-btn-s.hub-btn-cv:hover,
+.cv-menu[open] > .hub-btn-s.hub-btn-cv {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
 }
 
 .hub-about {
@@ -1618,8 +1652,12 @@ html.nav-overflow .nav-toggle {
 }
 
 @media (max-width: 480px) {
-  .hub-hero-ctas {
-    flex-direction: column;
+  .hub-hero-ctas > * {
+    flex: 1 1 100%;
+  }
+
+  .hub-hero-ctas .cv-menu > summary {
+    width: 100%;
   }
 
   .proj-ctas {
@@ -1759,13 +1797,24 @@ html.nav-overflow .nav-toggle {
 }
 
 .cv-menu > summary::after {
-  content: "▾";
-  margin-left: 6px;
-  font-size: 0.75em;
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.2s;
 }
 
 .cv-menu[open] > summary::after {
-  content: "▴";
+  transform: rotate(180deg);
+}
+
+.cv-menu > summary:focus-visible,
+.cv-menu-item:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
 }
 
 .cv-menu-list {
@@ -1783,9 +1832,16 @@ html.nav-overflow .nav-toggle {
   padding: 6px;
 }
 
+.cv-menu-list.is-right {
+  left: auto;
+  right: 0;
+}
+
 .cv-menu-item {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
   gap: 2px;
   padding: 10px 12px;
   border-radius: 8px;
