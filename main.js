@@ -27,7 +27,7 @@ const ACERVO_POWERBI_READY = false;
 // Enquanto só existir PT, o modo EN mostra o arquivo PT com a marca "(PT)".
 const CV_FILES = [
   {
-    file: '/assets/cv/cv_alexandre_bi_data_analyst.pdf',
+    file: '/assets/cv/Alexandre-Arnoni-Analista-de-BI.pdf',
     target: 'bi', lang: 'pt',
     label: { pt: 'BI / Data Analyst', en: 'BI / Data Analyst' },
     desc: {
@@ -36,7 +36,7 @@ const CV_FILES = [
     }
   },
   {
-    file: '/assets/cv/cv_alexandre_ciencia_dados.pdf',
+    file: '/assets/cv/Alexandre-Arnoni-Ciencia-de-Dados.pdf',
     target: 'ds', lang: 'pt',
     label: { pt: 'Ciência de Dados', en: 'Data Science' },
     desc: {
@@ -45,7 +45,7 @@ const CV_FILES = [
     }
   },
   {
-    file: '/assets/cv/cv_alexandre_engenharia_dados.pdf',
+    file: '/assets/cv/Alexandre-Arnoni-Engenharia-de-Dados.pdf',
     target: 'de', lang: 'pt',
     label: { pt: 'Engenharia de Dados', en: 'Data Engineering' },
     desc: {
