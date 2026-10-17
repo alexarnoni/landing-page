@@ -1468,7 +1468,10 @@ html.nav-overflow .nav-toggle {
   background: none;
   border: 1px solid var(--c-border);
   border-radius: 980px;
-  padding: 4px 10px;
+  padding: 0;
+  box-sizing: border-box;
+  width: 44px;
+  height: 32px;
   cursor: pointer;
   color: var(--c-text-muted);
   font-size: var(--fs-sm);
@@ -1752,19 +1755,25 @@ html.nav-overflow .nav-toggle {
 }
 
 /* ── Language toggle ── */
-.lang-link {
+.nav-list .lang-link {
   font-family: 'JetBrains Mono', monospace;
   font-size: var(--fs-mono-sm);
   font-weight: 500;
   color: var(--c-accent);
   border: 1px solid var(--c-border);
-  padding: 4px 10px;
+  padding: 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 32px;
   border-radius: 980px;
   letter-spacing: 1px;
   transition: border-color 0.15s, color 0.15s;
 }
 
-.lang-link:hover {
+.nav-list .lang-link:hover {
   border-color: var(--c-accent);
   color: var(--c-text);
 }
