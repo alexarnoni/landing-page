@@ -2079,3 +2079,46 @@ html.nav-overflow .nav-lang-mobile + .nav-toggle {
 @media (max-width: 760px) { .proj-shots { grid-template-columns: 1fr; } .proj-shot--phone { justify-self: stretch; max-width: none; } }
 
 .site-nav .nav-list a { white-space: nowrap; }
+
+/* Menu hambúrguer aberto quando o header estoura em telas largas (nav-overflow) */
+html.nav-overflow .site-nav.is-open {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  background: rgba(248, 248, 250, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+html.nav-overflow .site-nav.is-open .nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+html.nav-overflow .site-nav.is-open .nav-list li {
+  border-bottom: 1px solid var(--c-border);
+}
+
+html.nav-overflow .site-nav.is-open .nav-list li:last-child {
+  border-bottom: none;
+}
+
+html.nav-overflow .site-nav.is-open .nav-list a {
+  display: block;
+  padding: 0.75rem 0;
+  color: var(--c-text);
+}
+
+[data-theme="dark"] html.nav-overflow .site-nav.is-open,
+html[data-theme="dark"].nav-overflow .site-nav.is-open {
+  background: rgba(15, 15, 26, 0.98);
+  border-color: #2a2a4a;
+}
