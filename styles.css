@@ -2122,3 +2122,112 @@ html[data-theme="dark"].nav-overflow .site-nav.is-open {
   background: rgba(15, 15, 26, 0.98);
   border-color: #2a2a4a;
 }
+
+/* === Dropdown "Projetos" no header ============================== */
+.nav-dd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  background: none;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-dd-btn:hover,
+.nav-dd-btn[aria-expanded="true"] { color: var(--c-text); }
+.nav-dd-caret {
+  width: 14px; height: 14px;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+.nav-dd-btn[aria-expanded="true"] .nav-dd-caret { transform: rotate(180deg); }
+
+.nav-dd-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(560px, 100%);
+  padding: 1rem;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 0.5rem 1.25rem;
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  background: rgba(248, 248, 250, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.nav-dd-btn[aria-expanded="true"] + .nav-dd-panel { display: grid; }
+.nav-dd-group { display: flex; flex-direction: column; gap: 2px; }
+.nav-dd-title {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-text-muted);
+  padding: 0.25rem 0.75rem;
+}
+.nav-list .nav-dd-panel a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  color: var(--c-text);
+  white-space: normal;
+}
+.nav-list .nav-dd-panel a:hover { background: var(--c-surface, rgba(0, 0, 0, 0.05)); }
+.nav-dd-panel a strong { font-weight: 600; font-size: var(--fs-sm); }
+.nav-dd-panel a span { font-size: var(--fs-xs); color: var(--c-text-muted); line-height: 1.4; }
+.nav-list .nav-dd-panel .nav-dd-all {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  font-size: var(--fs-sm);
+  color: var(--c-accent);
+  border-top: 1px solid var(--c-border);
+  border-radius: 0;
+  padding-top: 0.75rem;
+}
+[data-theme="dark"] .nav-dd-panel {
+  background: rgba(15, 15, 26, 0.98);
+  border-color: #2a2a4a;
+}
+
+/* Celular: o menu hambúrguer mostra a lista de projetos direto */
+@media (max-width: 768px) {
+  .nav-dd-btn { display: none; }
+  .nav-dd-panel,
+  .nav-dd-btn[aria-expanded="true"] + .nav-dd-panel {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    width: auto;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .site-nav.is-open .nav-dd { border-bottom: 1px solid var(--c-border); }
+  .site-nav.is-open .nav-dd-panel a { padding: 0.6rem 0; }
+  .nav-list .nav-dd-panel a span { display: none; }
+  .nav-list .nav-dd-panel .nav-dd-all { display: none; }
+}
+
+@media (max-width: 768px) {
+  .site-nav.is-open .nav-dd { width: 100%; }
+  .site-nav.is-open .nav-dd-panel { align-items: stretch; width: 100%; }
+  .site-nav.is-open .nav-dd-group { align-items: stretch; }
+  .site-nav.is-open .nav-dd-title { padding: 0.5rem 0 0.25rem; text-align: left; }
+  .site-nav.is-open .nav-list .nav-dd-panel a { text-align: left; align-items: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .site-nav.is-open { align-items: stretch; }
+  .site-nav.is-open .nav-list { align-items: stretch; width: 100%; }
+  .site-nav.is-open .nav-list li { text-align: left; }
+}

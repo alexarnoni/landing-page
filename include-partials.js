@@ -26,6 +26,23 @@
         }
       }
 
+      // Localiza textos e links do header nas páginas em inglês
+      if (id === 'header' && (location.pathname.startsWith('/en/') || location.pathname === '/en')) {
+        const EN_PAGES = ['apuracao', 'encore', 'acervo', 'astraea', 'olheiro', 'bot', 'about'];
+        const tpl = document.createElement('template');
+        tpl.innerHTML = html;
+        tpl.content.querySelectorAll('[data-en]').forEach((el) => { el.textContent = el.dataset.en; });
+        tpl.content.querySelectorAll('a[href^="/"]').forEach((a) => {
+          const href = a.getAttribute('href');
+          if (href === '/en' || href.startsWith('/en/')) return;
+          const seg = href.replace(/^\//, '').split(/[/#]/)[0];
+          if (href === '/' || EN_PAGES.includes(seg) || href.startsWith('/#')) {
+            a.setAttribute('href', '/en' + href);
+          }
+        });
+        html = tpl.innerHTML;
+      }
+
       host.outerHTML = html;
     } catch (e) {
       console.error(`[partials] ${id} error:`, e);

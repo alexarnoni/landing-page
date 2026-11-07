@@ -254,6 +254,33 @@ async function loadAstraeaData() {
   }
 }
 
+// ─── 5b. Dropdown Projetos ──────────────────────────────────
+
+function initProjectsDropdown() {
+  const btn = document.querySelector('[data-dd-toggle]');
+  if (!btn || btn.dataset.ddReady) return;
+  btn.dataset.ddReady = '1';
+  const panel = document.getElementById(btn.getAttribute('aria-controls'));
+  const setOpen = (open) => btn.setAttribute('aria-expanded', String(open));
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+}
+
 // ─── 6. Lang Link ───────────────────────────────────────────
 
 function updateLangLink() {
@@ -488,6 +515,7 @@ document.addEventListener('partials:ready', () => {
   initMobileMenu();
   initReveal();
   updateLangLink();
+  initProjectsDropdown();
   initThemeToggle();
   updateThemeButton(document.documentElement.getAttribute('data-theme') || 'light');
 });
