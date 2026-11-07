@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Election Count | Alexandre Arnoni</title>
+<meta name="description" content="Near real-time tracking of the 2026 Brazilian presidential runoff count from open TSE data, a final-result projection that shows its own error, and a US midterms dashboard.">
+<meta property="og:title" content="Live Election Count | Alexandre Arnoni">
+<meta property="og:description" content="Near real-time tracking of the 2026 Brazilian presidential runoff count from open TSE data, a final-result projection that shows its own error, and a US midterms dashboard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/en/apuracao/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-apuracao.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/apuracao/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/apuracao/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Skip to content</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// 2026 elections · open TSE data · edition closed</p>
+      <h1 class="proj-title">Live Election Count</h1>
+      <p class="proj-subtitle">I track the 2026 presidential runoff count in near real time, project the final result with an uncertainty band, and keep in plain sight how much the projection missed. A day after the runoff I started a similar dashboard for the US midterms.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://apuracao.alexarnoni.com" target="_blank" rel="noopener noreferrer">Open the site</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/apuracao-eleicoes" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-shots reveal">
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/brasil-placar.webp" width="1440" height="900" loading="lazy" alt="Runoff scoreboard: Lula 51.79% and Flávio Bolsonaro 48.21% with 100% of ballot boxes counted, and the start of the state map.">
+      <figcaption>Runoff scoreboard, on the frozen copy of the site: official TSE result, blank and null votes, and abstention.</figcaption>
+    </figure>
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/brasil-projecao.webp" width="1026" height="973" loading="lazy" alt="Chart with the projection for Lula through the night, the 95% band, the raw count and the final result of 51.79%, plus a table with the error at each stage.">
+      <figcaption>"How the projection did": projection, raw count, 95% band and final result, with the error at each stage. (The site itself is in Portuguese.)</figcaption>
+    </figure>
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Problem</h2>
+    <p>During a count, the partial tally misleads: ballot boxes arrive in uneven order, by region and by city size. On 25 Oct 2026, with 42% of ballot boxes counted, the raw count showed 49.83% for Lula, and the final TSE result was 51.79%.</p>
+    <p>The project answers two questions: how to follow the night with official data refreshed every 20 seconds, and how to estimate the final result while being honest about how wrong the estimate can be.</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Data</h2>
+    <p>Results come from the TSE's public publication files (tracking and per-election results), and state and city outlines come from IBGE. The projection compares against the first round, by municipality. The project is unofficial and has no link to the TSE.</p>
+    <p>To test ideas without waiting for the next election, the repository has experiments over 499 thousand polling sections (votes per section, ballot-box arrival time and ballot-box bulletins), all described in <code>docs/</code>.</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Technical decisions and trade-offs</h2>
+    <ul>
+      <li><strong>Visitors never call the TSE.</strong> A poller reads the tracking file every 20 seconds and only downloads results when the tally timestamp changes, with ETag, growing back-off on errors and detection of stale CDN data.</li>
+      <li><strong>Only the TSE declares a winner.</strong> The site shows the elected candidate only when the file indicates final tally and the TSE itself flags the candidate. Projection and "mathematically decided" are the site's own calculations and are always labelled as such.</li>
+      <li><strong>Layered swing projection.</strong> It compares each counted municipality with its first-round vote, measures the vote shift by region and state, and applies it to what is still missing, with a 95% band. The model version and parameters are recorded in every output.</li>
+      <li><strong>What went wrong is recorded too.</strong> <code>docs/hipoteses.md</code> lists each hypothesis, the test and the decision, including the discarded ones. One that was adopted: weighting the swing by votes cut the mean absolute error from 0.210 to 0.079 percentage points in a backtest using the real arrival order of municipalities, and the gain held or tied at every stage of 200 simulated nights.</li>
+      <li><strong>A closed edition becomes a static site.</strong> An exporter builds the frozen copy from the night's archive, and hosting (Cloudflare Pages) publishes only that branch, with no server running.</li>
+      <li><strong>The midterms dashboard needed more care with its source.</strong> It reads civicAPI through a Cloudflare Pages Function. On the night of 3 Nov the source took 15 to 60 seconds per request and returned 503 errors. The fix was one independent request per chamber (House, Senate, governors), a copy of each chamber's last good page, a deadline and a request cap (the free plan cuts off at 50) and, with the source down, the last valid data with an on-screen warning.</li>
+    </ul>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Result</h2>
+    <p>On 25 Oct 2026, the projection that ran that night (version <code>swing-1.0</code>) missed by 0.10 percentage points on average. The table compares its error with the raw count's at three moments:</p>
+    <div class="ml-table-wrap">
+      <table class="ml-table">
+        <caption>Error in percentage points for Lula (final TSE result: 51.79%)</caption>
+        <thead><tr><th>Ballot boxes counted</th><th>Raw count</th><th>Projection</th></tr></thead>
+        <tbody>
+          <tr><td>42%</td><td>49.83% (error −1.96)</td><td>51.40% (error −0.38)</td></tr>
+          <tr><td>60%</td><td>50.52% (error −1.27)</td><td>51.53% (error −0.25)</td></tr>
+          <tr><td>80%</td><td>51.27% (error −0.52)</td><td>51.70% (error −0.09)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The code has 146 unit and integration tests and 21 browser tests that run in Chrome. The 2026 edition is live as a frozen copy. The project is configured by an election profile (<code>config/perfil.json</code>), so 2028 and 2030 need little change.</p>
+    <p>The US dashboard started on 26 Oct and was refined until election night, 3 Nov. On 6 Nov 2026 it showed 412 of 435 House races projected (251 Democrats and 161 Republicans), from civicAPI.</p>
+  </section>
+
+  <div class="proj-shots reveal">
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/eua-painel.webp" width="1440" height="900" loading="lazy" alt="US midterms dashboard with the House scoreboard and a hemicycle seat map, blue for Democrats and red for Republicans.">
+      <figcaption>US midterms dashboard: scoreboard, hemicycle that fills in as projections arrive, and swing states. (Portuguese interface.)</figcaption>
+    </figure>
+    <figure class="proj-shot proj-shot--phone">
+      <img src="/assets/apuracao/eua-celular.webp" width="780" height="1688" loading="lazy" alt="The same US dashboard on a phone, with the LIVE badge and a sticky scoreboard.">
+      <figcaption>The same dashboard on a phone.</figcaption>
+    </figure>
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Limitations</h2>
+    <ul>
+      <li>The projection was calibrated on a single election. That night's 95% band covered the final result at only 38% of moments: it was too narrow, mostly near the end. The current model (<code>swing-2.0</code>) widens the band and uses a different weight in the average, but it has only been validated on simulated nights.</li>
+      <li>The swing's unit is the municipality. It does not correct the bias of ballot boxes that arrive first within a single city.</li>
+      <li>Signature validation of the TSE files is not implemented.</li>
+      <li>The US dashboard depends on a free, unstable API. Winner projections there come from the source and are not official results, and at the end the source stalled with 23 House races unprojected.</li>
+      <li>The idea of comparing each counted part with the previous election and estimating the shift by layers (country, region, state) comes from the method Rodrigo Mahlmeister published during the 2026 count. The code is mine.</li>
+    </ul>
+  </section>
+
+  <!-- STACK E LINKS -->
+  <div class="proj-stack reveal" role="region" aria-label="Technologies used">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack and links</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">JavaScript (Node.js)</span>
+        <span class="proj-stack-badge">D3 (d3-geo)</span>
+        <span class="proj-stack-badge">SVG</span>
+        <span class="proj-stack-badge">TSE open data</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+        <span class="proj-stack-badge">Cloudflare Functions</span>
+        <span class="proj-stack-badge">Docker</span>
+        <span class="proj-stack-badge">GitHub Actions</span>
+        <span class="proj-stack-badge">Puppeteer</span>
+      </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://apuracao.alexarnoni.com" target="_blank" rel="noopener noreferrer">site (Brazil)</a></li>
+        <li><a href="https://apuracao.alexarnoni.com/eua/" target="_blank" rel="noopener noreferrer">US dashboard</a></li>
+        <li><a href="https://github.com/alexarnoni/apuracao-eleicoes" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

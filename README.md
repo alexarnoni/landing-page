@@ -17,6 +17,7 @@ _redirects              — redirecionamentos Cloudflare Pages
 partials/header.html
         footer.html
 about/index.html        — página sobre
+apuracao/index.html      — Apuração ao vivo — eleições 2026 (TSE) e midterms EUA
 astraea/index.html      — Astraea — pipeline NASA + ML
 olheiro/index.html      — Olheiro — scouting do Brasileirão
 finance/index.html      — Luro Finance
@@ -28,6 +29,7 @@ aenvar/                 — Crônicas de Aenvar
 
 | Projeto       | URL interna         | URL externa                        |
 |---------------|---------------------|-------------------------------------|
+| Apuração ao vivo | /apuracao/       | https://apuracao.alexarnoni.com    |
 | Astraea       | /astraea/           | https://astraea.alexarnoni.com     |
 | Olheiro       | /olheiro/           | https://scout.alexarnoni.com       |
 | Luro Finance  | /finance/           | —                                  |

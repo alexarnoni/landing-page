@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apuração ao vivo | Alexandre Arnoni</title>
+<meta name="description" content="Acompanhamento em quase tempo real da apuração do 2º turno de 2026 com dados abertos do TSE, uma projeção do resultado final que mostra o próprio erro e um painel das midterms dos EUA.">
+<meta property="og:title" content="Apuração ao vivo | Alexandre Arnoni">
+<meta property="og:description" content="Acompanhamento em quase tempo real da apuração do 2º turno de 2026 com dados abertos do TSE, uma projeção do resultado final que mostra o próprio erro e um painel das midterms dos EUA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarnoni.com/apuracao/">
+<meta property="og:image" content="https://alexarnoni.com/assets/og-apuracao.svg">
+<link rel="alternate" hreflang="pt" href="https://alexarnoni.com/apuracao/">
+<link rel="alternate" hreflang="en" href="https://alexarnoni.com/en/apuracao/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/styles.css?v=3" as="style">
+<link rel="stylesheet" href="/styles.css?v=3">
+</head>
+<body class="hub-page">
+
+<a href="#main" class="sr-skip">Pular para o conteúdo</a>
+<div data-include="header"></div>
+
+<main id="main">
+<div class="hub-wrap">
+
+  <!-- PROJ HERO -->
+  <div class="proj-hero reveal">
+    <div class="proj-hero-text">
+      <p class="proj-tag">// eleições 2026 · dados abertos do TSE · edição encerrada</p>
+      <h1 class="proj-title">Apuração ao vivo</h1>
+      <p class="proj-subtitle">Acompanho a apuração do 2º turno presidencial de 2026 quase em tempo real, projeto o resultado final com uma faixa de incerteza e deixo à vista o quanto a projeção errou. Um dia depois do 2º turno comecei um painel parecido para as midterms dos EUA.</p>
+      <div class="proj-ctas">
+        <a class="proj-cta-primary" href="https://apuracao.alexarnoni.com" target="_blank" rel="noopener noreferrer">Ver o site</a>
+        <a class="proj-cta-secondary" href="https://github.com/alexarnoni/apuracao-eleicoes" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-shots reveal">
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/brasil-placar.webp" width="1440" height="900" loading="lazy" alt="Placar do 2º turno de 2026: Lula 51,79% e Flávio Bolsonaro 48,21%, com 100% das seções apuradas, e o início do mapa por UF.">
+      <figcaption>Placar do 2º turno, na cópia congelada do site: resultado oficial do TSE, brancos, nulos e abstenção.</figcaption>
+    </figure>
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/brasil-projecao.webp" width="1026" height="973" loading="lazy" alt="Gráfico com a projeção de Lula ao longo da noite, a faixa de 95%, a contagem bruta e o resultado final de 51,79%, mais uma tabela com o erro em cada etapa.">
+      <figcaption>"Como a projeção se saiu": projeção, contagem bruta, faixa de 95% e resultado final, com o erro de cada etapa.</figcaption>
+    </figure>
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Problema</h2>
+    <p>Numa apuração, o placar parcial engana: as urnas chegam em ordem desigual, por região e por tamanho de cidade. Em 25/10/2026, com 42% das seções apuradas, a contagem bruta mostrava 49,83% para o Lula, e o resultado final do TSE foi 51,79%.</p>
+    <p>O projeto responde a duas perguntas: como acompanhar a noite com dado oficial, atualizado a cada 20 segundos, e como estimar o resultado final dizendo com honestidade o quanto a estimativa pode errar.</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Dados</h2>
+    <p>Os resultados vêm dos arquivos públicos de divulgação do TSE (acompanhamento e resultados por eleição), e os contornos de estados e cidades vêm do IBGE. A base de comparação da projeção é o 1º turno, por município. O projeto não é oficial e não tem vínculo com o TSE.</p>
+    <p>Para testar ideias sem esperar a próxima eleição, o repositório tem experimentos sobre 499 mil seções eleitorais (votos por seção, hora de chegada da urna e boletim de urna), todos descritos em <code>docs/</code>.</p>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Decisões técnicas e trade-offs</h2>
+    <ul>
+      <li><strong>Visitantes nunca chamam o TSE.</strong> Um poller consulta o arquivo de acompanhamento a cada 20 segundos e só baixa os resultados quando o horário de totalização muda, com ETag, espera crescente em caso de erro e detecção de dado defasado do CDN.</li>
+      <li><strong>Só o TSE declara vencedor.</strong> O site mostra o eleito apenas quando o arquivo indica totalização final e o próprio TSE marca o candidato. Projeção e "matematicamente decidido" são cálculos do site e aparecem sempre rotulados.</li>
+      <li><strong>Projeção por swing em camadas.</strong> Compara cada município já apurado com o que votou no 1º turno, mede a mudança do voto por região e por UF e aplica ao que falta, com faixa de 95%. A versão do modelo e os parâmetros ficam gravados em cada saída.</li>
+      <li><strong>O que deu errado também fica registrado.</strong> O arquivo <code>docs/hipoteses.md</code> lista cada hipótese, o teste e a decisão, inclusive as descartadas. Um exemplo que entrou: trocar o peso do swing por peso por votos reduziu o erro absoluto médio de 0,210 para 0,079 ponto percentual num backtest com a ordem real de chegada dos municípios, e o ganho se manteve ou ficou igual em todas as etapas de 200 noites simuladas.</li>
+      <li><strong>Edição encerrada vira site estático.</strong> Um exportador gera a cópia congelada a partir do arquivo da noite, e a hospedagem (Cloudflare Pages) publica só essa branch, sem servidor ligado.</li>
+      <li><strong>O painel das midterms precisou de mais cuidado com a fonte.</strong> Ele lê a civicAPI por uma Cloudflare Pages Function. Na noite de 3/11, a fonte levou de 15 a 60 segundos por pedido e devolveu erros 503. A solução foi uma requisição independente por casa (Câmara, Senado e governadores), cópia da última página boa de cada uma, prazo e limite de pedidos (o plano gratuito corta em 50) e, com a fonte fora do ar, o último dado válido com aviso na tela.</li>
+    </ul>
+  </section>
+
+  <section class="proj-case reveal">
+    <h2>Resultado</h2>
+    <p>Em 25/10/2026, a projeção que rodou naquela noite (versão <code>swing-1.0</code>) errou em média 0,10 ponto percentual. A tabela compara o erro dela com o da contagem bruta em três momentos:</p>
+    <div class="ml-table-wrap">
+      <table class="ml-table">
+        <caption>Erro em pontos percentuais para o Lula (resultado final do TSE: 51,79%)</caption>
+        <thead><tr><th>Seções apuradas</th><th>Contagem bruta</th><th>Projeção</th></tr></thead>
+        <tbody>
+          <tr><td>42%</td><td>49,83% (erro de −1,96)</td><td>51,40% (erro de −0,38)</td></tr>
+          <tr><td>60%</td><td>50,52% (erro de −1,27)</td><td>51,53% (erro de −0,25)</td></tr>
+          <tr><td>80%</td><td>51,27% (erro de −0,52)</td><td>51,70% (erro de −0,09)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>O código tem 146 testes de unidade e integração e 21 testes de tela, que rodam no Chrome. A edição de 2026 está no ar como cópia congelada. O projeto é configurado por perfil de eleição (<code>config/perfil.json</code>), então 2028 e 2030 pedem pouca mudança.</p>
+    <p>O painel dos EUA nasceu em 26/10 e foi ajustado até a noite da eleição, em 3/11. Em 6/11/2026 ele mostrava 412 das 435 corridas da Câmara projetadas (251 democratas e 161 republicanos), a partir da civicAPI.</p>
+  </section>
+
+  <div class="proj-shots reveal">
+    <figure class="proj-shot">
+      <img src="/assets/apuracao/eua-painel.webp" width="1440" height="900" loading="lazy" alt="Painel das midterms dos EUA com o placar da Câmara e o mapa de cadeiras em formato de hemiciclo, azul para democratas e vermelho para republicanos.">
+      <figcaption>Painel das midterms dos EUA: placar, hemiciclo preenchido conforme as projeções chegam e estados-chave.</figcaption>
+    </figure>
+    <figure class="proj-shot proj-shot--phone">
+      <img src="/assets/apuracao/eua-celular.webp" width="780" height="1688" loading="lazy" alt="O mesmo painel dos EUA no celular, com o selo AO VIVO e o placar fixo.">
+      <figcaption>O mesmo painel no celular.</figcaption>
+    </figure>
+  </div>
+
+  <section class="proj-case reveal">
+    <h2>Limitações</h2>
+    <ul>
+      <li>A projeção foi calibrada com uma única eleição. A faixa de 95% daquela noite acertou o resultado em só 38% dos momentos: estava estreita demais, principalmente no fim. O modelo atual (<code>swing-2.0</code>) alarga a faixa e usa outro peso na média, mas só foi validado em noites simuladas.</li>
+      <li>A unidade do swing é o município. Isso não corrige o viés das urnas que chegam primeiro dentro de uma mesma cidade.</li>
+      <li>A validação da assinatura dos arquivos do TSE não foi implementada.</li>
+      <li>O painel dos EUA depende de uma API gratuita e instável. Projeção de vencedor ali é da fonte, não é resultado oficial, e no fim a fonte parou com 23 corridas da Câmara sem projeção.</li>
+      <li>A ideia de comparar cada parte apurada com a eleição anterior e estimar a mudança por camadas (país, região, estado) vem do método divulgado por Rodrigo Mahlmeister na apuração de 2026. O código é meu.</li>
+    </ul>
+  </section>
+
+  <!-- STACK E LINKS -->
+  <div class="proj-stack reveal" role="region" aria-label="Tecnologias utilizadas">
+    <div class="proj-stack-inner">
+      <p class="proj-stack-label">Stack e links</p>
+      <div class="proj-stack-badges">
+        <span class="proj-stack-badge">JavaScript (Node.js)</span>
+        <span class="proj-stack-badge">D3 (d3-geo)</span>
+        <span class="proj-stack-badge">SVG</span>
+        <span class="proj-stack-badge">Dados abertos do TSE</span>
+        <span class="proj-stack-badge">Cloudflare Pages</span>
+        <span class="proj-stack-badge">Cloudflare Functions</span>
+        <span class="proj-stack-badge">Docker</span>
+        <span class="proj-stack-badge">GitHub Actions</span>
+        <span class="proj-stack-badge">Puppeteer</span>
+      </div>
+      <ul class="proj-case-links" style="margin-top:1.25rem;list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:var(--fs-sm)">
+        <li><a href="https://apuracao.alexarnoni.com" target="_blank" rel="noopener noreferrer">site (Brasil)</a></li>
+        <li><a href="https://apuracao.alexarnoni.com/eua/" target="_blank" rel="noopener noreferrer">painel dos EUA</a></li>
+        <li><a href="https://github.com/alexarnoni/apuracao-eleicoes" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div data-include="footer"></div>
+
+<script src="/include-partials.js"></script>
+<script src="/main.js?v=3"></script>
+</body>
+</html>

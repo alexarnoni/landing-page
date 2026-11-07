@@ -2069,3 +2069,13 @@ html.nav-overflow .nav-lang-mobile + .nav-toggle {
   background: var(--c-accent);
   color: var(--c-bg-card);
 }
+
+/* Imagens nas paginas de projeto */
+.proj-shots { display: grid; gap: 1.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 2rem 0 0.5rem; align-items: start; }
+.proj-shot { margin: 0; border: 1px solid var(--c-border); border-radius: 10px; background: var(--c-surface); overflow: hidden; }
+.proj-shot img { display: block; width: 100%; height: auto; }
+.proj-shot figcaption { padding: 0.75rem 1rem; font-size: var(--fs-sm); color: var(--c-text-mid); line-height: 1.5; border-top: 1px solid var(--c-border); }
+.proj-shot--phone { max-width: 320px; justify-self: center; }
+@media (max-width: 760px) { .proj-shots { grid-template-columns: 1fr; } .proj-shot--phone { justify-self: stretch; max-width: none; } }
+
+.site-nav .nav-list a { white-space: nowrap; }
