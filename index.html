@@ -87,41 +87,9 @@
     </div>
     <div class="hub-proj-grid">
       <div class="hub-proj-card">
-        <div class="hub-proj-tag">⬡ Edição encerrada</div>
-        <div class="hub-proj-name">Apuração ao vivo</div>
-        <div class="hub-proj-desc">Acompanho a apuração do 2º turno de 2026 quase em tempo real, com dados abertos do TSE, e projeto o resultado final mostrando o quanto a projeção errou. Um painel parecido cobriu as midterms dos EUA.</div>
-        <div class="hub-proj-footer">
-          <div class="hub-proj-stack">
-            <span class="hub-proj-pill">JavaScript</span>
-            <span class="hub-proj-pill">TSE</span>
-            <span class="hub-proj-pill">Cloudflare</span>
-          </div>
-          <div style="display:flex;gap:12px;">
-            <a href="/apuracao/" class="hub-proj-link">ver projeto →</a>
-            <a href="https://github.com/alexarnoni/apuracao-eleicoes" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
-          </div>
-        </div>
-      </div>
-      <div class="hub-proj-card">
-        <div class="hub-proj-tag">⬡ Em produção</div>
-        <div class="hub-proj-name">Encore</div>
-        <div class="hub-proj-desc">Meço como sete bandas usam o próprio catálogo em shows ao vivo: repertório, rotação e sobrevivência de músicas ao longo da carreira, a partir de dados reais de setlists.</div>
-        <div class="hub-proj-footer">
-          <div class="hub-proj-stack">
-            <span class="hub-proj-pill">Python</span>
-            <span class="hub-proj-pill">Airflow</span>
-            <span class="hub-proj-pill">dbt Core</span>
-          </div>
-          <div style="display:flex;gap:12px;">
-            <a href="/encore/" class="hub-proj-link">ver projeto →</a>
-            <a href="https://github.com/alexarnoni/encore-setlist-analytics" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
-          </div>
-        </div>
-      </div>
-      <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Em produção</div>
         <div class="hub-proj-name">Acervo</div>
-        <div class="hub-proj-desc">Transformo 12 anos de histórico de escuta musical em um pipeline de dados e um dashboard público que conta como o gosto mudou: fases, obsessões e hábitos.</div>
+        <div class="hub-proj-desc">Analisei cerca de 413 mil eventos de 12 anos do meu histórico do Spotify para entender como meus hábitos de escuta mudaram. Tratei os dados em Python e montei um modelo estrela para Power BI e um dashboard público.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">Python</span>
@@ -136,8 +104,40 @@
       </div>
       <div class="hub-proj-card">
         <div class="hub-proj-tag">⬡ Em produção</div>
+        <div class="hub-proj-name">Encore</div>
+        <div class="hub-proj-desc">Analiso como sete bandas mudam seus repertórios ao vivo e por quanto tempo as músicas continuam nos shows. O Airflow orquestra a coleta de duas APIs, e o dbt modela os dados que alimentam o site.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">Python</span>
+            <span class="hub-proj-pill">Airflow</span>
+            <span class="hub-proj-pill">dbt Core</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/encore/" class="hub-proj-link">ver projeto →</a>
+            <a href="https://github.com/alexarnoni/encore-setlist-analytics" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Edição encerrada</div>
+        <div class="hub-proj-name">Apuração ao vivo</div>
+        <div class="hub-proj-desc">Acompanhei a apuração do segundo turno de 2026 com dados abertos do TSE. A edição final preserva o painel e compara as projeções feitas durante a contagem com o resultado final.</div>
+        <div class="hub-proj-footer">
+          <div class="hub-proj-stack">
+            <span class="hub-proj-pill">JavaScript</span>
+            <span class="hub-proj-pill">TSE</span>
+            <span class="hub-proj-pill">Cloudflare</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="/apuracao/" class="hub-proj-link">ver projeto →</a>
+            <a href="https://github.com/alexarnoni/apuracao-eleicoes" class="hub-proj-link" target="_blank" rel="noopener noreferrer">github →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Em produção</div>
         <div class="hub-proj-name">Astraea</div>
-        <div class="hub-proj-desc">Conecto a API da NASA a um pipeline de dados e exponho tudo via API pública. Um modelo estima a probabilidade de o asteroide ter a flag de PHA da NASA; o risco exibido vem de uma regra própria.</div>
+        <div class="hub-proj-desc">Coleto dados da NASA sobre asteroides e eventos solares, modelo os registros com dbt e os disponibilizo via FastAPI. O painel usa uma regra própria de risco, e o projeto documenta separadamente o modelo que estima a flag PHA da NASA.</div>
         <div class="hub-proj-footer">
           <div class="hub-proj-stack">
             <span class="hub-proj-pill">FastAPI</span>
@@ -155,6 +155,7 @@
     <div class="hub-proj-group">
       <div class="hub-proj-grid">
       <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Coleta pausada</div>
         <div class="hub-proj-name">Olheiro</div>
         <div class="hub-proj-desc">Análise de desempenho de times e identificação de talentos no Brasileirão Série A, com o Garimpo, modelo que avalia jogadores por posição. Dados obtidos via API SportDB. A sincronização está pausada por custo da API; o código e os dados já coletados continuam disponíveis.</div>
         <div class="hub-proj-footer">
@@ -193,6 +194,7 @@
         </div>
       </div>
       <div class="hub-proj-card">
+        <div class="hub-proj-tag">⬡ Projeto encerrado</div>
         <div class="hub-proj-name">Luro</div>
         <div class="hub-proj-desc">Comecei querendo aprender a construir um app do zero. O que era pra ser simples virou magic link, CSRF duplo, importador de extratos e categorização via LLM. Congelei intencionalmente para focar em outros projetos.</div>
         <div class="hub-proj-footer">
